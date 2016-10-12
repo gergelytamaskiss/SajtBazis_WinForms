@@ -13,6 +13,7 @@
     [length]      INT          NOT NULL,
     [pieces]      INT          NOT NULL,
     [temperature] TINYINT      NOT NULL,
+    [date_created]DATETIME     NOT NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
