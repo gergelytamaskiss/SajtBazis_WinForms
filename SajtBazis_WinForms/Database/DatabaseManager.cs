@@ -22,14 +22,6 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        public static SqlCommand Login(string uname, string pass)
-        {
-            SqlCommand cmd = new SqlCommand(uname, pass);
-                (@"SELECT Count(*) FROM Users 
-                                        WHERE Username=@uname and 
-                                        Password=@pass", connection);
-        }
-
         //Connection Close
         public static void ConnectionClose()
         {

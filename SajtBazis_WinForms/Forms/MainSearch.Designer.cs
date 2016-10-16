@@ -1,6 +1,6 @@
 ﻿namespace SajtBazis_WinForms
 {
-    partial class MainWindow
+    partial class MainSearch
     {
         /// <summary>
         /// Required designer variable.

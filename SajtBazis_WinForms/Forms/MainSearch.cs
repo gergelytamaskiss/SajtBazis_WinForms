@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SajtBazis_WinForms
 {
-    public partial class MainWindow : Form
+    public partial class MainSearch : Form
     {
-        public MainWindow()
+        public MainSearch()
         {
             InitializeComponent();
         }
