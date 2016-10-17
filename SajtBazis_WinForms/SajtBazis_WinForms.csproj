@@ -133,10 +133,10 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="SajtBazis_DataBase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SajtBazis_DataBase_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>SajtBazis_DataBase.mdf</DependentUpon>
     </Content>
   </ItemGroup>

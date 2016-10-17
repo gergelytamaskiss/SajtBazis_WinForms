@@ -17,7 +17,6 @@ namespace SajtBazis_WinForms
         public Login()
         {
             InitializeComponent();
-
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
@@ -38,10 +37,10 @@ namespace SajtBazis_WinForms
                         int result = (int)cmd.ExecuteScalar();
                         if (result > 0)
                         {
-                            MessageBox.Show("Login Success");
+                            //MessageBox.Show("Login Success");
                             MainSearch mainwindow = new MainSearch();
                             mainwindow.Show();
-                        this.Hide();
+                        //this.Hide();
                         }
                         else
                         {
@@ -53,12 +52,12 @@ namespace SajtBazis_WinForms
                         MessageBox.Show("Unexpected error:" + ex.Message);
                     }
                 }
-                //else
-                //{
-                //    MessageBox.Show("Please check your username and password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+            //else
+            //{
+            //    MessageBox.Show("Please check your username and password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
-
+            //}
+            this.Hide();
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
