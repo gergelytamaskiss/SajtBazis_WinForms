@@ -67,9 +67,9 @@
             this.lbl_News.AutoSize = true;
             this.lbl_News.Location = new System.Drawing.Point(12, 24);
             this.lbl_News.Name = "lbl_News";
-            this.lbl_News.Size = new System.Drawing.Size(37, 13);
+            this.lbl_News.Size = new System.Drawing.Size(58, 13);
             this.lbl_News.TabIndex = 2;
-            this.lbl_News.Text = "News:";
+            this.lbl_News.Text = "Newsfeed:";
             // 
             // lbl_Username
             // 
@@ -119,14 +119,14 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 239);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(484, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // Login
             // 
@@ -145,8 +145,10 @@
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Login);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login - SajtBázis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
+            this.Load += new System.EventHandler(this.Login_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -8,6 +8,12 @@ namespace SajtBazis_WinForms.Classes
 {
     class Users
     {
+        enum Permissions
+        {
+            User,
+            Admin
+        }
+
         private int id;
 
         public int ID

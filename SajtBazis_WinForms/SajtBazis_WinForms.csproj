@@ -63,9 +63,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Products.cs" />
+    <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Database\DatabaseException.cs" />
     <Compile Include="Database\DatabaseManager.cs" />
+    <Compile Include="Forms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,11 +85,17 @@
     <Compile Include="Forms\MainSearch.Designer.cs">
       <DependentUpon>MainSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewUser.cs">
+    <Compile Include="Forms\Products.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewUser.Designer.cs">
-      <DependentUpon>NewUser.cs</DependentUpon>
+    <Compile Include="Forms\Products.Designer.cs">
+      <DependentUpon>Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,11 +104,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SajtBazis_DataBaseDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainSearch.resx">
       <DependentUpon>MainSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User.resx">
+      <DependentUpon>User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

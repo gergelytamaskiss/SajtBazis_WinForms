@@ -1,6 +1,6 @@
 ﻿namespace SajtBazis_WinForms.Forms
 {
-    partial class NewUser
+    partial class Products
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "NewUser";
+            this.Text = "Products";
         }
 
         #endregion

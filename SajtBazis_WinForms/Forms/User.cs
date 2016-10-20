@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace SajtBazis_WinForms.Forms
 {
-    public partial class NewUser : Form
+    public partial class User : Form
     {
-        public NewUser()
+        public User()
         {
             InitializeComponent();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

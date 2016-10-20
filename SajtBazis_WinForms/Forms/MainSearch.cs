@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SajtBazis_WinForms.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,18 @@ namespace SajtBazis_WinForms
             //{
             //    e.Cancel = true;
             //}
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            User userswindow = new User();
+            userswindow.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About aboutwindow = new About();
+            aboutwindow.Show();
         }
     }
 }
