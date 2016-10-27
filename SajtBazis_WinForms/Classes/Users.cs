@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SajtBazis_WinForms.Classes
 {
+    enum Permissions
+    {
+        admin,
+        datamanager,
+        user
+    }
     class Users
     {
-        enum Permissions
+        Permissions permission;
+        internal Permissions Permission
         {
-            User,
-            Admin
+            get { return permission; }
+            //set { permission = value; }
         }
 
-        private int id;
-
-        public int ID
-        {
-            get { return id; }
-            set { if (id == 0) { id = value; } }
-        }
-
-        private string username;
+        string username;
 
         public string Username
         {
@@ -30,5 +30,42 @@ namespace SajtBazis_WinForms.Classes
             set { username = value; }
         }
 
+        string password;
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        string email;
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        DateTime dateCreated;
+
+        public DateTime DateCreated
+        {
+            get { return dateCreated; }
+            //set { dateCreated = value; }
+        }
+
+        public Users(Permissions permission, string username, string password, string email, DateTime dateCreated)
+        {
+            this.permission = permission;
+            this.dateCreated = dateCreated;
+            Username = username;
+            Password = password;
+            Email = email;
+        }
+
+        //public override XElement ToXML()
+        //{
+        //   
+        //}
     }
 }

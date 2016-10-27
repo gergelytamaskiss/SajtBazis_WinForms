@@ -113,6 +113,9 @@
     <EmbeddedResource Include="Forms\MainSearch.resx">
       <DependentUpon>MainSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Products.resx">
+      <DependentUpon>Products.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\User.resx">
       <DependentUpon>User.cs</DependentUpon>
     </EmbeddedResource>

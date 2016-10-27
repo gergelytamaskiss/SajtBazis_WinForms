@@ -19,6 +19,11 @@ namespace SajtBazis_WinForms
             InitializeComponent();
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btn_Login_Click(object sender, EventArgs e)
         {
             {
@@ -33,15 +38,15 @@ namespace SajtBazis_WinForms
                         SqlConnection connection = new SqlConnection();
                         connection.ConnectionString = ConfigurationManager.ConnectionStrings["SajtBazis_WinForms.Properties.Settings.SajtBazis_DataBaseConnectionString"].ConnectionString;
                         connection.Open();
-                        SqlCommand cmd = new SqlCommand(@"SELECT Count(*) FROM Users
-                                        WHERE Username=@uname and
-                                        Password=@pass", connection);
+                        SqlCommand cmd = new SqlCommand(@"SELECT Count(*) FROM Users WHERE Username=@uname and Password=@pass", connection);
                         cmd.Parameters.AddWithValue("@uname", txb_Username.Text);
                         cmd.Parameters.AddWithValue("@pass", txb_Password.Text);
+
                         int result = (int)cmd.ExecuteScalar();
 
                         if (result > 0)
                         {
+                            toolStripStatusLabel1.Text = "Successfully logged in!";
                             MainSearch mainwindow = new MainSearch();
                             mainwindow.Show();
                         }
@@ -72,9 +77,5 @@ namespace SajtBazis_WinForms
             Close();
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

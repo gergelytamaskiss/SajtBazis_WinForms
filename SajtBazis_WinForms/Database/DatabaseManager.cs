@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 
@@ -34,5 +35,7 @@ namespace SajtBazis_WinForms.Database
                 throw new DatabaseException("Disconecting from database failed!");
             }
         }
+
+
     }
 }

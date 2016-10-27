@@ -16,16 +16,11 @@ namespace SajtBazis_WinForms
         public MainSearch()
         {
             InitializeComponent();
-        }
-
-        private void checkBox8_CheckedChanged(object sender, EventArgs e)
-        {
 
         }
-
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        void Checkboxes()
         {
-            Close();
+            
         }
 
         private void MainSearch_Load(object sender, EventArgs e)
@@ -41,6 +36,7 @@ namespace SajtBazis_WinForms
             //}
         }
 
+        //Menustrip
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             User userswindow = new User();
@@ -52,5 +48,28 @@ namespace SajtBazis_WinForms
             About aboutwindow = new About();
             aboutwindow.Show();
         }
+
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Products productswindow = new Products();
+            productswindow.Show();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
