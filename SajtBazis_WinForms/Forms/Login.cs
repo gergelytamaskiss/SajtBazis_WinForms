@@ -49,6 +49,7 @@ namespace SajtBazis_WinForms
                             toolStripStatusLabel1.Text = "Successfully logged in!";
                             MainSearch mainwindow = new MainSearch();
                             mainwindow.Show();
+                            this.Hide();
                         }
                         else
                         {
