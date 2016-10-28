@@ -30,10 +30,11 @@ namespace SajtBazis_WinForms
 
         private void MainSearch_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (MessageBox.Show("Are you sure you want to quit?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-            //{
-            //    e.Cancel = true;
-            //}
+            if (MessageBox.Show("Are you sure you want to quit?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+                
+            }
         }
 
         //Menustrip
@@ -58,6 +59,7 @@ namespace SajtBazis_WinForms
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+            Login.Show();
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
