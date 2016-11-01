@@ -21,12 +21,12 @@ CREATE TABLE [dbo].[Products] (
     [market]       INT NOT NULL,
     [factory]      INT NOT NULL,
     [type]         INT NOT NULL,
-    [bar_code]     INT       NOT NULL,
-    [width]        INT          NOT NULL,
-    [heigth]       INT          NOT NULL,
-    [length]       INT          NOT NULL,
-    [pieces]       INT          NULL,
-    [temperature]  TINYINT      NOT NULL,
+    [bar_code]     INT NOT NULL,
+    [width]        INT NOT NULL,
+    [heigth]       INT NOT NULL,
+    [length]       INT NOT NULL,
+    [pieces]       INT NOT NULL,
+    [temperature]  INT NOT NULL,
     [date_created] DATETIME     DEFAULT (getdate()) NOT NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC)
 );
