@@ -1,6 +1,6 @@
 ﻿namespace SajtBazis_WinForms.Forms
 {
-    partial class Products
+    partial class ProductMaintenance
     {
         /// <summary>
         /// Required designer variable.

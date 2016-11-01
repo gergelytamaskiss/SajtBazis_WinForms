@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SajtBazis_WinForms.Classes
 {
@@ -105,7 +101,7 @@ namespace SajtBazis_WinForms.Classes
             set
             {
                 if (value > 0) { partNumber = value; }
-                else { throw new ArgumentException("Part number can't be empty!"); }
+                else { throw new ArgumentException("Partnumber can't be empty!"); }
             }
         }
 
@@ -177,35 +173,35 @@ namespace SajtBazis_WinForms.Classes
             }
         }
 
-        DateTime dateCreated;
+        //DateTime dateCreated;
 
-        public DateTime DateCreated
-        {
-            get { return dateCreated; }
-            //set { dateCreated = value; }
-        }
-
-        public Products(Categories category, Factories factory, Types type, Brands brand, Markets market, string description, int partNumber, int barCode, int legth, int width, int height, int pieces, int temperature, DateTime dateCreated)
-        {
-            this.category = category;
-            this.factory = factory;
-            this.type = type;
-            this.brand = brand;
-            this.market = market;
-            Description = description;
-            PartNumber = partNumber;
-            BarCode = barCode;
-            Length = length;
-            Width = width;
-            Height = height;
-            Pieces = pieces;
-            Temperature = temperature;
-        }
-
-        //public override XElement ToXML()
+        //public DateTime DateCreated
         //{
-        //   
+        //    get { return dateCreated; }
+        //    //set { dateCreated = value; }
         //}
 
+        public Products(int partNumber, string description, Brands brand, Categories category, Markets market, Factories factory, Types type, int barCode, int width, int height, int length, int pieces, int temperature)
+        {
+            PartNumber = partNumber;
+            Description = description;
+            this.brand = brand;
+            this.category = category;
+            this.market = market;
+            this.factory = factory;
+            this.type = type;
+            BarCode = barCode;
+            Width = width;
+            Height = height;
+            Length = length;
+            Pieces = pieces;
+            Temperature = temperature;
+            //this.dateCreated = dateCreated;
+        }
+
+        public override string ToString()
+        {
+            return partNumber + " | " + description;
+        }
     }
 }

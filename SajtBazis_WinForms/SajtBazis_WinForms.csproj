@@ -66,6 +66,7 @@
     <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Database\DatabaseException.cs" />
+    <Compile Include="Database\DatabaseFailure.cs" />
     <Compile Include="Database\DatabaseManager.cs" />
     <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>
@@ -85,17 +86,29 @@
     <Compile Include="Forms\MainSearch.Designer.cs">
       <DependentUpon>MainSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Products.cs">
+    <Compile Include="Forms\ProductMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Products.Designer.cs">
-      <DependentUpon>Products.cs</DependentUpon>
+    <Compile Include="Forms\ProductMaintenance.Designer.cs">
+      <DependentUpon>ProductMaintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User.cs">
+    <Compile Include="Forms\ProductNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\User.Designer.cs">
-      <DependentUpon>User.cs</DependentUpon>
+    <Compile Include="Forms\ProductNew.Designer.cs">
+      <DependentUpon>ProductNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserMaintenance.Designer.cs">
+      <DependentUpon>UserMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserNew.Designer.cs">
+      <DependentUpon>UserNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,11 +126,14 @@
     <EmbeddedResource Include="Forms\MainSearch.resx">
       <DependentUpon>MainSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Products.resx">
-      <DependentUpon>Products.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ProductMaintenance.resx">
+      <DependentUpon>ProductMaintenance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\User.resx">
-      <DependentUpon>User.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\UserMaintenance.resx">
+      <DependentUpon>UserMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserNew.resx">
+      <DependentUpon>UserNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

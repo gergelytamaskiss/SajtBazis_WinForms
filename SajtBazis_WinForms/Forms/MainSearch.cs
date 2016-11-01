@@ -1,13 +1,8 @@
-﻿using SajtBazis_WinForms.Forms;
+﻿using SajtBazis_WinForms.Classes;
+using SajtBazis_WinForms.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SajtBazis_WinForms.Database;
 
 namespace SajtBazis_WinForms
 {
@@ -16,31 +11,33 @@ namespace SajtBazis_WinForms
         public MainSearch()
         {
             InitializeComponent();
-
+            cmb_Brand.DataSource = Enum.GetValues(typeof(Brands));
+            cmb_Category.DataSource = Enum.GetValues(typeof(Categories));
+            cmb_Market.DataSource = Enum.GetValues(typeof(Markets));
+            cmb_Factory.DataSource = Enum.GetValues(typeof(Factories));
+            cmb_Type.DataSource = Enum.GetValues(typeof(Types));
         }
-        void Checkboxes()
-        {
-            
-        }
 
+        //##kérdés: listboxnál nem nulláza ki az értékeket, hanem hozzáadja a meglévőhöz
         private void MainSearch_Load(object sender, EventArgs e)
         {
-
+            listBox1.DataSource = null;
+            listBox1.DataSource = DatabaseManager.SelectAllProduct();
         }
 
         private void MainSearch_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to quit?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-            {
-                e.Cancel = true;
-                
-            }
+            //if (MessageBox.Show("Are you sure you want to quit?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            //{
+            //    e.Cancel = true;
+
+            //}
         }
 
         //Menustrip
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            User userswindow = new User();
+            UserMaintenance userswindow = new UserMaintenance();
             userswindow.Show();
         }
 
@@ -52,24 +49,29 @@ namespace SajtBazis_WinForms
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Products productswindow = new Products();
+            ProductMaintenance productswindow = new ProductMaintenance();
             productswindow.Show();
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
-            Login.Show();
         }
 
-        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        //##kérdés: partnumber konvertálásnál gondjai vannak, barcode ok
+        private void btn_Search_Click(object sender, EventArgs e)
         {
+            int searchpartnumber = Convert.ToInt32(tbx_PartNumber.Text);
+            string searchdescription = txb_Description.Text;
+            int searchbrand = cmb_Brand.SelectedIndex;
+            int searchcategory = cmb_Category.SelectedIndex;
+            int searchmarket = cmb_Market.SelectedIndex;
+            int searchfactory = cmb_Factory.SelectedIndex;
+            int searchtype = cmb_Type.SelectedIndex;
+            int searchbarcode = Convert.ToInt32(txb_BarCode.Text);
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            listBox1.DataSource = null;
+            listBox1.DataSource = DatabaseManager.SearchProduct(searchpartnumber, searchdescription, searchbrand, searchcategory, searchmarket, searchfactory, searchtype, searchbarcode);
         }
 
 

@@ -36,52 +36,30 @@
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.grb_Search = new System.Windows.Forms.GroupBox();
+            this.txb_BarCode = new System.Windows.Forms.TextBox();
+            this.cmb_Factory = new System.Windows.Forms.ComboBox();
+            this.cmb_Category = new System.Windows.Forms.ComboBox();
+            this.txb_Description = new System.Windows.Forms.TextBox();
+            this.tbx_PartNumber = new System.Windows.Forms.TextBox();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lbl_BarCode = new System.Windows.Forms.Label();
+            this.lbl_Factory = new System.Windows.Forms.Label();
+            this.lbl_Category = new System.Windows.Forms.Label();
+            this.lbl_Description = new System.Windows.Forms.Label();
+            this.lbl_PartNumber = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.grb_Results = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbl_Brand = new System.Windows.Forms.Label();
+            this.lbl_Market = new System.Windows.Forms.Label();
+            this.lbl_Type = new System.Windows.Forms.Label();
+            this.cmb_Market = new System.Windows.Forms.ComboBox();
+            this.cmb_Brand = new System.Windows.Forms.ComboBox();
+            this.cmb_Type = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grb_Search.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.grb_Results.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +87,7 @@
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.quitToolStripMenuItem.Text = "Logout";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -151,380 +129,125 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // groupBox1
+            // grb_Search
             // 
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.btn_Search);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(860, 185);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
+            this.grb_Search.Controls.Add(this.cmb_Type);
+            this.grb_Search.Controls.Add(this.cmb_Brand);
+            this.grb_Search.Controls.Add(this.cmb_Market);
+            this.grb_Search.Controls.Add(this.lbl_Type);
+            this.grb_Search.Controls.Add(this.lbl_Market);
+            this.grb_Search.Controls.Add(this.lbl_Brand);
+            this.grb_Search.Controls.Add(this.txb_BarCode);
+            this.grb_Search.Controls.Add(this.cmb_Factory);
+            this.grb_Search.Controls.Add(this.cmb_Category);
+            this.grb_Search.Controls.Add(this.txb_Description);
+            this.grb_Search.Controls.Add(this.tbx_PartNumber);
+            this.grb_Search.Controls.Add(this.btn_Search);
+            this.grb_Search.Controls.Add(this.lbl_BarCode);
+            this.grb_Search.Controls.Add(this.lbl_Factory);
+            this.grb_Search.Controls.Add(this.lbl_Category);
+            this.grb_Search.Controls.Add(this.lbl_Description);
+            this.grb_Search.Controls.Add(this.lbl_PartNumber);
+            this.grb_Search.Location = new System.Drawing.Point(12, 27);
+            this.grb_Search.Name = "grb_Search";
+            this.grb_Search.Size = new System.Drawing.Size(860, 109);
+            this.grb_Search.TabIndex = 1;
+            this.grb_Search.TabStop = false;
+            this.grb_Search.Text = "Search";
             // 
-            // textBox8
+            // txb_BarCode
             // 
-            this.textBox8.Location = new System.Drawing.Point(254, 93);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(34, 20);
-            this.textBox8.TabIndex = 27;
+            this.txb_BarCode.Location = new System.Drawing.Point(81, 48);
+            this.txb_BarCode.Name = "txb_BarCode";
+            this.txb_BarCode.Size = new System.Drawing.Size(223, 20);
+            this.txb_BarCode.TabIndex = 25;
             // 
-            // textBox7
+            // cmb_Factory
             // 
-            this.textBox7.Location = new System.Drawing.Point(370, 93);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(34, 20);
-            this.textBox7.TabIndex = 26;
+            this.cmb_Factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Factory.FormattingEnabled = true;
+            this.cmb_Factory.Location = new System.Drawing.Point(557, 48);
+            this.cmb_Factory.Name = "cmb_Factory";
+            this.cmb_Factory.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Factory.TabIndex = 24;
             // 
-            // textBox6
+            // cmb_Category
             // 
-            this.textBox6.Location = new System.Drawing.Point(81, 92);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(119, 20);
-            this.textBox6.TabIndex = 25;
+            this.cmb_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Category.FormattingEnabled = true;
+            this.cmb_Category.Location = new System.Drawing.Point(368, 48);
+            this.cmb_Category.Name = "cmb_Category";
+            this.cmb_Category.Size = new System.Drawing.Size(134, 21);
+            this.cmb_Category.TabIndex = 23;
             // 
-            // comboBox2
+            // txb_Description
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(275, 66);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(129, 21);
-            this.comboBox2.TabIndex = 24;
+            this.txb_Description.Location = new System.Drawing.Point(236, 22);
+            this.txb_Description.Name = "txb_Description";
+            this.txb_Description.Size = new System.Drawing.Size(266, 20);
+            this.txb_Description.TabIndex = 22;
             // 
-            // comboBox1
+            // tbx_PartNumber
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(81, 66);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 21);
-            this.comboBox1.TabIndex = 23;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(236, 40);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(168, 20);
-            this.textBox5.TabIndex = 22;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(81, 40);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(80, 20);
-            this.textBox4.TabIndex = 21;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(454, 92);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(76, 20);
-            this.textBox3.TabIndex = 20;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(454, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(76, 20);
-            this.textBox2.TabIndex = 19;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(454, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 18;
+            this.tbx_PartNumber.Location = new System.Drawing.Point(81, 22);
+            this.tbx_PartNumber.Name = "tbx_PartNumber";
+            this.tbx_PartNumber.Size = new System.Drawing.Size(80, 20);
+            this.tbx_PartNumber.TabIndex = 21;
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(769, 144);
+            this.btn_Search.Location = new System.Drawing.Point(779, 75);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(75, 23);
             this.btn_Search.TabIndex = 16;
             this.btn_Search.Text = "Search";
             this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // groupBox4
+            // lbl_BarCode
             // 
-            this.groupBox4.Controls.Add(this.checkBox3);
-            this.groupBox4.Controls.Add(this.checkBox10);
-            this.groupBox4.Controls.Add(this.checkBox11);
-            this.groupBox4.Controls.Add(this.checkBox12);
-            this.groupBox4.Location = new System.Drawing.Point(536, 19);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(102, 119);
-            this.groupBox4.TabIndex = 15;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Brand";
+            this.lbl_BarCode.AutoSize = true;
+            this.lbl_BarCode.Location = new System.Drawing.Point(6, 51);
+            this.lbl_BarCode.Name = "lbl_BarCode";
+            this.lbl_BarCode.Size = new System.Drawing.Size(54, 13);
+            this.lbl_BarCode.TabIndex = 6;
+            this.lbl_BarCode.Text = "Bar Code:";
             // 
-            // checkBox3
+            // lbl_Factory
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(17, 92);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(71, 17);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Pannónia";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.lbl_Factory.AutoSize = true;
+            this.lbl_Factory.Location = new System.Drawing.Point(508, 51);
+            this.lbl_Factory.Name = "lbl_Factory";
+            this.lbl_Factory.Size = new System.Drawing.Size(45, 13);
+            this.lbl_Factory.TabIndex = 5;
+            this.lbl_Factory.Text = "Factory:";
             // 
-            // checkBox10
+            // lbl_Category
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(17, 20);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(37, 17);
-            this.checkBox10.TabIndex = 3;
-            this.checkBox10.Text = "All";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.lbl_Category.AutoSize = true;
+            this.lbl_Category.Location = new System.Drawing.Point(310, 51);
+            this.lbl_Category.Name = "lbl_Category";
+            this.lbl_Category.Size = new System.Drawing.Size(52, 13);
+            this.lbl_Category.TabIndex = 3;
+            this.lbl_Category.Text = "Category:";
             // 
-            // checkBox11
+            // lbl_Description
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(17, 43);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(59, 17);
-            this.checkBox11.TabIndex = 0;
-            this.checkBox11.Text = "Medve";
-            this.checkBox11.UseVisualStyleBackColor = true;
+            this.lbl_Description.AutoSize = true;
+            this.lbl_Description.Location = new System.Drawing.Point(167, 25);
+            this.lbl_Description.Name = "lbl_Description";
+            this.lbl_Description.Size = new System.Drawing.Size(63, 13);
+            this.lbl_Description.TabIndex = 1;
+            this.lbl_Description.Text = "Description:";
             // 
-            // checkBox12
+            // lbl_PartNumber
             // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(17, 66);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(66, 17);
-            this.checkBox12.TabIndex = 1;
-            this.checkBox12.Text = "Karaván";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.checkBox9);
-            this.groupBox3.Controls.Add(this.checkBox8);
-            this.groupBox3.Controls.Add(this.checkBox7);
-            this.groupBox3.Controls.Add(this.checkBox6);
-            this.groupBox3.Location = new System.Drawing.Point(752, 19);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(102, 119);
-            this.groupBox3.TabIndex = 14;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Type";
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(17, 88);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(59, 17);
-            this.checkBox9.TabIndex = 3;
-            this.checkBox9.Text = "Palette";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(17, 65);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(57, 17);
-            this.checkBox8.TabIndex = 2;
-            this.checkBox8.Text = "Carton";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(17, 42);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(63, 17);
-            this.checkBox7.TabIndex = 1;
-            this.checkBox7.Text = "Product";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(17, 19);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(37, 17);
-            this.checkBox6.TabIndex = 0;
-            this.checkBox6.Text = "All";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.checkBox5);
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Location = new System.Drawing.Point(644, 19);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(102, 119);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Market";
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(17, 92);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(56, 17);
-            this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "Export";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(17, 20);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(37, 17);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "All";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(17, 43);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(53, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Retail";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(17, 66);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(51, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "MDD";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(294, 95);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Temperature:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(206, 95);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Pieces:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(410, 95);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Length:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(410, 69);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Heigth:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(410, 43);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Width:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 95);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Bar Code:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(221, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Factory:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 69);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Category:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(167, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Description:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Part Number:";
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(14, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(831, 370);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lbl_PartNumber.AutoSize = true;
+            this.lbl_PartNumber.Location = new System.Drawing.Point(6, 25);
+            this.lbl_PartNumber.Name = "lbl_PartNumber";
+            this.lbl_PartNumber.Size = new System.Drawing.Size(69, 13);
+            this.lbl_PartNumber.TabIndex = 0;
+            this.lbl_PartNumber.Text = "Part Number:";
             // 
             // statusStrip1
             // 
@@ -545,13 +268,75 @@
             // 
             // grb_Results
             // 
-            this.grb_Results.Controls.Add(this.listView1);
-            this.grb_Results.Location = new System.Drawing.Point(12, 232);
+            this.grb_Results.Controls.Add(this.listBox1);
+            this.grb_Results.Location = new System.Drawing.Point(12, 153);
             this.grb_Results.Name = "grb_Results";
-            this.grb_Results.Size = new System.Drawing.Size(854, 395);
+            this.grb_Results.Size = new System.Drawing.Size(860, 474);
             this.grb_Results.TabIndex = 5;
             this.grb_Results.TabStop = false;
             this.grb_Results.Text = "Results";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(848, 446);
+            this.listBox1.TabIndex = 3;
+            // 
+            // lbl_Brand
+            // 
+            this.lbl_Brand.AutoSize = true;
+            this.lbl_Brand.Location = new System.Drawing.Point(684, 51);
+            this.lbl_Brand.Name = "lbl_Brand";
+            this.lbl_Brand.Size = new System.Drawing.Size(38, 13);
+            this.lbl_Brand.TabIndex = 28;
+            this.lbl_Brand.Text = "Brand:";
+            // 
+            // lbl_Market
+            // 
+            this.lbl_Market.AutoSize = true;
+            this.lbl_Market.Location = new System.Drawing.Point(508, 25);
+            this.lbl_Market.Name = "lbl_Market";
+            this.lbl_Market.Size = new System.Drawing.Size(43, 13);
+            this.lbl_Market.TabIndex = 29;
+            this.lbl_Market.Text = "Market:";
+            // 
+            // lbl_Type
+            // 
+            this.lbl_Type.AutoSize = true;
+            this.lbl_Type.Location = new System.Drawing.Point(684, 25);
+            this.lbl_Type.Name = "lbl_Type";
+            this.lbl_Type.Size = new System.Drawing.Size(34, 13);
+            this.lbl_Type.TabIndex = 30;
+            this.lbl_Type.Text = "Type:";
+            // 
+            // cmb_Market
+            // 
+            this.cmb_Market.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Market.FormattingEnabled = true;
+            this.cmb_Market.Location = new System.Drawing.Point(557, 21);
+            this.cmb_Market.Name = "cmb_Market";
+            this.cmb_Market.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Market.TabIndex = 31;
+            // 
+            // cmb_Brand
+            // 
+            this.cmb_Brand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Brand.FormattingEnabled = true;
+            this.cmb_Brand.Location = new System.Drawing.Point(733, 48);
+            this.cmb_Brand.Name = "cmb_Brand";
+            this.cmb_Brand.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Brand.TabIndex = 32;
+            // 
+            // cmb_Type
+            // 
+            this.cmb_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Type.FormattingEnabled = true;
+            this.cmb_Type.Location = new System.Drawing.Point(733, 22);
+            this.cmb_Type.Name = "cmb_Type";
+            this.cmb_Type.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Type.TabIndex = 33;
             // 
             // MainSearch
             // 
@@ -560,7 +345,7 @@
             this.ClientSize = new System.Drawing.Size(884, 661);
             this.Controls.Add(this.grb_Results);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grb_Search);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainSearch";
@@ -570,14 +355,8 @@
             this.Load += new System.EventHandler(this.MainSearch_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grb_Search.ResumeLayout(false);
+            this.grb_Search.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.grb_Results.ResumeLayout(false);
@@ -592,44 +371,18 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox grb_Search;
+        private System.Windows.Forms.Label lbl_BarCode;
+        private System.Windows.Forms.Label lbl_Factory;
+        private System.Windows.Forms.Label lbl_Category;
+        private System.Windows.Forms.Label lbl_Description;
+        private System.Windows.Forms.Label lbl_PartNumber;
+        private System.Windows.Forms.TextBox txb_BarCode;
+        private System.Windows.Forms.ComboBox cmb_Factory;
+        private System.Windows.Forms.ComboBox cmb_Category;
+        private System.Windows.Forms.TextBox txb_Description;
+        private System.Windows.Forms.TextBox tbx_PartNumber;
         private System.Windows.Forms.Button btn_Search;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -637,5 +390,12 @@
         private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.GroupBox grb_Results;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ComboBox cmb_Type;
+        private System.Windows.Forms.ComboBox cmb_Brand;
+        private System.Windows.Forms.ComboBox cmb_Market;
+        private System.Windows.Forms.Label lbl_Type;
+        private System.Windows.Forms.Label lbl_Market;
+        private System.Windows.Forms.Label lbl_Brand;
     }
 }

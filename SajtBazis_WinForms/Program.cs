@@ -16,7 +16,6 @@ namespace SajtBazis_WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //define first form
             //Application.Run(new MainSearch());
             Application.Run(new Login());
         }
