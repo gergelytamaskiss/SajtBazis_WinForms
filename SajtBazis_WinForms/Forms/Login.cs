@@ -12,27 +12,27 @@ namespace SajtBazis_WinForms
             InitializeComponent();
         }
 
-        //##kérdés: statuslabelbe hogy célszerû átadni üzenetet; hogy lehet kezdõformot bezárni, miután az új form megnyilt
         private void Login_Load(object sender, EventArgs e)
         {
             try
             {
-                DatabaseManager.ConnectionOpen(ConfigurationManager.ConnectionStrings["SajtBazis_WinForms.Properties.Settings.SajtBazis_DataBaseConnectionString"].ConnectionString);
-                //sbl_Status.Text = "Succesfully connected to database.";
+                //Service-based
+                //DatabaseManager.ConnectionOpen(ConfigurationManager.ConnectionStrings["SajtBazis_WinForms.Properties.Settings.SajtBazis_DataBaseConnectionString"].ConnectionString);
+
+                //SQL server
+                DatabaseManager.ConnectionOpen(ConfigurationManager.ConnectionStrings["Data Source=219886e7-d1a7-4d53-880e-a6ad00d1c58a.sqlserver.sequelizer.com;Persist Security Info=True;User ID=ehydjpnmeavjggvk;Password=yspoaNVLPGY6xiujZkcrBVpxZFfifhVP3LSwuyiDDtAXUJfbMQDcnH6KcYwBHLEG"].ConnectionString);
             }
             catch (Exception ex)
             {
-                sbl_Status.Text = "Error: " + ex.Message;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
             if (tbx_Username.Text.Trim() == string.Empty && tbx_Password.Text.Trim() == string.Empty)
             {
-                sbl_Status.Text = "You need to provide your username and password to login!";
+                MessageBox.Show("You need to provide your username and password to login!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -41,16 +41,14 @@ namespace SajtBazis_WinForms
                     string username = tbx_Username.Text;
                     string password = tbx_Password.Text;
                     DatabaseManager.Login(username, password);
-                    sbl_Status.Text = "Successfully logged in!";
                 }
                 catch (Exception ex)
                 {
                     tbx_Password.Text = String.Empty;
-                    sbl_Status.Text = ex.Message;
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -65,6 +63,5 @@ namespace SajtBazis_WinForms
             Close();
             DatabaseManager.ConnectionClose();
         }
-
     }
 }

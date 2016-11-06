@@ -7,6 +7,23 @@ using System.Data.SqlClient;
 
 namespace SajtBazis_WinForms.Database
 {
+    //kérdés1: hogy lehet a kezdőformot bezárni, miután az új form megnyilt
+
+    //kérdés2: termék keresésnél a partnumber konvertálásnál gondjai vannak
+
+    //kérdés3: keresésnél, újrakeresésnél listbox tartalmát nem nulláza ki az értékeket, hanem hozzáadja a meglévőhöz ##SQL-be van a hiba
+
+    //kérdés4: ha nem teljes értéket akarok keresni pl: nem "admin" hanem "adm"
+
+    //kérdés5: keresésnél combobox nem a legmegfelelőbb, mivel mindig van egy értéke-> mivel helyettesíthető (esetleg enum-nál lehet null értéket bevinni?) ###enum első értéke: választás... utána rá kell vizsgálni, hogy az enum értéke nem 0 ##checklistbox Gábor küld rá példát
+
+    //kérdés6: keresés és listázás külön van, de közös listában, gond-e?
+
+    //kérdés7: felhasználó jogosultságát hogy kezeljem le? ##változóba kell betenni bejelentkezéskor és arra rávizsgálni form betöltéskor
+
+    //#1# összes termék lehívása listába majd a listában keresés megvalósítása, frissítés gombbal
+    //#2# .csv .xml export lehetőség
+
     static class DatabaseManager
     {
         static SqlConnection connection = new SqlConnection();
@@ -89,9 +106,7 @@ namespace SajtBazis_WinForms.Database
         }
 
         //Product
-
-        //##kérdés: keresésnél combobox nem a legmegfelelőbb, mivel mindig van egy értéke-> mivel helyettesíthető (esetleg enum-nál lehet null értéket bevinni?), újrakeresésnél nem törli a listbox tartalmát, hanem hozzáadja a meglévőhöz, ha nem teljes értéket, kifejezést akarok keresni pl: nem "admin" hanem "adm"
-        public static List<Users> SearchProduct(int searchpartnumber, string searchdescription, int searchbrand, int searchcategory, int searchmarket, int searchfactory, int searchtype, int searchbarcode)
+        public static List<Products> SearchProduct(int searchpartnumber, string searchdescription, int searchbrand, int searchcategory, int searchmarket, int searchfactory, int searchtype, int searchbarcode)
         {
             try
             {
@@ -175,11 +190,11 @@ namespace SajtBazis_WinForms.Database
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                    product.Add(new Products((int)reader["part_number"], reader["description"].ToString(), (Brands)(int)reader["brand"], (Categories)(int)reader["category"], (Markets)(int)reader["market"], (Factories)(int)reader["factory"], (Types)(int)reader["type"], (int)reader["bar_code"], (int)reader["width"], (int)reader["heigth"], (int)reader["length"], (int)reader["pieces"], (int)reader["temperature"]));
                 }
                 reader.Close();
                 command.Parameters.Clear();
-                return user;
+                return product;
             }
             catch (Exception ex)
             {
@@ -209,6 +224,7 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
+        //User
         public static List<Users> SearchUser(string searchuser, string searchemail, int searchpermission)
         {
             try
@@ -261,7 +277,6 @@ namespace SajtBazis_WinForms.Database
 
         }
 
-        //User
         public static List<Users> SelectAllUser()
         {
             try

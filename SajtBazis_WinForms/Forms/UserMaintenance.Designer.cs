@@ -34,18 +34,15 @@
             this.tbx_UserName = new System.Windows.Forms.TextBox();
             this.tbx_Email = new System.Windows.Forms.TextBox();
             this.lbl_Email = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.btn_UserDelete = new System.Windows.Forms.Button();
             this.btn_UserNew = new System.Windows.Forms.Button();
             this.grb_UserSearch = new System.Windows.Forms.GroupBox();
+            this.lbl_Permission = new System.Windows.Forms.Label();
+            this.cmb_Permission = new System.Windows.Forms.ComboBox();
             this.btn_UserSearch = new System.Windows.Forms.Button();
             this.grb_UserManage = new System.Windows.Forms.GroupBox();
             this.grb_UserResult = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.cmb_Permission = new System.Windows.Forms.ComboBox();
-            this.lbl_Permission = new System.Windows.Forms.Label();
-            this.statusStrip1.SuspendLayout();
             this.grb_UserSearch.SuspendLayout();
             this.grb_UserManage.SuspendLayout();
             this.grb_UserResult.SuspendLayout();
@@ -103,22 +100,6 @@
             this.lbl_Email.TabIndex = 12;
             this.lbl_Email.Text = "Email:";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 396);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(342, 22);
-            this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.TabIndex = 13;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
-            // 
             // btn_UserDelete
             // 
             this.btn_UserDelete.Location = new System.Drawing.Point(17, 84);
@@ -153,6 +134,24 @@
             this.grb_UserSearch.TabStop = false;
             this.grb_UserSearch.Text = "Search users";
             // 
+            // lbl_Permission
+            // 
+            this.lbl_Permission.AutoSize = true;
+            this.lbl_Permission.Location = new System.Drawing.Point(16, 53);
+            this.lbl_Permission.Name = "lbl_Permission";
+            this.lbl_Permission.Size = new System.Drawing.Size(60, 13);
+            this.lbl_Permission.TabIndex = 21;
+            this.lbl_Permission.Text = "Permission:";
+            // 
+            // cmb_Permission
+            // 
+            this.cmb_Permission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Permission.FormattingEnabled = true;
+            this.cmb_Permission.Location = new System.Drawing.Point(84, 50);
+            this.cmb_Permission.Name = "cmb_Permission";
+            this.cmb_Permission.Size = new System.Drawing.Size(100, 21);
+            this.cmb_Permission.TabIndex = 20;
+            // 
             // btn_UserSearch
             // 
             this.btn_UserSearch.Location = new System.Drawing.Point(109, 113);
@@ -181,7 +180,7 @@
             this.grb_UserResult.Controls.Add(this.listBox1);
             this.grb_UserResult.Location = new System.Drawing.Point(14, 169);
             this.grb_UserResult.Name = "grb_UserResult";
-            this.grb_UserResult.Size = new System.Drawing.Size(313, 214);
+            this.grb_UserResult.Size = new System.Drawing.Size(313, 237);
             this.grb_UserResult.TabIndex = 20;
             this.grb_UserResult.TabStop = false;
             this.grb_UserResult.Text = "Results";
@@ -191,26 +190,8 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 19);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(301, 186);
+            this.listBox1.Size = new System.Drawing.Size(301, 212);
             this.listBox1.TabIndex = 0;
-            // 
-            // cmb_Permission
-            // 
-            this.cmb_Permission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Permission.FormattingEnabled = true;
-            this.cmb_Permission.Location = new System.Drawing.Point(84, 50);
-            this.cmb_Permission.Name = "cmb_Permission";
-            this.cmb_Permission.Size = new System.Drawing.Size(100, 21);
-            this.cmb_Permission.TabIndex = 20;
-            // 
-            // lbl_Permission
-            // 
-            this.lbl_Permission.AutoSize = true;
-            this.lbl_Permission.Location = new System.Drawing.Point(16, 53);
-            this.lbl_Permission.Name = "lbl_Permission";
-            this.lbl_Permission.Size = new System.Drawing.Size(60, 13);
-            this.lbl_Permission.TabIndex = 21;
-            this.lbl_Permission.Text = "Permission:";
             // 
             // UserMaintenance
             // 
@@ -221,20 +202,16 @@
             this.Controls.Add(this.grb_UserResult);
             this.Controls.Add(this.grb_UserManage);
             this.Controls.Add(this.grb_UserSearch);
-            this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UserMaintenance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage users";
             this.Load += new System.EventHandler(this.UserMaintenance_Load);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.grb_UserSearch.ResumeLayout(false);
             this.grb_UserSearch.PerformLayout();
             this.grb_UserManage.ResumeLayout(false);
             this.grb_UserResult.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -245,8 +222,6 @@
         private System.Windows.Forms.TextBox tbx_UserName;
         private System.Windows.Forms.TextBox tbx_Email;
         private System.Windows.Forms.Label lbl_Email;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button btn_UserDelete;
         private System.Windows.Forms.Button btn_UserNew;
         private System.Windows.Forms.GroupBox grb_UserSearch;

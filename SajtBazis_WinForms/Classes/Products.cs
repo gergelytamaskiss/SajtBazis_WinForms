@@ -7,9 +7,11 @@ namespace SajtBazis_WinForms.Classes
         Kördobozos140g,
         Kördobozos200g,
         Kördobozos280g,
+        Tömlős50g,
         Tömlős100g,
         Tömb_kicsi,
-        Tömb_nagy
+        Tömb_nagy,
+        Szeletelt
     }
 
     enum Factories
@@ -201,7 +203,7 @@ namespace SajtBazis_WinForms.Classes
 
         public override string ToString()
         {
-            return partNumber + " | " + description;
+            return partNumber + " - " + description;
         }
     }
 }

@@ -11,6 +11,12 @@ namespace SajtBazis_WinForms.Forms
         {
             InitializeComponent();
         }
+        private void UserMaintenance_Load(object sender, EventArgs e)
+        {
+            listBox1.DataSource = null;
+            listBox1.DataSource = DatabaseManager.SelectAllUser();
+            cmb_Permission.DataSource = Enum.GetValues(typeof(Permissions));
+        }
 
         //Buttons
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -26,14 +32,7 @@ namespace SajtBazis_WinForms.Forms
 
             listBox1.DataSource = null;
             listBox1.DataSource = DatabaseManager.SearchUser(searchuser, searchemail, searchpermission);
-        }
-
-        private void UserMaintenance_Load(object sender, EventArgs e)
-        {
-            listBox1.DataSource = null;
-            listBox1.DataSource = DatabaseManager.SelectAllUser();
-            cmb_Permission.DataSource = Enum.GetValues(typeof(Permissions));
-        }
+        }        
     }
 }
 

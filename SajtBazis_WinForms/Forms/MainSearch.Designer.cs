@@ -37,6 +37,13 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grb_Search = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmb_Type = new System.Windows.Forms.ComboBox();
+            this.cmb_Brand = new System.Windows.Forms.ComboBox();
+            this.cmb_Market = new System.Windows.Forms.ComboBox();
+            this.lbl_Type = new System.Windows.Forms.Label();
+            this.lbl_Market = new System.Windows.Forms.Label();
+            this.lbl_Brand = new System.Windows.Forms.Label();
             this.txb_BarCode = new System.Windows.Forms.TextBox();
             this.cmb_Factory = new System.Windows.Forms.ComboBox();
             this.cmb_Category = new System.Windows.Forms.ComboBox();
@@ -48,19 +55,11 @@
             this.lbl_Category = new System.Windows.Forms.Label();
             this.lbl_Description = new System.Windows.Forms.Label();
             this.lbl_PartNumber = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.grb_Results = new System.Windows.Forms.GroupBox();
+            this.btn_ShowData = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.lbl_Brand = new System.Windows.Forms.Label();
-            this.lbl_Market = new System.Windows.Forms.Label();
-            this.lbl_Type = new System.Windows.Forms.Label();
-            this.cmb_Market = new System.Windows.Forms.ComboBox();
-            this.cmb_Brand = new System.Windows.Forms.ComboBox();
-            this.cmb_Type = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.grb_Search.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.grb_Results.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +130,7 @@
             // 
             // grb_Search
             // 
+            this.grb_Search.Controls.Add(this.label1);
             this.grb_Search.Controls.Add(this.cmb_Type);
             this.grb_Search.Controls.Add(this.cmb_Brand);
             this.grb_Search.Controls.Add(this.cmb_Market);
@@ -154,6 +154,69 @@
             this.grb_Search.TabIndex = 1;
             this.grb_Search.TabStop = false;
             this.grb_Search.Text = "Search";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(604, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(152, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "The search returned xy results.";
+            // 
+            // cmb_Type
+            // 
+            this.cmb_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Type.FormattingEnabled = true;
+            this.cmb_Type.Location = new System.Drawing.Point(733, 22);
+            this.cmb_Type.Name = "cmb_Type";
+            this.cmb_Type.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Type.TabIndex = 33;
+            // 
+            // cmb_Brand
+            // 
+            this.cmb_Brand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Brand.FormattingEnabled = true;
+            this.cmb_Brand.Location = new System.Drawing.Point(733, 48);
+            this.cmb_Brand.Name = "cmb_Brand";
+            this.cmb_Brand.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Brand.TabIndex = 32;
+            // 
+            // cmb_Market
+            // 
+            this.cmb_Market.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Market.FormattingEnabled = true;
+            this.cmb_Market.Location = new System.Drawing.Point(557, 21);
+            this.cmb_Market.Name = "cmb_Market";
+            this.cmb_Market.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Market.TabIndex = 31;
+            // 
+            // lbl_Type
+            // 
+            this.lbl_Type.AutoSize = true;
+            this.lbl_Type.Location = new System.Drawing.Point(684, 25);
+            this.lbl_Type.Name = "lbl_Type";
+            this.lbl_Type.Size = new System.Drawing.Size(34, 13);
+            this.lbl_Type.TabIndex = 30;
+            this.lbl_Type.Text = "Type:";
+            // 
+            // lbl_Market
+            // 
+            this.lbl_Market.AutoSize = true;
+            this.lbl_Market.Location = new System.Drawing.Point(508, 25);
+            this.lbl_Market.Name = "lbl_Market";
+            this.lbl_Market.Size = new System.Drawing.Size(43, 13);
+            this.lbl_Market.TabIndex = 29;
+            this.lbl_Market.Text = "Market:";
+            // 
+            // lbl_Brand
+            // 
+            this.lbl_Brand.AutoSize = true;
+            this.lbl_Brand.Location = new System.Drawing.Point(684, 51);
+            this.lbl_Brand.Name = "lbl_Brand";
+            this.lbl_Brand.Size = new System.Drawing.Size(38, 13);
+            this.lbl_Brand.TabIndex = 28;
+            this.lbl_Brand.Text = "Brand:";
             // 
             // txb_BarCode
             // 
@@ -249,94 +312,33 @@
             this.lbl_PartNumber.TabIndex = 0;
             this.lbl_PartNumber.Text = "Part Number:";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
-            this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
             // grb_Results
             // 
+            this.grb_Results.Controls.Add(this.btn_ShowData);
             this.grb_Results.Controls.Add(this.listBox1);
             this.grb_Results.Location = new System.Drawing.Point(12, 153);
             this.grb_Results.Name = "grb_Results";
-            this.grb_Results.Size = new System.Drawing.Size(860, 474);
+            this.grb_Results.Size = new System.Drawing.Size(860, 496);
             this.grb_Results.TabIndex = 5;
             this.grb_Results.TabStop = false;
             this.grb_Results.Text = "Results";
             // 
+            // btn_ShowData
+            // 
+            this.btn_ShowData.Location = new System.Drawing.Point(779, 19);
+            this.btn_ShowData.Name = "btn_ShowData";
+            this.btn_ShowData.Size = new System.Drawing.Size(75, 23);
+            this.btn_ShowData.TabIndex = 4;
+            this.btn_ShowData.Text = "Show Data";
+            this.btn_ShowData.UseVisualStyleBackColor = true;
+            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Location = new System.Drawing.Point(6, 58);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(848, 446);
+            this.listBox1.Size = new System.Drawing.Size(848, 433);
             this.listBox1.TabIndex = 3;
-            // 
-            // lbl_Brand
-            // 
-            this.lbl_Brand.AutoSize = true;
-            this.lbl_Brand.Location = new System.Drawing.Point(684, 51);
-            this.lbl_Brand.Name = "lbl_Brand";
-            this.lbl_Brand.Size = new System.Drawing.Size(38, 13);
-            this.lbl_Brand.TabIndex = 28;
-            this.lbl_Brand.Text = "Brand:";
-            // 
-            // lbl_Market
-            // 
-            this.lbl_Market.AutoSize = true;
-            this.lbl_Market.Location = new System.Drawing.Point(508, 25);
-            this.lbl_Market.Name = "lbl_Market";
-            this.lbl_Market.Size = new System.Drawing.Size(43, 13);
-            this.lbl_Market.TabIndex = 29;
-            this.lbl_Market.Text = "Market:";
-            // 
-            // lbl_Type
-            // 
-            this.lbl_Type.AutoSize = true;
-            this.lbl_Type.Location = new System.Drawing.Point(684, 25);
-            this.lbl_Type.Name = "lbl_Type";
-            this.lbl_Type.Size = new System.Drawing.Size(34, 13);
-            this.lbl_Type.TabIndex = 30;
-            this.lbl_Type.Text = "Type:";
-            // 
-            // cmb_Market
-            // 
-            this.cmb_Market.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Market.FormattingEnabled = true;
-            this.cmb_Market.Location = new System.Drawing.Point(557, 21);
-            this.cmb_Market.Name = "cmb_Market";
-            this.cmb_Market.Size = new System.Drawing.Size(121, 21);
-            this.cmb_Market.TabIndex = 31;
-            // 
-            // cmb_Brand
-            // 
-            this.cmb_Brand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Brand.FormattingEnabled = true;
-            this.cmb_Brand.Location = new System.Drawing.Point(733, 48);
-            this.cmb_Brand.Name = "cmb_Brand";
-            this.cmb_Brand.Size = new System.Drawing.Size(121, 21);
-            this.cmb_Brand.TabIndex = 32;
-            // 
-            // cmb_Type
-            // 
-            this.cmb_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Type.FormattingEnabled = true;
-            this.cmb_Type.Location = new System.Drawing.Point(733, 22);
-            this.cmb_Type.Name = "cmb_Type";
-            this.cmb_Type.Size = new System.Drawing.Size(121, 21);
-            this.cmb_Type.TabIndex = 33;
             // 
             // MainSearch
             // 
@@ -344,7 +346,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 661);
             this.Controls.Add(this.grb_Results);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.grb_Search);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -357,8 +358,6 @@
             this.menuStrip1.PerformLayout();
             this.grb_Search.ResumeLayout(false);
             this.grb_Search.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.grb_Results.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -384,8 +383,6 @@
         private System.Windows.Forms.TextBox tbx_PartNumber;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -397,5 +394,7 @@
         private System.Windows.Forms.Label lbl_Type;
         private System.Windows.Forms.Label lbl_Market;
         private System.Windows.Forms.Label lbl_Brand;
+        private System.Windows.Forms.Button btn_ShowData;
+        private System.Windows.Forms.Label label1;
     }
 }

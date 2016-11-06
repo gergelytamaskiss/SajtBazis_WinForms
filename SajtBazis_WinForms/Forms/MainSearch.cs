@@ -18,7 +18,6 @@ namespace SajtBazis_WinForms
             cmb_Type.DataSource = Enum.GetValues(typeof(Types));
         }
 
-        //##kérdés: listboxnál nem nulláza ki az értékeket, hanem hozzáadja a meglévőhöz
         private void MainSearch_Load(object sender, EventArgs e)
         {
             listBox1.DataSource = null;
@@ -30,7 +29,6 @@ namespace SajtBazis_WinForms
             //if (MessageBox.Show("Are you sure you want to quit?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
             //{
             //    e.Cancel = true;
-
             //}
         }
 
@@ -58,22 +56,19 @@ namespace SajtBazis_WinForms
             Close();
         }
 
-        //##kérdés: partnumber konvertálásnál gondjai vannak, barcode ok
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            int searchpartnumber = Convert.ToInt32(tbx_PartNumber.Text);
+            int searchpartnumber = int.Parse(tbx_PartNumber.Text);
             string searchdescription = txb_Description.Text;
             int searchbrand = cmb_Brand.SelectedIndex;
             int searchcategory = cmb_Category.SelectedIndex;
             int searchmarket = cmb_Market.SelectedIndex;
             int searchfactory = cmb_Factory.SelectedIndex;
             int searchtype = cmb_Type.SelectedIndex;
-            int searchbarcode = Convert.ToInt32(txb_BarCode.Text);
+            int searchbarcode = int.Parse(txb_BarCode.Text);
 
             listBox1.DataSource = null;
             listBox1.DataSource = DatabaseManager.SearchProduct(searchpartnumber, searchdescription, searchbrand, searchcategory, searchmarket, searchfactory, searchtype, searchbarcode);
         }
-
-
     }
 }
