@@ -9,9 +9,10 @@ namespace SajtBazis_WinForms.Classes
 {
     enum Permissions
     {
-        admin, //0
-        datamanager, //1
-        user //2
+        Select, //0
+        Admin, //1
+        Datamanager, //2
+        User //3
     }
     class Users
     {

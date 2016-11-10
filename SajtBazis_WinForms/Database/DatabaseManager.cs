@@ -7,29 +7,14 @@ using System.Data.SqlClient;
 
 namespace SajtBazis_WinForms.Database
 {
-    //kérdés1: hogy lehet a kezdőformot bezárni, miután az új form megnyilt
-
-    //kérdés2: termék keresésnél a partnumber konvertálásnál gondjai vannak
-
-    //kérdés3: keresésnél, újrakeresésnél listbox tartalmát nem nulláza ki az értékeket, hanem hozzáadja a meglévőhöz ##SQL-be van a hiba
-
-    //kérdés4: ha nem teljes értéket akarok keresni pl: nem "admin" hanem "adm"
-
-    //kérdés5: keresésnél combobox nem a legmegfelelőbb, mivel mindig van egy értéke-> mivel helyettesíthető (esetleg enum-nál lehet null értéket bevinni?) ###enum első értéke: választás... utána rá kell vizsgálni, hogy az enum értéke nem 0 ##checklistbox Gábor küld rá példát
-
-    //kérdés6: keresés és listázás külön van, de közös listában, gond-e?
-
-    //kérdés7: felhasználó jogosultságát hogy kezeljem le? ##változóba kell betenni bejelentkezéskor és arra rávizsgálni form betöltéskor
-
-    //#1# összes termék lehívása listába majd a listában keresés megvalósítása, frissítés gombbal
-    //#2# .csv .xml export lehetőség
-
     static class DatabaseManager
     {
         static SqlConnection connection = new SqlConnection();
         static SqlCommand command = new SqlCommand();
+        static SqlCommand command2 = new SqlCommand();
         static List<Users> user = new List<Users>();
         static List<Products> product = new List<Products>();
+        static int userid = 0;
 
         //Connection Open
         public static void ConnectionOpen(string connStr)
@@ -67,9 +52,21 @@ namespace SajtBazis_WinForms.Database
                 command.CommandText = "LOGINSCRIPT";
                 command.CommandType = CommandType.StoredProcedure;
 
+                command2.Connection = connection;
+                command2.CommandText = "PERMISSIONSCRIPT";
+                command2.CommandType = CommandType.StoredProcedure;
+
                 SqlParameter loginName = new SqlParameter
                 {
                     ParameterName = "@USERNAME",
+                    SqlDbType = SqlDbType.VarChar,
+                    Direction = ParameterDirection.Input,
+                    Value = usern
+                };
+
+                SqlParameter loginName2 = new SqlParameter
+                {
+                    ParameterName = "@USERNAME2",
                     SqlDbType = SqlDbType.VarChar,
                     Direction = ParameterDirection.Input,
                     Value = usern
@@ -85,9 +82,10 @@ namespace SajtBazis_WinForms.Database
 
                 command.Parameters.Add(loginName);
                 command.Parameters.Add(loginPassword);
+                command2.Parameters.Add(loginName2);
 
                 int result = (int)command.ExecuteScalar();
-
+                userid = (int)command2.ExecuteScalar();
                 if (result > 0)
                 {
                     MainSearch mainwindow = new MainSearch();
@@ -187,6 +185,12 @@ namespace SajtBazis_WinForms.Database
                 command.Parameters.Add(querytype);
                 command.Parameters.Add(querybarcode);
 
+                //Empty list
+                for (int i = product.Count - 1; i >= 0; i--)
+                {
+                    product.RemoveAt(i);
+                }
+                //Reading data
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -210,6 +214,13 @@ namespace SajtBazis_WinForms.Database
                 command.CommandText = "SELECT * FROM [Products]";
                 command.CommandType = CommandType.Text;
 
+                //Empty list
+                for (int i = product.Count - 1; i >= 0; i--)
+                {
+                    product.RemoveAt(i);
+                }
+
+                //Reading data
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -225,12 +236,13 @@ namespace SajtBazis_WinForms.Database
         }
 
         //User
-        public static List<Users> SearchUser(string searchuser, string searchemail, int searchpermission)
+        public static List<Users> SearchUserByName(string searchuser)
         {
             try
             {
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM [Users] WHERE username = @USER OR email = @EMAIL OR permission = @PERMISSION";
+                command.CommandText = "SELECT * FROM [Users] WHERE username =@USER";
+                //command.CommandText = "SELECT * FROM [Users] WHERE username LIKE '%' + @USER + '%'";
                 command.CommandType = CommandType.Text;
 
                 SqlParameter queryname = new SqlParameter
@@ -241,26 +253,16 @@ namespace SajtBazis_WinForms.Database
                     Value = searchuser
                 };
 
-                SqlParameter queryemail = new SqlParameter
-                {
-                    ParameterName = "@EMAIL",
-                    SqlDbType = SqlDbType.VarChar,
-                    Direction = ParameterDirection.Input,
-                    Value = searchemail
-                };
-
-                SqlParameter querypermission = new SqlParameter
-                {
-                    ParameterName = "@PERMISSION",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchpermission
-                };
-
                 command.Parameters.Add(queryname);
-                command.Parameters.Add(queryemail);
-                command.Parameters.Add(querypermission);
+                //command.Parameters.AddWithValue("@USER", "%" + queryname + "%");                
 
+                //Empty list
+                for (int i = user.Count - 1; i >= 0; i--)
+                {
+                    user.RemoveAt(i);
+                }
+
+                //Reading data
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -274,9 +276,49 @@ namespace SajtBazis_WinForms.Database
             {
                 throw new DatabaseException("Unable to perform search!", ex.Message);
             }
-
         }
 
+        public static List<Users> SearchUserByPermission(int searchpermission)
+        {
+            try
+            {
+                command.Connection = connection;
+                command.CommandText = "SELECT * FROM [Users] WHERE permission = @PERMISSION";
+                command.CommandType = CommandType.Text;
+
+                SqlParameter querypermission = new SqlParameter
+                {
+                    ParameterName = "@PERMISSION",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.Input,
+                    Value = searchpermission
+                };
+
+                command.Parameters.Add(querypermission);
+
+                //Empty list
+                for (int i = user.Count - 1; i >= 0; i--)
+                {
+                    user.RemoveAt(i);
+                }
+
+                //Reading data
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                }
+                reader.Close();
+                command.Parameters.Clear();
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new DatabaseException("Unable to perform search!", ex.Message);
+            }
+        }
+
+        
         public static List<Users> SelectAllUser()
         {
             try
@@ -285,6 +327,13 @@ namespace SajtBazis_WinForms.Database
                 command.CommandText = "SELECT * FROM [Users]";
                 command.CommandType = CommandType.Text;
 
+                //Empty list
+                for (int i = user.Count - 1; i >= 0; i--)
+                {
+                    user.RemoveAt(i);
+                }
+
+                //Reading data into list
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {

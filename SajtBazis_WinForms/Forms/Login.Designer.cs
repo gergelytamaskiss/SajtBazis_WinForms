@@ -34,6 +34,9 @@
             this.lbl_Password = new System.Windows.Forms.Label();
             this.tbx_Username = new System.Windows.Forms.TextBox();
             this.tbx_Password = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Login
@@ -81,6 +84,7 @@
             this.tbx_Username.Name = "tbx_Username";
             this.tbx_Username.Size = new System.Drawing.Size(100, 20);
             this.tbx_Username.TabIndex = 6;
+            this.tbx_Username.Text = "gergo";
             // 
             // tbx_Password
             // 
@@ -89,6 +93,23 @@
             this.tbx_Password.PasswordChar = '*';
             this.tbx_Password.Size = new System.Drawing.Size(100, 20);
             this.tbx_Password.TabIndex = 7;
+            this.tbx_Password.Text = "nasi";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 190);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(234, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // Login
             // 
@@ -97,6 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Cancel;
             this.ClientSize = new System.Drawing.Size(234, 212);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tbx_Password);
             this.Controls.Add(this.tbx_Username);
             this.Controls.Add(this.lbl_Password);
@@ -108,6 +130,8 @@
             this.Text = "Login - SajtBázis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.Load += new System.EventHandler(this.Login_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +145,8 @@
         private System.Windows.Forms.Label lbl_Password;
         private System.Windows.Forms.TextBox tbx_Username;
         private System.Windows.Forms.TextBox tbx_Password;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 
