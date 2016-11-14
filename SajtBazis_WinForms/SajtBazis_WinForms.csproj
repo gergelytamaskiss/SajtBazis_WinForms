@@ -65,6 +65,7 @@
     <Compile Include="Classes\Products.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Database\DatabaseException.cs" />
+    <Compile Include="Database\DatabaseFailure.cs" />
     <Compile Include="Database\DatabaseManager.cs" />
     <Compile Include="Forms\About.cs">
       <SubType>Form</SubType>

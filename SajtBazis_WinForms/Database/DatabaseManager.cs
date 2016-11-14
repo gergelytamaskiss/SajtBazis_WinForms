@@ -16,7 +16,7 @@ namespace SajtBazis_WinForms.Database
         static List<Products> product = new List<Products>();
         static int userid = 0;
 
-        //Connection Open
+        #region CONNECTION
         public static void ConnectionOpen(string connStr)
         {
             try
@@ -30,20 +30,22 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        //Connection Close
+        
         public static void ConnectionClose()
         {
             try
             {
                 connection.Close();
+                command.Dispose();
             }
             catch (Exception ex)
             {
                 throw new DatabaseException("Disconecting from database failed!", ex.Message);
             }
         }
+        #endregion
 
-        //Login
+        #region LOGIN
         public static void Login(string usern, string passw)
         {
             try
@@ -102,8 +104,11 @@ namespace SajtBazis_WinForms.Database
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
 
-        //Product
+        #region PRODUCT
+
+        #region Select
         public static List<Products> SearchProduct(int searchpartnumber, string searchdescription, int searchbrand, int searchcategory, int searchmarket, int searchfactory, int searchtype, int searchbarcode)
         {
             try
@@ -234,8 +239,54 @@ namespace SajtBazis_WinForms.Database
                 throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
             }
         }
+        #endregion
 
-        //User
+        #region Modify
+        public static void ProductNew(Products fresh)
+        {
+            try
+            {
+                command.CommandText = String.Format("INSERT INTO [Products] VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}')", fresh.PartNumber, fresh.Description, fresh.Brand, fresh.Category, fresh.Market, fresh.Factory, fresh.Type, fresh.BarCode, fresh.Width, fresh.Height, fresh.Length, fresh.Pieces, fresh.Temperature);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw new DatabaseException("Insert new product failed!", ex.Message);
+            }
+        }
+
+        public static void ProductModify(Products modify)
+        {
+            try
+            {
+                command.CommandText = String.Format("UPDATE [Products] SET [part_number] = '{0}', [description] = '{1}', [brand] = '{2}', [category] = '{3}', [market] = '{4}', [factory] = '{5}', [type] = '{6}', [bar_code] = '{7}', [width] = '{8}', [heigth] = '{9}', [length] = '{10}', [pieces] = '{11}', [temperature] = '{12}'", modify.PartNumber, modify.Description, modify.Brand, modify.Category, modify.Market, modify.Factory, modify.Type, modify.BarCode, modify.Width, modify.Height, modify.Length, modify.Pieces, modify.Temperature);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new DatabaseException("Unable to modify data!", ex.Message);
+            }
+        }
+
+        public static void ProductDelete(Products delete)
+        {
+            try
+            {
+                command.CommandText = String.Format("DELETE FROM [Products] WHERE [part_number] = '{0}'", delete.PartNumber);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw new DatabaseException("Deleting selected product failed!", ex.Message);
+            }
+        }
+        #endregion
+        #endregion
+
+        #region USER
+        #region Select
         public static List<Users> SearchUserByName(string searchuser)
         {
             try
@@ -318,7 +369,7 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        
+
         public static List<Users> SelectAllUser()
         {
             try
@@ -347,12 +398,28 @@ namespace SajtBazis_WinForms.Database
                 throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
             }
         }
+        #endregion
 
-        public static void Modify(Users modify)
+        #region Modify
+        public static void UserNew(Users fresh)
         {
             try
             {
-                command.CommandText = string.Format("UPDATE [Users] SET [username] = '{0}', [password] = '{1}', [permission] = '{2}', [email] = '{3}'", modify.Username, modify.Password, modify.Permission, modify.Email);
+                command.CommandText = String.Format("INSERT INTO [Users] VALUES('{0}', '{1}', '{2}', '{3}')", fresh.Username, fresh.Password, fresh.Permission, fresh.Email);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw new DatabaseException("Insert new user failed!", ex.Message);
+            }
+        }
+        
+        public static void UserModify(Users modify)
+        {
+            try
+            {
+                command.CommandText = String.Format("UPDATE [Users] SET [username] = '{0}', [password] = '{1}', [permission] = '{2}', [email] = '{3}'", modify.Username, modify.Password, modify.Permission, modify.Email);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -361,6 +428,21 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
+        public static void UserDelete(Users delete)
+        {
+            try
+            {
+                command.CommandText = String.Format("DELETE FROM [Users] WHERE [username] = '{0}'", delete.Username);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw new DatabaseException("Deleting selected user failed!", ex.Message);
+            }
+        }
+        #endregion
+        #endregion
     }
 }
 

@@ -35,16 +35,10 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grb_Parameters = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmb_Type = new System.Windows.Forms.ComboBox();
-            this.cmb_Brand = new System.Windows.Forms.ComboBox();
-            this.cmb_Market = new System.Windows.Forms.ComboBox();
             this.lbl_Type = new System.Windows.Forms.Label();
             this.lbl_Market = new System.Windows.Forms.Label();
             this.lbl_Brand = new System.Windows.Forms.Label();
             this.txb_BarCode = new System.Windows.Forms.TextBox();
-            this.cmb_Factory = new System.Windows.Forms.ComboBox();
-            this.cmb_Category = new System.Windows.Forms.ComboBox();
             this.txb_Description = new System.Windows.Forms.TextBox();
             this.tbx_PartNumber = new System.Windows.Forms.TextBox();
             this.btn_ProductSearch = new System.Windows.Forms.Button();
@@ -54,7 +48,7 @@
             this.lbl_Description = new System.Windows.Forms.Label();
             this.lbl_PartNumber = new System.Windows.Forms.Label();
             this.grb_Results = new System.Windows.Forms.GroupBox();
-            this.dgv_Products = new System.Windows.Forms.DataGridView();
+            this.lsb_Products = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbp_Search = new System.Windows.Forms.TabPage();
             this.tbp_UserMaintenance = new System.Windows.Forms.TabPage();
@@ -63,7 +57,7 @@
             this.btn_UserNew = new System.Windows.Forms.Button();
             this.btn_UserDelete = new System.Windows.Forms.Button();
             this.grb_UserResult = new System.Windows.Forms.GroupBox();
-            this.dgv_Users = new System.Windows.Forms.DataGridView();
+            this.lsb_Users = new System.Windows.Forms.ListBox();
             this.grb_UserSearch = new System.Windows.Forms.GroupBox();
             this.lbl_Permission = new System.Windows.Forms.Label();
             this.cmb_Permission = new System.Windows.Forms.ComboBox();
@@ -71,49 +65,39 @@
             this.lbl_Username = new System.Windows.Forms.Label();
             this.tbx_UserName = new System.Windows.Forms.TextBox();
             this.tbp_ProductMaintenance = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.btn_Ok = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_ProductModify = new System.Windows.Forms.Button();
+            this.btn_ProductNew = new System.Windows.Forms.Button();
+            this.btn_ProductDelete = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
             this.menuStrip1.SuspendLayout();
             this.grb_Parameters.SuspendLayout();
             this.grb_Results.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Products)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbp_Search.SuspendLayout();
             this.tbp_UserMaintenance.SuspendLayout();
             this.grb_Manage.SuspendLayout();
             this.grb_UserResult.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Users)).BeginInit();
             this.grb_UserSearch.SuspendLayout();
             this.tbp_ProductMaintenance.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -160,22 +144,21 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // grb_Parameters
             // 
-            this.grb_Parameters.Controls.Add(this.label1);
-            this.grb_Parameters.Controls.Add(this.cmb_Type);
-            this.grb_Parameters.Controls.Add(this.cmb_Brand);
-            this.grb_Parameters.Controls.Add(this.cmb_Market);
+            this.grb_Parameters.Controls.Add(this.checkedListBox5);
+            this.grb_Parameters.Controls.Add(this.checkedListBox4);
+            this.grb_Parameters.Controls.Add(this.checkedListBox3);
+            this.grb_Parameters.Controls.Add(this.checkedListBox2);
+            this.grb_Parameters.Controls.Add(this.checkedListBox1);
             this.grb_Parameters.Controls.Add(this.lbl_Type);
             this.grb_Parameters.Controls.Add(this.lbl_Market);
             this.grb_Parameters.Controls.Add(this.lbl_Brand);
             this.grb_Parameters.Controls.Add(this.txb_BarCode);
-            this.grb_Parameters.Controls.Add(this.cmb_Factory);
-            this.grb_Parameters.Controls.Add(this.cmb_Category);
             this.grb_Parameters.Controls.Add(this.txb_Description);
             this.grb_Parameters.Controls.Add(this.tbx_PartNumber);
             this.grb_Parameters.Controls.Add(this.btn_ProductSearch);
@@ -186,51 +169,15 @@
             this.grb_Parameters.Controls.Add(this.lbl_PartNumber);
             this.grb_Parameters.Location = new System.Drawing.Point(8, 6);
             this.grb_Parameters.Name = "grb_Parameters";
-            this.grb_Parameters.Size = new System.Drawing.Size(860, 109);
+            this.grb_Parameters.Size = new System.Drawing.Size(860, 231);
             this.grb_Parameters.TabIndex = 1;
             this.grb_Parameters.TabStop = false;
             this.grb_Parameters.Text = "Parameters";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(604, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 13);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "The search returned xy results.";
-            // 
-            // cmb_Type
-            // 
-            this.cmb_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Type.FormattingEnabled = true;
-            this.cmb_Type.Location = new System.Drawing.Point(733, 22);
-            this.cmb_Type.Name = "cmb_Type";
-            this.cmb_Type.Size = new System.Drawing.Size(121, 21);
-            this.cmb_Type.TabIndex = 33;
-            // 
-            // cmb_Brand
-            // 
-            this.cmb_Brand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Brand.FormattingEnabled = true;
-            this.cmb_Brand.Location = new System.Drawing.Point(733, 48);
-            this.cmb_Brand.Name = "cmb_Brand";
-            this.cmb_Brand.Size = new System.Drawing.Size(121, 21);
-            this.cmb_Brand.TabIndex = 32;
-            // 
-            // cmb_Market
-            // 
-            this.cmb_Market.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Market.FormattingEnabled = true;
-            this.cmb_Market.Location = new System.Drawing.Point(557, 21);
-            this.cmb_Market.Name = "cmb_Market";
-            this.cmb_Market.Size = new System.Drawing.Size(121, 21);
-            this.cmb_Market.TabIndex = 31;
-            // 
             // lbl_Type
             // 
             this.lbl_Type.AutoSize = true;
-            this.lbl_Type.Location = new System.Drawing.Point(684, 25);
+            this.lbl_Type.Location = new System.Drawing.Point(725, 16);
             this.lbl_Type.Name = "lbl_Type";
             this.lbl_Type.Size = new System.Drawing.Size(34, 13);
             this.lbl_Type.TabIndex = 30;
@@ -239,7 +186,7 @@
             // lbl_Market
             // 
             this.lbl_Market.AutoSize = true;
-            this.lbl_Market.Location = new System.Drawing.Point(508, 25);
+            this.lbl_Market.Location = new System.Drawing.Point(467, 16);
             this.lbl_Market.Name = "lbl_Market";
             this.lbl_Market.Size = new System.Drawing.Size(43, 13);
             this.lbl_Market.TabIndex = 29;
@@ -248,7 +195,7 @@
             // lbl_Brand
             // 
             this.lbl_Brand.AutoSize = true;
-            this.lbl_Brand.Location = new System.Drawing.Point(684, 51);
+            this.lbl_Brand.Location = new System.Drawing.Point(593, 16);
             this.lbl_Brand.Name = "lbl_Brand";
             this.lbl_Brand.Size = new System.Drawing.Size(38, 13);
             this.lbl_Brand.TabIndex = 28;
@@ -261,29 +208,11 @@
             this.txb_BarCode.Size = new System.Drawing.Size(223, 20);
             this.txb_BarCode.TabIndex = 25;
             // 
-            // cmb_Factory
-            // 
-            this.cmb_Factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Factory.FormattingEnabled = true;
-            this.cmb_Factory.Location = new System.Drawing.Point(557, 48);
-            this.cmb_Factory.Name = "cmb_Factory";
-            this.cmb_Factory.Size = new System.Drawing.Size(121, 21);
-            this.cmb_Factory.TabIndex = 24;
-            // 
-            // cmb_Category
-            // 
-            this.cmb_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_Category.FormattingEnabled = true;
-            this.cmb_Category.Location = new System.Drawing.Point(368, 48);
-            this.cmb_Category.Name = "cmb_Category";
-            this.cmb_Category.Size = new System.Drawing.Size(134, 21);
-            this.cmb_Category.TabIndex = 23;
-            // 
             // txb_Description
             // 
-            this.txb_Description.Location = new System.Drawing.Point(236, 22);
+            this.txb_Description.Location = new System.Drawing.Point(81, 72);
             this.txb_Description.Name = "txb_Description";
-            this.txb_Description.Size = new System.Drawing.Size(266, 20);
+            this.txb_Description.Size = new System.Drawing.Size(223, 20);
             this.txb_Description.TabIndex = 22;
             // 
             // tbx_PartNumber
@@ -295,13 +224,13 @@
             // 
             // btn_ProductSearch
             // 
-            this.btn_ProductSearch.Location = new System.Drawing.Point(779, 75);
+            this.btn_ProductSearch.Location = new System.Drawing.Point(779, 202);
             this.btn_ProductSearch.Name = "btn_ProductSearch";
             this.btn_ProductSearch.Size = new System.Drawing.Size(75, 23);
             this.btn_ProductSearch.TabIndex = 16;
             this.btn_ProductSearch.Text = "Search";
             this.btn_ProductSearch.UseVisualStyleBackColor = true;
-            this.btn_ProductSearch.Click += new System.EventHandler(this.btn_Search_Click);
+            this.btn_ProductSearch.Click += new System.EventHandler(this.btn_ProductSearch_Click);
             // 
             // lbl_BarCode
             // 
@@ -315,7 +244,7 @@
             // lbl_Factory
             // 
             this.lbl_Factory.AutoSize = true;
-            this.lbl_Factory.Location = new System.Drawing.Point(508, 51);
+            this.lbl_Factory.Location = new System.Drawing.Point(341, 16);
             this.lbl_Factory.Name = "lbl_Factory";
             this.lbl_Factory.Size = new System.Drawing.Size(45, 13);
             this.lbl_Factory.TabIndex = 5;
@@ -324,7 +253,7 @@
             // lbl_Category
             // 
             this.lbl_Category.AutoSize = true;
-            this.lbl_Category.Location = new System.Drawing.Point(310, 51);
+            this.lbl_Category.Location = new System.Drawing.Point(6, 115);
             this.lbl_Category.Name = "lbl_Category";
             this.lbl_Category.Size = new System.Drawing.Size(52, 13);
             this.lbl_Category.TabIndex = 3;
@@ -333,7 +262,7 @@
             // lbl_Description
             // 
             this.lbl_Description.AutoSize = true;
-            this.lbl_Description.Location = new System.Drawing.Point(167, 25);
+            this.lbl_Description.Location = new System.Drawing.Point(6, 75);
             this.lbl_Description.Name = "lbl_Description";
             this.lbl_Description.Size = new System.Drawing.Size(63, 13);
             this.lbl_Description.TabIndex = 1;
@@ -350,21 +279,21 @@
             // 
             // grb_Results
             // 
-            this.grb_Results.Controls.Add(this.dgv_Products);
-            this.grb_Results.Location = new System.Drawing.Point(8, 136);
+            this.grb_Results.Controls.Add(this.lsb_Products);
+            this.grb_Results.Location = new System.Drawing.Point(8, 289);
             this.grb_Results.Name = "grb_Results";
-            this.grb_Results.Size = new System.Drawing.Size(860, 437);
+            this.grb_Results.Size = new System.Drawing.Size(860, 284);
             this.grb_Results.TabIndex = 5;
             this.grb_Results.TabStop = false;
             this.grb_Results.Text = "Results";
             // 
-            // dgv_Products
+            // lsb_Products
             // 
-            this.dgv_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Products.Location = new System.Drawing.Point(6, 19);
-            this.dgv_Products.Name = "dgv_Products";
-            this.dgv_Products.Size = new System.Drawing.Size(848, 408);
-            this.dgv_Products.TabIndex = 5;
+            this.lsb_Products.FormattingEnabled = true;
+            this.lsb_Products.Location = new System.Drawing.Point(9, 19);
+            this.lsb_Products.Name = "lsb_Products";
+            this.lsb_Products.Size = new System.Drawing.Size(845, 251);
+            this.lsb_Products.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -422,6 +351,7 @@
             this.btn_UserModify.TabIndex = 1;
             this.btn_UserModify.Text = "Modify selected";
             this.btn_UserModify.UseVisualStyleBackColor = true;
+            this.btn_UserModify.Click += new System.EventHandler(this.btn_UserModify_Click);
             // 
             // btn_UserNew
             // 
@@ -429,7 +359,7 @@
             this.btn_UserNew.Name = "btn_UserNew";
             this.btn_UserNew.Size = new System.Drawing.Size(91, 23);
             this.btn_UserNew.TabIndex = 17;
-            this.btn_UserNew.Text = "Add new user";
+            this.btn_UserNew.Text = "New user";
             this.btn_UserNew.UseVisualStyleBackColor = true;
             this.btn_UserNew.Click += new System.EventHandler(this.btn_UserNew_Click);
             // 
@@ -441,10 +371,11 @@
             this.btn_UserDelete.TabIndex = 16;
             this.btn_UserDelete.Text = "Delete selected";
             this.btn_UserDelete.UseVisualStyleBackColor = true;
+            this.btn_UserDelete.Click += new System.EventHandler(this.btn_UserDelete_Click);
             // 
             // grb_UserResult
             // 
-            this.grb_UserResult.Controls.Add(this.dgv_Users);
+            this.grb_UserResult.Controls.Add(this.lsb_Users);
             this.grb_UserResult.Location = new System.Drawing.Point(8, 150);
             this.grb_UserResult.Name = "grb_UserResult";
             this.grb_UserResult.Size = new System.Drawing.Size(863, 423);
@@ -452,13 +383,13 @@
             this.grb_UserResult.TabStop = false;
             this.grb_UserResult.Text = "Results";
             // 
-            // dgv_Users
+            // lsb_Users
             // 
-            this.dgv_Users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Users.Location = new System.Drawing.Point(6, 19);
-            this.dgv_Users.Name = "dgv_Users";
-            this.dgv_Users.Size = new System.Drawing.Size(851, 398);
-            this.dgv_Users.TabIndex = 0;
+            this.lsb_Users.FormattingEnabled = true;
+            this.lsb_Users.Location = new System.Drawing.Point(6, 19);
+            this.lsb_Users.Name = "lsb_Users";
+            this.lsb_Users.Size = new System.Drawing.Size(851, 394);
+            this.lsb_Users.TabIndex = 0;
             // 
             // grb_UserSearch
             // 
@@ -520,34 +451,9 @@
             // 
             // tbp_ProductMaintenance
             // 
-            this.tbp_ProductMaintenance.Controls.Add(this.label4);
-            this.tbp_ProductMaintenance.Controls.Add(this.label5);
-            this.tbp_ProductMaintenance.Controls.Add(this.label13);
-            this.tbp_ProductMaintenance.Controls.Add(this.comboBox5);
-            this.tbp_ProductMaintenance.Controls.Add(this.comboBox4);
-            this.tbp_ProductMaintenance.Controls.Add(this.comboBox3);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox8);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox7);
-            this.tbp_ProductMaintenance.Controls.Add(this.btn_Cancel);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox6);
-            this.tbp_ProductMaintenance.Controls.Add(this.btn_Ok);
-            this.tbp_ProductMaintenance.Controls.Add(this.comboBox2);
-            this.tbp_ProductMaintenance.Controls.Add(this.comboBox1);
-            this.tbp_ProductMaintenance.Controls.Add(this.label6);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox5);
-            this.tbp_ProductMaintenance.Controls.Add(this.label7);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox4);
-            this.tbp_ProductMaintenance.Controls.Add(this.label8);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox3);
-            this.tbp_ProductMaintenance.Controls.Add(this.label9);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox2);
-            this.tbp_ProductMaintenance.Controls.Add(this.label10);
-            this.tbp_ProductMaintenance.Controls.Add(this.textBox1);
-            this.tbp_ProductMaintenance.Controls.Add(this.label11);
-            this.tbp_ProductMaintenance.Controls.Add(this.label12);
-            this.tbp_ProductMaintenance.Controls.Add(this.label14);
-            this.tbp_ProductMaintenance.Controls.Add(this.label15);
-            this.tbp_ProductMaintenance.Controls.Add(this.label16);
+            this.tbp_ProductMaintenance.Controls.Add(this.groupBox3);
+            this.tbp_ProductMaintenance.Controls.Add(this.groupBox2);
+            this.tbp_ProductMaintenance.Controls.Add(this.groupBox1);
             this.tbp_ProductMaintenance.Location = new System.Drawing.Point(4, 22);
             this.tbp_ProductMaintenance.Name = "tbp_ProductMaintenance";
             this.tbp_ProductMaintenance.Padding = new System.Windows.Forms.Padding(3);
@@ -556,121 +462,10 @@
             this.tbp_ProductMaintenance.Text = "Product Maintenance";
             this.tbp_ProductMaintenance.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(561, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 60;
-            this.label4.Text = "Type:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(561, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 61;
-            this.label5.Text = "Market:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(561, 85);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(38, 13);
-            this.label13.TabIndex = 62;
-            this.label13.Text = "Brand:";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(610, 82);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 59;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(610, 56);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 58;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(610, 25);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 57;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(279, 83);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(34, 20);
-            this.textBox8.TabIndex = 56;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(395, 83);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(34, 20);
-            this.textBox7.TabIndex = 55;
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Location = new System.Drawing.Point(610, 124);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancel.TabIndex = 38;
-            this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(106, 82);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(119, 20);
-            this.textBox6.TabIndex = 54;
-            // 
-            // btn_Ok
-            // 
-            this.btn_Ok.Location = new System.Drawing.Point(524, 124);
-            this.btn_Ok.Name = "btn_Ok";
-            this.btn_Ok.Size = new System.Drawing.Size(75, 23);
-            this.btn_Ok.TabIndex = 36;
-            this.btn_Ok.Text = "OK";
-            this.btn_Ok.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(300, 56);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(129, 21);
-            this.comboBox2.TabIndex = 53;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(106, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 21);
-            this.comboBox1.TabIndex = 52;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 33);
+            this.label6.Location = new System.Drawing.Point(9, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 35;
@@ -678,7 +473,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(261, 30);
+            this.textBox5.Location = new System.Drawing.Point(84, 25);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(168, 20);
             this.textBox5.TabIndex = 51;
@@ -686,7 +481,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(192, 33);
+            this.label7.Location = new System.Drawing.Point(15, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 37;
@@ -694,103 +489,10 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(106, 30);
+            this.textBox4.Location = new System.Drawing.Point(84, 57);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(80, 20);
             this.textBox4.TabIndex = 50;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(31, 59);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "Category:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(479, 82);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(76, 20);
-            this.textBox3.TabIndex = 49;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(246, 59);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 13);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Factory:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(479, 56);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(76, 20);
-            this.textBox2.TabIndex = 48;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 85);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 13);
-            this.label10.TabIndex = 41;
-            this.label10.Text = "Bar Code:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(479, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 47;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(435, 33);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 13);
-            this.label11.TabIndex = 42;
-            this.label11.Text = "Width:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(435, 59);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 13);
-            this.label12.TabIndex = 43;
-            this.label12.Text = "Heigth:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(435, 85);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(43, 13);
-            this.label14.TabIndex = 44;
-            this.label14.Text = "Length:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(231, 85);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 13);
-            this.label15.TabIndex = 45;
-            this.label15.Text = "Pieces:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(319, 85);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(70, 13);
-            this.label16.TabIndex = 46;
-            this.label16.Text = "Temperature:";
             // 
             // statusStrip1
             // 
@@ -807,6 +509,126 @@
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(387, 123);
+            this.groupBox1.TabIndex = 52;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(190, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btn_ProductModify);
+            this.groupBox2.Controls.Add(this.btn_ProductNew);
+            this.groupBox2.Controls.Add(this.btn_ProductDelete);
+            this.groupBox2.Location = new System.Drawing.Point(399, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(122, 123);
+            this.groupBox2.TabIndex = 53;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Manage";
+            // 
+            // btn_ProductModify
+            // 
+            this.btn_ProductModify.Location = new System.Drawing.Point(15, 55);
+            this.btn_ProductModify.Name = "btn_ProductModify";
+            this.btn_ProductModify.Size = new System.Drawing.Size(91, 23);
+            this.btn_ProductModify.TabIndex = 1;
+            this.btn_ProductModify.Text = "Modify selected";
+            this.btn_ProductModify.UseVisualStyleBackColor = true;
+            // 
+            // btn_ProductNew
+            // 
+            this.btn_ProductNew.Location = new System.Drawing.Point(15, 26);
+            this.btn_ProductNew.Name = "btn_ProductNew";
+            this.btn_ProductNew.Size = new System.Drawing.Size(91, 23);
+            this.btn_ProductNew.TabIndex = 17;
+            this.btn_ProductNew.Text = "New product";
+            this.btn_ProductNew.UseVisualStyleBackColor = true;
+            // 
+            // btn_ProductDelete
+            // 
+            this.btn_ProductDelete.Location = new System.Drawing.Point(15, 84);
+            this.btn_ProductDelete.Name = "btn_ProductDelete";
+            this.btn_ProductDelete.Size = new System.Drawing.Size(91, 23);
+            this.btn_ProductDelete.TabIndex = 16;
+            this.btn_ProductDelete.Text = "Delete selected";
+            this.btn_ProductDelete.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.listBox1);
+            this.groupBox3.Location = new System.Drawing.Point(8, 150);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(863, 423);
+            this.groupBox3.TabIndex = 54;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Results";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(851, 394);
+            this.listBox1.TabIndex = 0;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(728, 34);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox1.TabIndex = 31;
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(596, 34);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox2.TabIndex = 32;
+            // 
+            // checkedListBox3
+            // 
+            this.checkedListBox3.FormattingEnabled = true;
+            this.checkedListBox3.Location = new System.Drawing.Point(470, 34);
+            this.checkedListBox3.Name = "checkedListBox3";
+            this.checkedListBox3.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox3.TabIndex = 33;
+            // 
+            // checkedListBox4
+            // 
+            this.checkedListBox4.FormattingEnabled = true;
+            this.checkedListBox4.Location = new System.Drawing.Point(344, 34);
+            this.checkedListBox4.Name = "checkedListBox4";
+            this.checkedListBox4.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox4.TabIndex = 34;
+            // 
+            // checkedListBox5
+            // 
+            this.checkedListBox5.FormattingEnabled = true;
+            this.checkedListBox5.Location = new System.Drawing.Point(9, 131);
+            this.checkedListBox5.Name = "checkedListBox5";
+            this.checkedListBox5.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox5.TabIndex = 35;
             // 
             // MainSearch
             // 
@@ -827,19 +649,20 @@
             this.grb_Parameters.ResumeLayout(false);
             this.grb_Parameters.PerformLayout();
             this.grb_Results.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Products)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tbp_Search.ResumeLayout(false);
             this.tbp_UserMaintenance.ResumeLayout(false);
             this.grb_Manage.ResumeLayout(false);
             this.grb_UserResult.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Users)).EndInit();
             this.grb_UserSearch.ResumeLayout(false);
             this.grb_UserSearch.PerformLayout();
             this.tbp_ProductMaintenance.ResumeLayout(false);
-            this.tbp_ProductMaintenance.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,29 +681,21 @@
         private System.Windows.Forms.Label lbl_Description;
         private System.Windows.Forms.Label lbl_PartNumber;
         private System.Windows.Forms.TextBox txb_BarCode;
-        private System.Windows.Forms.ComboBox cmb_Factory;
-        private System.Windows.Forms.ComboBox cmb_Category;
         private System.Windows.Forms.TextBox txb_Description;
         private System.Windows.Forms.TextBox tbx_PartNumber;
         private System.Windows.Forms.Button btn_ProductSearch;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.GroupBox grb_Results;
-        private System.Windows.Forms.ComboBox cmb_Type;
-        private System.Windows.Forms.ComboBox cmb_Brand;
-        private System.Windows.Forms.ComboBox cmb_Market;
         private System.Windows.Forms.Label lbl_Type;
         private System.Windows.Forms.Label lbl_Market;
         private System.Windows.Forms.Label lbl_Brand;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgv_Products;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tbp_Search;
         private System.Windows.Forms.TabPage tbp_UserMaintenance;
         private System.Windows.Forms.TabPage tbp_ProductMaintenance;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.GroupBox grb_UserResult;
-        private System.Windows.Forms.DataGridView dgv_Users;
         private System.Windows.Forms.Button btn_UserModify;
         private System.Windows.Forms.Button btn_UserNew;
         private System.Windows.Forms.Button btn_UserDelete;
@@ -890,35 +705,26 @@
         private System.Windows.Forms.Button btn_UserSearch;
         private System.Windows.Forms.Label lbl_Username;
         private System.Windows.Forms.TextBox tbx_UserName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button btn_Ok;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox grb_Manage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ListBox lsb_Products;
+        private System.Windows.Forms.ListBox lsb_Users;
+        private System.Windows.Forms.CheckedListBox checkedListBox5;
+        private System.Windows.Forms.CheckedListBox checkedListBox4;
+        private System.Windows.Forms.CheckedListBox checkedListBox3;
+        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btn_ProductModify;
+        private System.Windows.Forms.Button btn_ProductNew;
+        private System.Windows.Forms.Button btn_ProductDelete;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

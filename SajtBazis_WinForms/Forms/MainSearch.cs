@@ -15,28 +15,40 @@ namespace SajtBazis_WinForms
         {
             InitializeComponent();
             //Products tab
-            dgv_Products.DataSource = null;
-            dgv_Products.DataSource = DatabaseManager.SelectAllProduct();
+            lsb_Products.DataSource = null;
+            lsb_Products.DataSource = DatabaseManager.SelectAllProduct();
             cmb_Brand.DataSource = Enum.GetValues(typeof(Brands));
             cmb_Category.DataSource = Enum.GetValues(typeof(Categories));
             cmb_Market.DataSource = Enum.GetValues(typeof(Markets));
             cmb_Factory.DataSource = Enum.GetValues(typeof(Factories));
             cmb_Type.DataSource = Enum.GetValues(typeof(Types));
             //Users tab
-            dgv_Users.DataSource = null;
-            dgv_Users.AutoGenerateColumns = true;
-            dgv_Users.DataSource = DatabaseManager.SelectAllUser();
-            //UserSearchHelper();
+            lsb_Users.DataSource = null;
+            lsb_Users.DataSource = DatabaseManager.SelectAllUser();
+
             //int usercount = dgv_Users.Rows.Count;
             //toolStripStatusLabel1.Text = Convert.ToString(usercount) + " user(s) found";
             cmb_Permission.DataSource = Enum.GetValues(typeof(Permissions));
         }
 
+        //private void UserSearchHelper()
+        //{
+        //    if (cmb_Permission.SelectedIndex == 0)
+        //    {
+        //        tbx_UserName.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        tbx_UserName.Enabled = true;
+        //    }
+
+        //}
+
         private void MainSearch_Load(object sender, EventArgs e)
         {
 
-        }      
-    
+        }
+
 
         private void MainSearch_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -58,7 +70,8 @@ namespace SajtBazis_WinForms
             Close();
         }
 
-        private void btn_Search_Click(object sender, EventArgs e)
+        #region PRODUCTS TAB
+        private void btn_ProductSearch_Click(object sender, EventArgs e)
         {
             int searchpartnumber = int.Parse(tbx_PartNumber.Text);
             string searchdescription = txb_Description.Text;
@@ -68,32 +81,30 @@ namespace SajtBazis_WinForms
             int searchfactory = cmb_Factory.SelectedIndex;
             int searchtype = cmb_Type.SelectedIndex;
             int searchbarcode = int.Parse(txb_BarCode.Text);
-
-            dgv_Products.DataSource = null;
-            dgv_Products.DataSource = DatabaseManager.SearchProduct(searchpartnumber, searchdescription, searchbrand, searchcategory, searchmarket, searchfactory, searchtype, searchbarcode);
+            lsb_Products.DataSource = null;
+            lsb_Products.DataSource = DatabaseManager.SearchProduct(searchpartnumber, searchdescription, searchbrand, searchcategory, searchmarket, searchfactory, searchtype, searchbarcode);
         }
+        #endregion
 
+        #region USERS TAB
         private void btn_UserSearch_Click(object sender, EventArgs e)
         {
             string searchuser = tbx_UserName.Text;
             int searchpermission = cmb_Permission.SelectedIndex;
 
-
             try
             {
-                DatabaseManager.ConnectionOpen(ConfigurationManager.ConnectionStrings["SajtBazis_WinForms.Properties.Settings.SajtBazis_DataBaseConnectionString"].ConnectionString);
+                //DatabaseManager.ConnectionOpen(ConfigurationManager.ConnectionStrings["SajtBazis_WinForms.Properties.Settings.SajtBazis_DataBaseConnectionString"].ConnectionString);
 
                 if (cmb_Permission.SelectedIndex != 0)
                 {
-                    //tbx_UserName.Enabled = false;
-                    dgv_Users.DataSource = null;
-                    dgv_Users.DataSource = DatabaseManager.SearchUserByPermission(searchpermission);
+                    lsb_Users.DataSource = null;
+                    lsb_Users.DataSource = DatabaseManager.SearchUserByPermission(searchpermission);
                 }
                 else
                 {
-                    //tbx_UserName.Enabled = true;
-                    dgv_Users.DataSource = null;
-                    dgv_Users.DataSource = DatabaseManager.SearchUserByName(Convert.ToString(searchpermission));
+                    lsb_Users.DataSource = null;
+                    lsb_Users.DataSource = DatabaseManager.SearchUserByName(Convert.ToString(searchpermission));
                 }
             }
             catch (Exception ex)
@@ -101,29 +112,49 @@ namespace SajtBazis_WinForms
                 toolStripStatusLabel1.Text = ex.Message;
             }
 
-            DatabaseManager.ConnectionClose();
-        }
-
-        private void UserSearchHelper()
-        {
-            if (cmb_Permission.SelectedIndex == 0)
-            {
-                tbx_UserName.Enabled = false;
-            }
-            else
-            {
-                tbx_UserName.Enabled = true;
-            }
-
+            //DatabaseManager.ConnectionClose();
         }
 
         private void btn_UserNew_Click(object sender, EventArgs e)
         {
-            //UserNew newuserwindow = new UserNew();
-            //if (newuserwindow.DialogResult() == DialogResult.OK)
-            //{
-
-            //}
+            UserNew userwindow = new UserNew();
+            if (userwindow.ShowDialog() == DialogResult.OK)
+            {
+                lsb_Users.DataSource = null;
+                lsb_Users.DataSource = DatabaseManager.SelectAllUser();
+            }
         }
+
+        private void btn_UserModify_Click(object sender, EventArgs e)
+        {
+            if (lsb_Users.SelectedIndex != -1)
+            {
+                UserNew userwindow = new UserNew((Users)lsb_Users.SelectedItem);
+                if (userwindow.ShowDialog() == DialogResult.OK)
+                {
+                    lsb_Users.DataSource = null;
+                    lsb_Users.DataSource = DatabaseManager.SelectAllUser();
+                }
+            }
+        }
+
+        private void btn_UserDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lsb_Users.SelectedIndex != -1)
+                {
+                    DatabaseManager.UserDelete((Users)lsb_Users.SelectedItem);
+                    DatabaseManager.SelectAllUser();
+                    toolStripStatusLabel1.Text = "User successfully deleted!";
+                }
+            }
+            catch (DatabaseException ex)
+            {
+                MessageBox.Show(ex.OriginalMessage, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+            }
+        }
+        #endregion
     }
 }
+

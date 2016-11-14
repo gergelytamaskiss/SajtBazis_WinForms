@@ -45,7 +45,7 @@ namespace SajtBazis_WinForms
                 }
             }
 
-            DatabaseManager.ConnectionClose();
+            //DatabaseManager.ConnectionClose();
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
