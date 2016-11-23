@@ -2,18 +2,6 @@
 
 namespace SajtBazis_WinForms.Classes
 {
-    enum Categories
-    {
-        Kördobozos140g,
-        Kördobozos200g,
-        Kördobozos280g,
-        Tömlős50g,
-        Tömlős100g,
-        Tömb_kicsi,
-        Tömb_nagy,
-        Szeletelt
-    }
-
     enum Factories
     {
         Répcelak,
@@ -32,25 +20,26 @@ namespace SajtBazis_WinForms.Classes
     {
         Medve,
         Karaván,
-        Pannónia
+        Pannónia,
+        Milkana,
+        Tihany,
+        Bakony,
+        Krajcár,
+        Mackó,
+        Sajtmester,
+        Francia_sajtok,
+        Olasz_sajtok
     }
 
     enum Markets
     {
         Retail,
         MDD,
+        Gasztro,
         Export
     }
     class Products
     {
-        Categories category;
-
-        internal Categories Category
-        {
-            get { return category; }
-            //set { category = value; }
-        }
-
         Factories factory;
 
         internal Factories Factory
@@ -183,12 +172,11 @@ namespace SajtBazis_WinForms.Classes
         //    //set { dateCreated = value; }
         //}
 
-        public Products(int partNumber, string description, Brands brand, Categories category, Markets market, Factories factory, Types type, int barCode, int width, int height, int length, int pieces, int temperature)
+        public Products(int partNumber, string description, Brands brand, Markets market, Factories factory, Types type, int barCode, int width, int height, int length, int pieces, int temperature)
         {
             PartNumber = partNumber;
             Description = description;
             this.brand = brand;
-            this.category = category;
             this.market = market;
             this.factory = factory;
             this.type = type;

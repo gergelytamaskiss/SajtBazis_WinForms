@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.btn_Login = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.lbl_Username = new System.Windows.Forms.Label();
@@ -36,12 +37,14 @@
             this.tbx_Password = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Login
             // 
-            this.btn_Login.Location = new System.Drawing.Point(32, 161);
+            this.btn_Login.Location = new System.Drawing.Point(78, 241);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(75, 23);
             this.btn_Login.TabIndex = 0;
@@ -52,7 +55,7 @@
             // btn_Cancel
             // 
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Cancel.Location = new System.Drawing.Point(130, 161);
+            this.btn_Cancel.Location = new System.Drawing.Point(176, 241);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 1;
@@ -63,7 +66,7 @@
             // lbl_Username
             // 
             this.lbl_Username.AutoSize = true;
-            this.lbl_Username.Location = new System.Drawing.Point(29, 59);
+            this.lbl_Username.Location = new System.Drawing.Point(75, 177);
             this.lbl_Username.Name = "lbl_Username";
             this.lbl_Username.Size = new System.Drawing.Size(58, 13);
             this.lbl_Username.TabIndex = 3;
@@ -72,7 +75,7 @@
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(29, 90);
+            this.lbl_Password.Location = new System.Drawing.Point(75, 208);
             this.lbl_Password.Name = "lbl_Password";
             this.lbl_Password.Size = new System.Drawing.Size(56, 13);
             this.lbl_Password.TabIndex = 4;
@@ -80,7 +83,7 @@
             // 
             // tbx_Username
             // 
-            this.tbx_Username.Location = new System.Drawing.Point(105, 52);
+            this.tbx_Username.Location = new System.Drawing.Point(151, 170);
             this.tbx_Username.Name = "tbx_Username";
             this.tbx_Username.Size = new System.Drawing.Size(100, 20);
             this.tbx_Username.TabIndex = 6;
@@ -88,7 +91,7 @@
             // 
             // tbx_Password
             // 
-            this.tbx_Password.Location = new System.Drawing.Point(105, 90);
+            this.tbx_Password.Location = new System.Drawing.Point(151, 208);
             this.tbx_Password.Name = "tbx_Password";
             this.tbx_Password.PasswordChar = '*';
             this.tbx_Password.Size = new System.Drawing.Size(100, 20);
@@ -99,9 +102,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 190);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 290);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(234, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(334, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
@@ -111,13 +114,23 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SajtBazis_WinForms.Properties.Resources.SajtBazis_Logo128x128;
+            this.pictureBox1.Location = new System.Drawing.Point(105, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             this.AcceptButton = this.btn_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Cancel;
-            this.ClientSize = new System.Drawing.Size(234, 212);
+            this.ClientSize = new System.Drawing.Size(334, 312);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tbx_Password);
             this.Controls.Add(this.tbx_Username);
@@ -125,6 +138,7 @@
             this.Controls.Add(this.lbl_Username);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Login);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login - SajtBázis";
@@ -132,6 +146,7 @@
             this.Load += new System.EventHandler(this.Login_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +162,7 @@
         private System.Windows.Forms.TextBox tbx_Password;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

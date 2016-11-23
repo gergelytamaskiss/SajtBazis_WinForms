@@ -36,19 +36,20 @@ namespace SajtBazis_WinForms.Forms
         {
             try
             {
-                if (tbx_Username.Text.Trim() != string.Empty && tbx_Password.Text.Trim() != string.Empty && tbx_Email.Text.Trim() != string.Empty)
+                if (tbx_Username.Text.Trim() != string.Empty && tbx_Password.Text.Trim() != string.Empty && tbx_Email.Text.Trim() != string.Empty && tbx_Name.Text.Trim() != string.Empty)
                 {
                     if (selectedUser == null)
                     {
-                        selectedUser = new Users(tbx_Username.Text.Trim(), tbx_Password.Text.Trim(), (Permissions)cmb_Permission.SelectedIndex, tbx_Email.Text.Trim());
+                        selectedUser = new Users(tbx_Username.Text.Trim(), tbx_Password.Text.Trim(), tbx_Name.Text.Trim(), (Permissions)cmb_Permission.SelectedIndex, tbx_Email.Text.Trim());
                         DatabaseManager.UserNew(selectedUser);
                     }
                     else
                     {
                         selectedUser.Username = tbx_Username.Text.Trim();
                         selectedUser.Password = tbx_Password.Text.Trim();
-                        //selectedUser.Permission = cmb_Permission;
+                        //selectedUser.Permission = (Permissions)cmb_Permission.SelectedIndex;
                         selectedUser.Email = tbx_Email.Text.Trim();
+                        selectedUser.Name = tbx_Name.Text.Trim();
                         DatabaseManager.UserModify(selectedUser);
                     }
                 }
@@ -59,7 +60,7 @@ namespace SajtBazis_WinForms.Forms
             }
             catch (DatabaseException ex)
             {
-                toolStripStatusLabel1.Text = "Error: "+ ex.Message;
+                toolStripStatusLabel1.Text = "Error: " + ex.Message;
                 DialogResult = DialogResult.None;
             }
         }

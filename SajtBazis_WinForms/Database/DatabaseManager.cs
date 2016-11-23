@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.IO;
+using System.Linq;
 
 namespace SajtBazis_WinForms.Database
 {
@@ -14,7 +15,12 @@ namespace SajtBazis_WinForms.Database
         static SqlCommand command2 = new SqlCommand();
         static List<Users> user = new List<Users>();
         static List<Products> product = new List<Products>();
-        static int userid = 0;
+        static List<Products> searchproduct = new List<Products>();
+        //static int userid = 0;
+        static string productsql = "SELECT * FROM [Products] WHERE";
+
+        //még kell
+        static string usersql = "SELECT * FROM [Users] WHERE";
 
         #region CONNECTION
         public static void ConnectionOpen(string connStr)
@@ -23,6 +29,7 @@ namespace SajtBazis_WinForms.Database
             {
                 connection.ConnectionString = connStr;
                 connection.Open();
+                //command.Connection = connection;
             }
             catch (Exception ex)
             {
@@ -30,7 +37,7 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        
+
         public static void ConnectionClose()
         {
             try
@@ -87,7 +94,8 @@ namespace SajtBazis_WinForms.Database
                 command2.Parameters.Add(loginName2);
 
                 int result = (int)command.ExecuteScalar();
-                userid = (int)command2.ExecuteScalar();
+                LoggedUser.loggedUserId = (int)command2.ExecuteScalar();
+
                 if (result > 0)
                 {
                     MainSearch mainwindow = new MainSearch();
@@ -109,13 +117,71 @@ namespace SajtBazis_WinForms.Database
         #region PRODUCT
 
         #region Select
-        public static List<Products> SearchProduct(int searchpartnumber, string searchdescription, int searchbrand, int searchcategory, int searchmarket, int searchfactory, int searchtype, int searchbarcode)
+
+        //public static List<Products> SearchProducts(int searchpieces)
+        //{
+        //    for (int i = searchproduct.Count - 1; i >= 0; i--)
+        //    {
+        //        searchproduct.RemoveAt(i);
+        //    }
+
+        //    var query = from prod in product
+        //                where prod.Pieces == 24
+        //                select product;
+
+        //    foreach (var item in query)
+        //    {
+        //        searchproduct.Add(item);
+        //    }
+        //    return searchproduct;
+        //}
+
+        //public static List<Products> SearchProducts(int searchpieces)
+        //{
+        //    //Empty list
+        //    for (int i = searchproduct.Count - 1; i >= 0; i--)
+        //    {
+        //        searchproduct.RemoveAt(i);
+        //    }
+
+        //    var query = product.Where(x => x.Pieces == searchpieces);
+        //    foreach (var item in query)
+        //    {
+        //        searchproduct.Add(item);
+        //    }
+        //    return searchproduct;
+        //}
+
+        public static string CreateProductSearchSql(int searchpartnumber, string searchdescription)
+        {
+            if (searchpartnumber > 0 && searchdescription != string.Empty)
+            {
+                productsql += " part_number = @PARTNUMBER AND description = @DESCRIPTION";
+            }
+            else if (searchpartnumber > 0)
+            {
+                productsql += " part_number = @PARTNUMBER";
+            }
+            else if (searchdescription != string.Empty)
+            {
+                productsql += " description = @DESCRIPTION";
+            }
+            else
+            {
+                productsql = null;
+            }
+
+            return productsql;
+        }
+        public static List<Products> SearchProduct(int searchpartnumber, string searchdescription)//, int searchbrand, int searchcategory, int searchmarket, int searchfactory, int searchtype, int searchbarcode)
         {
             try
             {
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM [Users] WHERE part_number = @PARTNUMBER OR description = @DESCRIPTION OR brand = @BRAND OR category = @CATEGORY OR market = @MARKET OR factory = @FACTORY OR type = @TYPE OR bar_code = @BARCODE";
+                command.CommandText = productsql;
+                //command.CommandText = "SELECT * FROM [Users] WHERE part_number = @PARTNUMBER OR description = @DESCRIPTION OR brand = @BRAND OR category = @CATEGORY OR market = @MARKET OR factory = @FACTORY OR type = @TYPE OR bar_code = @BARCODE";
                 command.CommandType = CommandType.Text;
+
 
                 SqlParameter querypartnumber = new SqlParameter
                 {
@@ -133,62 +199,62 @@ namespace SajtBazis_WinForms.Database
                     Value = searchdescription
                 };
 
-                SqlParameter querybrand = new SqlParameter
-                {
-                    ParameterName = "@BRAND",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchbrand
-                };
+                //SqlParameter querybrand = new SqlParameter
+                //{
+                //    ParameterName = "@BRAND",
+                //    SqlDbType = SqlDbType.Int,
+                //    Direction = ParameterDirection.Input,
+                //    Value = searchbrand
+                //};
 
-                SqlParameter querycategory = new SqlParameter
-                {
-                    ParameterName = "@CATEGORY",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchcategory
-                };
+                //SqlParameter querycategory = new SqlParameter
+                //{
+                //    ParameterName = "@CATEGORY",
+                //    SqlDbType = SqlDbType.Int,
+                //    Direction = ParameterDirection.Input,
+                //    Value = searchcategory
+                //};
 
-                SqlParameter querymarket = new SqlParameter
-                {
-                    ParameterName = "@MARKET",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchmarket
-                };
+                //SqlParameter querymarket = new SqlParameter
+                //{
+                //    ParameterName = "@MARKET",
+                //    SqlDbType = SqlDbType.Int,
+                //    Direction = ParameterDirection.Input,
+                //    Value = searchmarket
+                //};
 
-                SqlParameter queryfactory = new SqlParameter
-                {
-                    ParameterName = "@FACTORY",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchfactory
-                };
+                //SqlParameter queryfactory = new SqlParameter
+                //{
+                //    ParameterName = "@FACTORY",
+                //    SqlDbType = SqlDbType.Int,
+                //    Direction = ParameterDirection.Input,
+                //    Value = searchfactory
+                //};
 
-                SqlParameter querytype = new SqlParameter
-                {
-                    ParameterName = "@TYPE",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchtype
-                };
+                //SqlParameter querytype = new SqlParameter
+                //{
+                //    ParameterName = "@TYPE",
+                //    SqlDbType = SqlDbType.Int,
+                //    Direction = ParameterDirection.Input,
+                //    Value = searchtype
+                //};
 
-                SqlParameter querybarcode = new SqlParameter
-                {
-                    ParameterName = "@BARCODE",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchbarcode
-                };
+                //SqlParameter querybarcode = new SqlParameter
+                //{
+                //    ParameterName = "@BARCODE",
+                //    SqlDbType = SqlDbType.Int,
+                //    Direction = ParameterDirection.Input,
+                //    Value = searchbarcode
+                //};
 
                 command.Parameters.Add(querypartnumber);
                 command.Parameters.Add(querydescription);
-                command.Parameters.Add(querybrand);
-                command.Parameters.Add(querycategory);
-                command.Parameters.Add(querymarket);
-                command.Parameters.Add(queryfactory);
-                command.Parameters.Add(querytype);
-                command.Parameters.Add(querybarcode);
+                //command.Parameters.Add(querybrand);
+                //command.Parameters.Add(querycategory);
+                //command.Parameters.Add(querymarket);
+                //command.Parameters.Add(queryfactory);
+                //command.Parameters.Add(querytype);
+                //command.Parameters.Add(querybarcode);
 
                 //Empty list
                 for (int i = product.Count - 1; i >= 0; i--)
@@ -199,10 +265,11 @@ namespace SajtBazis_WinForms.Database
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    product.Add(new Products((int)reader["part_number"], reader["description"].ToString(), (Brands)(int)reader["brand"], (Categories)(int)reader["category"], (Markets)(int)reader["market"], (Factories)(int)reader["factory"], (Types)(int)reader["type"], (int)reader["bar_code"], (int)reader["width"], (int)reader["heigth"], (int)reader["length"], (int)reader["pieces"], (int)reader["temperature"]));
+                    product.Add(new Products((int)reader["part_number"], reader["description"].ToString(), (Brands)(int)reader["brand"], (Markets)(int)reader["market"], (Factories)(int)reader["factory"], (Types)(int)reader["type"], (int)reader["bar_code"], (int)reader["width"], (int)reader["heigth"], (int)reader["length"], (int)reader["pieces"], (int)reader["temperature"]));
                 }
                 reader.Close();
                 command.Parameters.Clear();
+                productsql = "SELECT * FROM [Products] WHERE";
                 return product;
             }
             catch (Exception ex)
@@ -211,6 +278,7 @@ namespace SajtBazis_WinForms.Database
             }
 
         }
+
         public static List<Products> SelectAllProduct()
         {
             try
@@ -229,7 +297,7 @@ namespace SajtBazis_WinForms.Database
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    product.Add(new Products((int)reader["part_number"], reader["description"].ToString(), (Brands)(int)reader["brand"], (Categories)(int)reader["category"], (Markets)(int)reader["market"], (Factories)(int)reader["factory"], (Types)(int)reader["type"], (int)reader["bar_code"], (int)reader["width"], (int)reader["heigth"], (int)reader["length"], (int)reader["pieces"], (int)reader["temperature"]));
+                    product.Add(new Products((int)reader["part_number"], reader["description"].ToString(), (Brands)(int)reader["brand"], (Markets)(int)reader["market"], (Factories)(int)reader["factory"], (Types)(int)reader["type"], (int)reader["bar_code"], (int)reader["width"], (int)reader["heigth"], (int)reader["length"], (int)reader["pieces"], (int)reader["temperature"]));
                 }
                 reader.Close();
                 return product;
@@ -246,7 +314,7 @@ namespace SajtBazis_WinForms.Database
         {
             try
             {
-                command.CommandText = String.Format("INSERT INTO [Products] VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}')", fresh.PartNumber, fresh.Description, fresh.Brand, fresh.Category, fresh.Market, fresh.Factory, fresh.Type, fresh.BarCode, fresh.Width, fresh.Height, fresh.Length, fresh.Pieces, fresh.Temperature);
+                command.CommandText = String.Format("INSERT INTO [Products] VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')", fresh.PartNumber, fresh.Description, fresh.Brand, fresh.Market, fresh.Factory, fresh.Type, fresh.BarCode, fresh.Width, fresh.Height, fresh.Length, fresh.Pieces, fresh.Temperature);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -260,7 +328,7 @@ namespace SajtBazis_WinForms.Database
         {
             try
             {
-                command.CommandText = String.Format("UPDATE [Products] SET [part_number] = '{0}', [description] = '{1}', [brand] = '{2}', [category] = '{3}', [market] = '{4}', [factory] = '{5}', [type] = '{6}', [bar_code] = '{7}', [width] = '{8}', [heigth] = '{9}', [length] = '{10}', [pieces] = '{11}', [temperature] = '{12}'", modify.PartNumber, modify.Description, modify.Brand, modify.Category, modify.Market, modify.Factory, modify.Type, modify.BarCode, modify.Width, modify.Height, modify.Length, modify.Pieces, modify.Temperature);
+                command.CommandText = String.Format("UPDATE [Products] SET [part_number] = '{0}', [description] = '{1}', [brand] = '{2}', [market] = '{3}', [factory] = '{4}', [type] = '{5}', [bar_code] = '{6}', [width] = '{7}', [heigth] = '{8}', [length] = '{9}', [pieces] = '{10}', [temperature] = '{11}'", modify.PartNumber, modify.Description, modify.Brand, modify.Market, modify.Factory, modify.Type, modify.BarCode, modify.Width, modify.Height, modify.Length, modify.Pieces, modify.Temperature);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -286,89 +354,189 @@ namespace SajtBazis_WinForms.Database
         #endregion
 
         #region USER
-        #region Select
-        public static List<Users> SearchUserByName(string searchuser)
+        #region Select      
+        //még kell
+        public static string CreateUserSearchSql(string searchuser, int searchpermission)
         {
-            try
+            if (searchuser != string.Empty && searchpermission > 0)
             {
-                command.Connection = connection;
-                command.CommandText = "SELECT * FROM [Users] WHERE username =@USER";
-                //command.CommandText = "SELECT * FROM [Users] WHERE username LIKE '%' + @USER + '%'";
-                command.CommandType = CommandType.Text;
-
-                SqlParameter queryname = new SqlParameter
-                {
-                    ParameterName = "@USER",
-                    SqlDbType = SqlDbType.VarChar,
-                    Direction = ParameterDirection.Input,
-                    Value = searchuser
-                };
-
-                command.Parameters.Add(queryname);
-                //command.Parameters.AddWithValue("@USER", "%" + queryname + "%");                
-
-                //Empty list
-                for (int i = user.Count - 1; i >= 0; i--)
-                {
-                    user.RemoveAt(i);
-                }
-
-                //Reading data
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
-                }
-                reader.Close();
-                command.Parameters.Clear();
-                return user;
+                usersql += " username = @USER AND permission = @PERMISSION";
             }
-            catch (Exception ex)
+            else if (searchuser != string.Empty)
             {
-                throw new DatabaseException("Unable to perform search!", ex.Message);
+                usersql += " username = @USER";
+            }
+            else if (searchpermission > 0)
+            {
+                usersql += " permission = @PERMISSION";
+            }
+            else
+            {
+                usersql = null;
+            }
+            return usersql;
+        }
+        public static List<Users> SearchUser(string searchusername, List<int> searchpermission)
+        {
+            if (searchusername != string.Empty && searchpermission.Count > 0)
+            {
+                try
+                {
+                    command.Connection = connection;
+                    string sql = "SELECT * FROM [Users] WHERE username = @USERNAME AND permission IN ({0})";
+                    List<string> idParameterList = new List<string>();
+                    var index = 0;
+                    foreach (var id in searchpermission)
+                    {
+                        var paramName = "@PERMISSION" + index;
+                        command.Parameters.AddWithValue(paramName, id);
+                        idParameterList.Add(paramName);
+                        index++;
+                    }
+
+                    SqlParameter queryusername = new SqlParameter
+                    {
+                        ParameterName = "@USERNAME",
+                        SqlDbType = SqlDbType.VarChar,
+                        Direction = ParameterDirection.Input,
+                        Value = searchusername
+                    };
+
+                    command.Parameters.Add(queryusername);
+
+                    command.CommandText = String.Format(sql, string.Join(",", idParameterList));
+                    command.CommandType = CommandType.Text;
+
+                    //Empty list
+                    for (int i = user.Count - 1; i >= 0; i--)
+                    {
+                        user.RemoveAt(i);
+                    }
+
+                    //Reading data
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), reader["name"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                    }
+                    reader.Close();
+                    command.Parameters.Clear();
+                    sql = "SELECT * FROM [Users] WHERE username = @USERNAME AND permission IN ({0})";
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new DatabaseException("Unable to perform search!", ex.Message);
+                }
+            }
+            else if (searchusername != string.Empty)
+            {
+                try
+                {
+                    command.CommandText = "SELECT * FROM [Users] WHERE username = @USERNAME";
+                    command.CommandType = CommandType.Text;
+
+                    SqlParameter queryusername = new SqlParameter
+                    {
+                        ParameterName = "@USERNAME",
+                        SqlDbType = SqlDbType.VarChar,
+                        Direction = ParameterDirection.Input,
+                        Value = searchusername
+                    };
+
+                    command.Parameters.Add(queryusername);
+
+                    //Empty list
+                    for (int i = user.Count - 1; i >= 0; i--)
+                    {
+                        user.RemoveAt(i);
+                    }
+
+                    //Reading data
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), reader["name"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                    }
+                    reader.Close();
+                    command.Parameters.Clear();
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new DatabaseException("Unable to perform search!", ex.Message);
+                }
+            }
+            else if (searchpermission.Count > 0)
+            {
+                try
+                {
+                    command.Connection = connection;
+                    string sql = "SELECT * FROM [Users] WHERE permission IN ({0})";
+                    List<string> idParameterList = new List<string>();
+                    var index = 0;
+                    foreach (var id in searchpermission)
+                    {
+                        var paramName = "@PERMISSION" + index;
+                        command.Parameters.AddWithValue(paramName, id);
+                        idParameterList.Add(paramName);
+                        index++;
+                    }
+
+                    command.CommandText = String.Format(sql, string.Join(",", idParameterList));
+                    command.CommandType = CommandType.Text;
+
+                    //Empty list
+                    for (int i = user.Count - 1; i >= 0; i--)
+                    {
+                        user.RemoveAt(i);
+                    }
+
+                    //Reading data
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), reader["name"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                    }
+                    reader.Close();
+                    command.Parameters.Clear();
+                    sql = "SELECT * FROM [Users] WHERE permission IN ({0})";
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new DatabaseException("Unable to perform search!", ex.Message);
+                }
+            }
+            else
+            {
+                try
+                {
+                    command.Connection = connection;
+                    command.CommandText = "SELECT * FROM [Users]";
+                    command.CommandType = CommandType.Text;
+
+                    //Empty list
+                    for (int i = user.Count - 1; i >= 0; i--)
+                    {
+                        user.RemoveAt(i);
+                    }
+
+                    //Reading data
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), reader["name"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                    }
+                    reader.Close();
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
+                }
             }
         }
-
-        public static List<Users> SearchUserByPermission(int searchpermission)
-        {
-            try
-            {
-                command.Connection = connection;
-                command.CommandText = "SELECT * FROM [Users] WHERE permission = @PERMISSION";
-                command.CommandType = CommandType.Text;
-
-                SqlParameter querypermission = new SqlParameter
-                {
-                    ParameterName = "@PERMISSION",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchpermission
-                };
-
-                command.Parameters.Add(querypermission);
-
-                //Empty list
-                for (int i = user.Count - 1; i >= 0; i--)
-                {
-                    user.RemoveAt(i);
-                }
-
-                //Reading data
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
-                }
-                reader.Close();
-                command.Parameters.Clear();
-                return user;
-            }
-            catch (Exception ex)
-            {
-                throw new DatabaseException("Unable to perform search!", ex.Message);
-            }
-        }
-
 
         public static List<Users> SelectAllUser()
         {
@@ -384,11 +552,11 @@ namespace SajtBazis_WinForms.Database
                     user.RemoveAt(i);
                 }
 
-                //Reading data into list
+                //Reading data
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                    user.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), reader["name"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
                 }
                 reader.Close();
                 return user;
@@ -398,6 +566,7 @@ namespace SajtBazis_WinForms.Database
                 throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
             }
         }
+
         #endregion
 
         #region Modify
@@ -405,7 +574,7 @@ namespace SajtBazis_WinForms.Database
         {
             try
             {
-                command.CommandText = String.Format("INSERT INTO [Users] VALUES('{0}', '{1}', '{2}', '{3}')", fresh.Username, fresh.Password, fresh.Permission, fresh.Email);
+                command.CommandText = String.Format("INSERT INTO [Users] ([username], [password], [name], [permission], [email]) VALUES('{0}', '{1}', '{2}', '{3}', '{4}')", fresh.Username, fresh.Password, fresh.Name, fresh.Permission, fresh.Email);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -414,12 +583,12 @@ namespace SajtBazis_WinForms.Database
                 throw new DatabaseException("Insert new user failed!", ex.Message);
             }
         }
-        
+
         public static void UserModify(Users modify)
         {
             try
             {
-                command.CommandText = String.Format("UPDATE [Users] SET [username] = '{0}', [password] = '{1}', [permission] = '{2}', [email] = '{3}'", modify.Username, modify.Password, modify.Permission, modify.Email);
+                command.CommandText = String.Format("UPDATE [Users] SET [username] = '{0}', [password] = '{1}', [password] = '{2}', [permission] = '{3}', [email] = '{4}'", modify.Username, modify.Password, modify.Name, modify.Permission, modify.Email);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -432,12 +601,11 @@ namespace SajtBazis_WinForms.Database
         {
             try
             {
-                command.CommandText = String.Format("DELETE FROM [Users] WHERE [username] = '{0}'", delete.Username);
+                command.CommandText = String.Format("DELETE FROM [Users] WHERE [ID] = '{0}'", delete.Id);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
                 throw new DatabaseException("Deleting selected user failed!", ex.Message);
             }
         }

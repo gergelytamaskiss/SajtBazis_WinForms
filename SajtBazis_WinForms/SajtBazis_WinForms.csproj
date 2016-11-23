@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\LoggedUser.cs" />
     <Compile Include="Classes\Products.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Database\DatabaseException.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -151,6 +153,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\app_icon.ico" />
+    <None Include="Resources\KockaSajtLogo128x128.png" />
+    <None Include="Resources\SajtBazis_Logo128x128.jpg" />
     <Content Include="SajtBazis_DataBase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

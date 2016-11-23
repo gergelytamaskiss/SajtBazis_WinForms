@@ -9,18 +9,17 @@ namespace SajtBazis_WinForms.Classes
 {
     enum Permissions
     {
-        Select, //0
-        Admin, //1
-        Datamanager, //2
-        User //3
+        Admin, //0
+        Datamanager, //1
+        User //2
     }
     class Users
     {
-        Permissions permission;
-        internal Permissions Permission
+        int id;
+        public int Id
         {
-            get { return permission; }
-            //set { permission = value; }
+            get { return id; }
+            set { if (id == 0) { id = value; } }
         }
 
         string username;
@@ -39,6 +38,21 @@ namespace SajtBazis_WinForms.Classes
             set { password = value; }
         }
 
+        string name;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        Permissions permission;
+        internal Permissions Permission
+        {
+            get { return permission; }
+            //set { permission = value; }
+        }
+
         string email;
 
         public string Email
@@ -55,19 +69,25 @@ namespace SajtBazis_WinForms.Classes
         //    set { dateCreated = value; }
         //}
 
-        public Users(string username, string password, Permissions permission, string email)
+        public Users(string username, string password, string name, Permissions permission, string email)
         {
+            //Id = id;
             Username = username;
             Password = password;
+            Name = name;
             this.permission = permission;
             Email = email;
             //this.dateCreated = dateCreated;
         }
 
-        
         public override string ToString()
         {
             return "Username: " + username + " | Permission: " + permission + " | Email: " + email;
         }
+
+        //public override string ToCSV()
+        //{
+        //    return $"{Id};{username};{password};{(int)permission};{email}";
+        //}
     }
 }
