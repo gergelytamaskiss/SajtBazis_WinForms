@@ -61,13 +61,13 @@ namespace SajtBazis_WinForms.Classes
             set { email = value; }
         }
 
-        //DateTime dateCreated;
+        DateTime dateCreated;
 
-        //public DateTime DateCreated
-        //{
-        //    get { return dateCreated; }
-        //    set { dateCreated = value; }
-        //}
+        public DateTime DateCreated
+        {
+            get { return dateCreated; }
+            set { dateCreated = value; }
+        }
 
         public Users(string username, string password, string name, Permissions permission, string email)
         {

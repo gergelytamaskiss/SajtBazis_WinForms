@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Collections.Generic;
+using System.Text;
 
 namespace SajtBazis_WinForms
 {
@@ -21,6 +22,16 @@ namespace SajtBazis_WinForms
 
         private void MainSearch_Load(object sender, EventArgs e)
         {
+            /*if (LoggedUser.loggedUserId == 0)
+            {
+                MessageBox.Show("Admin");
+
+            }
+            else if (LoggedUser.loggedUserId == 1)
+            {
+                MessageBox.Show("DM");
+            }*/
+
             //PRODUCTS TAB
             chb_Type.DataSource = Enum.GetValues(typeof(Types));
             chb_Brand.DataSource = Enum.GetValues(typeof(Brands));
@@ -30,24 +41,24 @@ namespace SajtBazis_WinForms
             //ResetCheckedListBoxes();
             ButtonsEnabled();
 
-            lsv_ProductsSearch.GridLines = true;
-            lsv_ProductsSearch.View = View.Details;
-            lsv_ProductsSearch.FullRowSelect = true;
-            lsv_ProductsSearch.Columns.Add("ID", 30);
-            lsv_ProductsSearch.Columns.Add("Part number", 40);
-            lsv_ProductsSearch.Columns.Add("Description", 220);
-            lsv_ProductsSearch.Columns.Add("Brand", 80);
-            lsv_ProductsSearch.Columns.Add("Market", 50);
-            lsv_ProductsSearch.Columns.Add("Factory", 80);
-            lsv_ProductsSearch.Columns.Add("Type", 50);
-            lsv_ProductsSearch.Columns.Add("Barcode", 60);
-            lsv_ProductsSearch.Columns.Add("Width", 50);
-            lsv_ProductsSearch.Columns.Add("Heigth", 50);
-            lsv_ProductsSearch.Columns.Add("Length", 50);
-            lsv_ProductsSearch.Columns.Add("Pieces", 50);
-            lsv_ProductsSearch.Columns.Add("Temperature", 80);
+            lsv_SearchProducts.GridLines = true;
+            lsv_SearchProducts.View = View.Details;
+            lsv_SearchProducts.FullRowSelect = true;
+            lsv_SearchProducts.Columns.Add("ID", 30);
+            lsv_SearchProducts.Columns.Add("Part number", 40);
+            lsv_SearchProducts.Columns.Add("Description", 220);
+            lsv_SearchProducts.Columns.Add("Brand", 80);
+            lsv_SearchProducts.Columns.Add("Market", 50);
+            lsv_SearchProducts.Columns.Add("Factory", 80);
+            lsv_SearchProducts.Columns.Add("Type", 50);
+            lsv_SearchProducts.Columns.Add("Barcode", 60);
+            lsv_SearchProducts.Columns.Add("Width", 50);
+            lsv_SearchProducts.Columns.Add("Heigth", 50);
+            lsv_SearchProducts.Columns.Add("Length", 50);
+            lsv_SearchProducts.Columns.Add("Pieces", 50);
+            lsv_SearchProducts.Columns.Add("Temperature", 80);
 
-            LsvProductsRefresh();
+            LsvProductSearchRefresh();
 
             //USERS TAB
             chb_UserPermission.DataSource = Enum.GetValues(typeof(Permissions));
@@ -56,38 +67,38 @@ namespace SajtBazis_WinForms
                 chb_UserPermission.SetItemChecked(i, true);
             }
 
-            lsv_Users.GridLines = true;
-            lsv_Users.View = View.Details;
-            lsv_Users.FullRowSelect = true;
-            lsv_Users.Columns.Add("ID", 30);
-            lsv_Users.Columns.Add("Username", 100);
-            lsv_Users.Columns.Add("Password", 100);
-            lsv_Users.Columns.Add("Name", 130);
-            lsv_Users.Columns.Add("Permission", 100);
-            lsv_Users.Columns.Add("Email", 180);
+            lsv_ManageUsers.GridLines = true;
+            lsv_ManageUsers.View = View.Details;
+            lsv_ManageUsers.FullRowSelect = true;
+            lsv_ManageUsers.Columns.Add("ID", 30);
+            lsv_ManageUsers.Columns.Add("Username", 100);
+            lsv_ManageUsers.Columns.Add("Password", 100);
+            lsv_ManageUsers.Columns.Add("Name", 130);
+            lsv_ManageUsers.Columns.Add("Permission", 100);
+            lsv_ManageUsers.Columns.Add("Email", 180);
 
             LsvUsersRefresh();
 
             //PRODUCT MAINTENANCE TAB
-            lsv_ProductsMaintenance.GridLines = true;
-            lsv_ProductsMaintenance.View = View.Details;
-            lsv_ProductsMaintenance.FullRowSelect = true;
-            lsv_ProductsMaintenance.Columns.Add("ID", 30);
-            lsv_ProductsMaintenance.Columns.Add("Part number", 40);
-            lsv_ProductsMaintenance.Columns.Add("Description", 220);
-            lsv_ProductsMaintenance.Columns.Add("Brand", 80);
-            lsv_ProductsMaintenance.Columns.Add("Market", 50);
-            lsv_ProductsMaintenance.Columns.Add("Factory", 80);
-            lsv_ProductsMaintenance.Columns.Add("Type", 50);
-            lsv_ProductsMaintenance.Columns.Add("Barcode", 60);
-            lsv_ProductsMaintenance.Columns.Add("Width", 50);
-            lsv_ProductsMaintenance.Columns.Add("Heigth", 50);
-            lsv_ProductsMaintenance.Columns.Add("Length", 50);
-            lsv_ProductsMaintenance.Columns.Add("Pieces", 50);
-            lsv_ProductsMaintenance.Columns.Add("Temperature", 80);
+            lsv_ManageProducts.GridLines = true;
+            lsv_ManageProducts.View = View.Details;
+            lsv_ManageProducts.FullRowSelect = true;
+            lsv_ManageProducts.Columns.Add("ID", 30);
+            lsv_ManageProducts.Columns.Add("Part number", 40);
+            lsv_ManageProducts.Columns.Add("Description", 220);
+            lsv_ManageProducts.Columns.Add("Brand", 80);
+            lsv_ManageProducts.Columns.Add("Market", 50);
+            lsv_ManageProducts.Columns.Add("Factory", 80);
+            lsv_ManageProducts.Columns.Add("Type", 50);
+            lsv_ManageProducts.Columns.Add("Barcode", 60);
+            lsv_ManageProducts.Columns.Add("Width", 50);
+            lsv_ManageProducts.Columns.Add("Heigth", 50);
+            lsv_ManageProducts.Columns.Add("Length", 50);
+            lsv_ManageProducts.Columns.Add("Pieces", 50);
+            lsv_ManageProducts.Columns.Add("Temperature", 80);
 
-            LsvProductsRefresh();
-            LsvProductsMaintenanceRefresh();
+            LsvProductSearchRefresh();
+            LsvProductManageRefresh();
         }
 
 
@@ -115,8 +126,8 @@ namespace SajtBazis_WinForms
         {
             try
             {
-                LsvProductsRefresh();
-                LsvProductsMaintenanceRefresh();
+                LsvProductSearchRefresh();
+                LsvProductManageRefresh();
                 toolStripStatusLabel2.Text = "Products table(s) refreshed!";
             }
             catch (Exception)
@@ -144,7 +155,7 @@ namespace SajtBazis_WinForms
         {
             try
             {
-                LsvProductsRefresh();
+                LsvProductSearchRefresh();
                 LsvUsersRefresh();
                 toolStripStatusLabel2.Text = "All table refreshed!";
             }
@@ -156,8 +167,9 @@ namespace SajtBazis_WinForms
         }
         #endregion
 
-        #region CheckedListBoxes
-        //CHECKEDLISTBOXES PRODUCTS TAB
+        #region ####SEARCH TAB####
+
+        #region ProductCheckedListBoxes       
 
         public void ResetCheckedListBoxes()
         {
@@ -245,324 +257,6 @@ namespace SajtBazis_WinForms
                 chb_Factory.SetItemChecked(i, true);
             }
         }
-
-        //CHECKEDLISTBOXES USERS TAB
-        private void btn_PermissionAll_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < chb_UserPermission.Items.Count; i++)
-            {
-                chb_UserPermission.SetItemChecked(i, true);
-            }
-        }
-
-        private void btn_PermissionNone_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < chb_UserPermission.Items.Count; i++)
-            {
-                chb_UserPermission.SetItemChecked(i, false);
-            }
-        }
-        #endregion
-
-        #region ####PRODUCTS TAB####
-
-        public void ButtonsEnabled()
-        {
-            if (chb_Factory.CheckedItems.Count == 0)
-            {
-                chb_Type.Enabled = false;
-                btn_TypeAll.Enabled = false;
-                btn_TypeNone.Enabled = false;
-            }
-            else
-            {
-                chb_Type.Enabled = true;
-                btn_TypeAll.Enabled = true;
-                btn_TypeNone.Enabled = true;
-            }
-
-            if (chb_Type.CheckedItems.Count == 0)
-            {
-                chb_Market.Enabled = false;
-                btn_MarketAll.Enabled = false;
-                btn_MarketNone.Enabled = false;
-            }
-            else
-            {
-                chb_Market.Enabled = true;
-                btn_MarketAll.Enabled = true;
-                btn_MarketNone.Enabled = true;
-            }
-
-            if (chb_Market.CheckedItems.Count == 0)
-            {
-                chb_Brand.Enabled = false;
-                btn_BrandAll.Enabled = false;
-                btn_BrandNone.Enabled = false;
-            }
-            else
-            {
-                chb_Brand.Enabled = true;
-                btn_BrandAll.Enabled = true;
-                btn_BrandNone.Enabled = true;
-            }
-        }
-
-        public void LsvProductsRefresh()
-        {
-            try
-            {
-                int i = 1;
-                lsv_ProductsSearch.BeginUpdate();
-                lsv_ProductsSearch.Items.Clear();
-
-                foreach (var item in DatabaseManager.SelectAllProduct())
-                {
-                    ListViewItem row = new ListViewItem(i.ToString());
-                    row.SubItems.Add(item.PartNumber.ToString());
-                    row.SubItems.Add(item.Description);
-                    row.SubItems.Add(item.Brand.ToString());
-                    row.SubItems.Add(item.Market.ToString());
-                    row.SubItems.Add(item.Factory.ToString());
-                    row.SubItems.Add(item.Type.ToString());
-                    row.SubItems.Add(item.BarCode.ToString());
-                    row.SubItems.Add(item.Width.ToString());
-                    row.SubItems.Add(item.Height.ToString());
-                    row.SubItems.Add(item.Length.ToString());
-                    row.SubItems.Add(item.Pieces.ToString());
-                    row.SubItems.Add(item.Temperature.ToString());
-                    lsv_ProductsSearch.Items.Add(row);
-                    i++;
-                }
-                lsv_ProductsSearch.EndUpdate();
-                lsv_ProductsSearch.Refresh();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public void LsvProductsMaintenanceRefresh()
-        {
-            try
-            {
-                int i = 1;
-                lsv_ProductsMaintenance.BeginUpdate();
-                lsv_ProductsMaintenance.Items.Clear();
-
-                foreach (var item in DatabaseManager.SelectAllProduct())
-                {
-                    ListViewItem row = new ListViewItem(i.ToString());
-                    row.SubItems.Add(item.PartNumber.ToString());
-                    row.SubItems.Add(item.Description);
-                    row.SubItems.Add(item.Brand.ToString());
-                    row.SubItems.Add(item.Market.ToString());
-                    row.SubItems.Add(item.Factory.ToString());
-                    row.SubItems.Add(item.Type.ToString());
-                    row.SubItems.Add(item.BarCode.ToString());
-                    row.SubItems.Add(item.Width.ToString());
-                    row.SubItems.Add(item.Height.ToString());
-                    row.SubItems.Add(item.Length.ToString());
-                    row.SubItems.Add(item.Pieces.ToString());
-                    row.SubItems.Add(item.Temperature.ToString());
-                    lsv_ProductsMaintenance.Items.Add(row);
-                    i++;
-                }
-                lsv_ProductsMaintenance.EndUpdate();
-                lsv_ProductsMaintenance.Refresh();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        private void btn_ProductClear_Click(object sender, EventArgs e)
-        {
-            ResetCheckedListBoxes();
-            nud_PartNumber.Value = 0;
-            tbx_Description.Clear();
-            tbx_BarCode.Clear();
-            LsvProductsRefresh();
-        }
-
-        private void btn_ProductSearch_Click(object sender, EventArgs e)
-        {
-            int searchpartnumber = (int)nud_PartNumber.Value;
-            string searchdescription = tbx_Description.Text.Trim();
-            try
-            {
-                int k = 1;
-                lsv_ProductsSearch.BeginUpdate();
-                lsv_ProductsSearch.Items.Clear();
-                DatabaseManager.CreateProductSearchSql(searchpartnumber, searchdescription);
-
-                foreach (var item in DatabaseManager.SearchProduct(searchpartnumber, searchdescription))
-                {
-                    ListViewItem row = new ListViewItem(k.ToString());
-                    row.SubItems.Add(item.PartNumber.ToString());
-                    row.SubItems.Add(item.Description);
-                    row.SubItems.Add(item.Brand.ToString());
-                    row.SubItems.Add(item.Market.ToString());
-                    row.SubItems.Add(item.Factory.ToString());
-                    row.SubItems.Add(item.Type.ToString());
-                    row.SubItems.Add(item.BarCode.ToString());
-                    row.SubItems.Add(item.Width.ToString());
-                    row.SubItems.Add(item.Height.ToString());
-                    row.SubItems.Add(item.Length.ToString());
-                    row.SubItems.Add(item.Pieces.ToString());
-                    row.SubItems.Add(item.Temperature.ToString());
-                    lsv_ProductsSearch.Items.Add(row);
-                    k++;
-                }
-                lsv_ProductsSearch.EndUpdate();
-                lsv_ProductsSearch.Refresh();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
-        }
-        #endregion
-
-        #region ####USERS TAB####
-
-        public void LsvUsersRefresh()
-        {
-            try
-            {
-                int i = 1;
-                lsv_Users.BeginUpdate();
-                lsv_Users.Items.Clear();
-
-                foreach (var item in DatabaseManager.SelectAllUser())
-                {
-                    ListViewItem row = new ListViewItem(i.ToString());
-                    row.SubItems.Add(item.Username);
-                    row.SubItems.Add(item.Password);
-                    row.SubItems.Add(item.Name);
-                    row.SubItems.Add(item.Permission.ToString());
-                    row.SubItems.Add(item.Email);
-                    lsv_Users.Items.Add(row);
-                    i++;
-                }
-                lsv_Users.EndUpdate();
-                lsv_Users.Refresh();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        private void btn_UserClear_Click(object sender, EventArgs e)
-        {
-            tbx_UserNameSearch.Clear();
-            for (int i = 0; i < chb_UserPermission.Items.Count; i++)
-            {
-                chb_UserPermission.SetItemChecked(i, true);
-            }
-            LsvUsersRefresh();
-        }
-
-        private void btn_UserSearch_Click(object sender, EventArgs e)
-        {
-            string searchusername = tbx_UserNameSearch.Text.Trim();
-            List<int> searchpermission = new List<int>();
-
-            if (chb_UserPermission.CheckedItems.Count != 0)
-            {
-                for (int i = 0; i < chb_UserPermission.Items.Count; i++)
-                {
-                    if (chb_UserPermission.GetItemChecked(i))
-                    {
-                        searchpermission.Add((int)chb_UserPermission.Items[i]);
-                    }
-                }
-            }
-            else
-            {
-                toolStripStatusLabel2.Text = "You need to select at least one permission to search!";
-            }
-
-            try
-            {
-                int i = 1;
-                lsv_Users.BeginUpdate();
-                lsv_Users.Items.Clear();
-
-                foreach (var item in DatabaseManager.SearchUser(searchusername, searchpermission))
-                {
-                    ListViewItem row = new ListViewItem(i.ToString());
-                    row.SubItems.Add(item.Username);
-                    row.SubItems.Add(item.Password);
-                    row.SubItems.Add(item.Name);
-                    row.SubItems.Add(item.Permission.ToString());
-                    row.SubItems.Add(item.Email);
-                    lsv_Users.Items.Add(row);
-                    i++;
-                }
-                lsv_Users.EndUpdate();
-                lsv_Users.Refresh();
-            }
-            catch (Exception ex)
-            {
-                toolStripStatusLabel2.Text = ex.Message;
-            }
-        }
-
-        private void btn_UserNew_Click(object sender, EventArgs e)
-        {
-            UserNew userwindow = new UserNew();
-            userwindow.ShowDialog();
-            LsvUsersRefresh();
-        }
-
-        private void btn_UserModify_Click(object sender, EventArgs e)
-        {
-            //if (lsv_Users.FocusedItem.Index != -1)
-            //{
-            //    UserNew userwindow = new UserNew((Users)lsv_Users.FocusedItem);
-            //    if (userwindow.ShowDialog() == DialogResult.OK)
-            //    {
-
-            //    }
-            //}
-        }
-
-        private void btn_UserDelete_Click(object sender, EventArgs e)
-        {
-            //    if (lsv_Users.FocusedItem.Index != -1 && MessageBox.Show("Do you really want to delete the selected user?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            //    {
-            //        try
-            //        {
-            //            DatabaseManager.UserDelete((Users)lsv_Users.FocusedItem.Index);
-            //            toolStripStatusLabel1.Text = "User successfully deleted!";
-            //        }
-            //        catch (DatabaseException ex)
-            //        {
-            //            toolStripStatusLabel1.Text = "Error: " + ex.OriginalMessage;
-            //        }
-            //    }
-        }
-
-
-
-        #endregion
-
-
-        private void lbl_BarCode_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chb_Factory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void chb_Factory_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             ButtonsEnabled();
@@ -582,6 +276,488 @@ namespace SajtBazis_WinForms
         {
             ButtonsEnabled();
         }
+        #endregion
+
+        public void LsvProductSearchRefresh()
+        {
+            try
+            {
+                int i = 1;
+                lsv_SearchProducts.BeginUpdate();
+                lsv_SearchProducts.Items.Clear();
+
+                foreach (var item in DatabaseManager.SelectAllProduct())
+                {
+                    ListViewItem row = new ListViewItem(i.ToString());
+                    row.SubItems.Add(item.PartNumber.ToString());
+                    row.SubItems.Add(item.Description);
+                    row.SubItems.Add(item.Brand.ToString());
+                    row.SubItems.Add(item.Market.ToString());
+                    row.SubItems.Add(item.Factory.ToString());
+                    row.SubItems.Add(item.Type.ToString());
+                    row.SubItems.Add(item.BarCode.ToString());
+                    row.SubItems.Add(item.Width.ToString());
+                    row.SubItems.Add(item.Height.ToString());
+                    row.SubItems.Add(item.Length.ToString());
+                    row.SubItems.Add(item.Pieces.ToString());
+                    row.SubItems.Add(item.Temperature.ToString());
+                    lsv_SearchProducts.Items.Add(row);
+                    i++;
+                }
+                lsv_SearchProducts.EndUpdate();
+                lsv_SearchProducts.Refresh();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void ButtonsEnabled()
+        {
+            //if (chb_Factory.CheckedItems.Count == 0)
+            //{
+            //    chb_Type.Enabled = false;
+            //    btn_TypeAll.Enabled = false;
+            //    btn_TypeNone.Enabled = false;
+            //}
+            //else
+            //{
+            //    chb_Type.Enabled = true;
+            //    btn_TypeAll.Enabled = true;
+            //    btn_TypeNone.Enabled = true;
+            //}
+
+            //if (chb_Type.CheckedItems.Count == 0)
+            //{
+            //    chb_Market.Enabled = false;
+            //    btn_MarketAll.Enabled = false;
+            //    btn_MarketNone.Enabled = false;
+            //}
+            //else
+            //{
+            //    chb_Market.Enabled = true;
+            //    btn_MarketAll.Enabled = true;
+            //    btn_MarketNone.Enabled = true;
+            //}
+
+            //if (chb_Market.CheckedItems.Count == 0)
+            //{
+            //    chb_Brand.Enabled = false;
+            //    btn_BrandAll.Enabled = false;
+            //    btn_BrandNone.Enabled = false;
+            //}
+            //else
+            //{
+            //    chb_Brand.Enabled = true;
+            //    btn_BrandAll.Enabled = true;
+            //    btn_BrandNone.Enabled = true;
+            //}
+        }
+
+        private void btn_ClearByDetails_Click(object sender, EventArgs e)
+        {
+            tbx_ByDetailsDescription.Clear();
+            nud_ByDetailsPartNumber.Value = 0;
+            nud_ByDetailsBarCode.Value = 0;
+            LsvProductSearchRefresh();
+        }
+
+        private void btn_SearchByDetails_Click(object sender, EventArgs e)
+        {
+            string searchDescription = tbx_ByDetailsDescription.Text.Trim();
+            int searchPartNumber = (int)nud_ByDetailsPartNumber.Value;
+            int searchBarCode = (int)nud_ByDetailsBarCode.Value;
+
+            try
+            {
+                int i = 1;
+                lsv_SearchProducts.BeginUpdate();
+                lsv_SearchProducts.Items.Clear();
+
+                foreach (var item in DatabaseManager.SearchProductByDetails(searchDescription, searchPartNumber, searchBarCode))
+                {
+                    ListViewItem row = new ListViewItem(i.ToString());
+                    row.SubItems.Add(item.PartNumber.ToString());
+                    row.SubItems.Add(item.Description);
+                    row.SubItems.Add(item.Brand.ToString());
+                    row.SubItems.Add(item.Market.ToString());
+                    row.SubItems.Add(item.Factory.ToString());
+                    row.SubItems.Add(item.Type.ToString());
+                    row.SubItems.Add(item.BarCode.ToString());
+                    row.SubItems.Add(item.Width.ToString());
+                    row.SubItems.Add(item.Height.ToString());
+                    row.SubItems.Add(item.Length.ToString());
+                    row.SubItems.Add(item.Pieces.ToString());
+                    row.SubItems.Add(item.Temperature.ToString());
+                    lsv_SearchProducts.Items.Add(row);
+                    i++;
+                }
+                lsv_SearchProducts.EndUpdate();
+                lsv_SearchProducts.Refresh();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        private void btn_ClearByList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_SearchByList_Click(object sender, EventArgs e)
+        {            
+            List<int> searchFactory = new List<int>();
+            List<int> searchType = new List<int>();
+            List<int> searchMarket = new List<int>();
+            List<int> searchBrand = new List<int>();
+
+            if (chb_Factory.CheckedItems.Count != 0)
+            {
+                for (int i = 0; i < chb_Factory.Items.Count; i++)
+                {
+                    if (chb_Factory.GetItemChecked(i))
+                    {
+                        searchFactory.Add((int)chb_Factory.Items[i]);
+                    }
+                }
+            }
+
+            if (chb_Type.CheckedItems.Count != 0)
+            {
+                for (int i = 0; i < chb_Type.Items.Count; i++)
+                {
+                    if (chb_Type.GetItemChecked(i))
+                    {
+                        searchType.Add((int)chb_Type.Items[i]);
+                    }
+                }
+            }
+
+            if (chb_Market.CheckedItems.Count != 0)
+            {
+                for (int i = 0; i < chb_Market.Items.Count; i++)
+                {
+                    if (chb_Market.GetItemChecked(i))
+                    {
+                        searchMarket.Add((int)chb_Market.Items[i]);
+                    }
+                }
+            }
+
+            if (chb_Brand.CheckedItems.Count != 0)
+            {
+                for (int i = 0; i < chb_Brand.Items.Count; i++)
+                {
+                    if (chb_Brand.GetItemChecked(i))
+                    {
+                        searchBrand.Add((int)chb_Brand.Items[i]);
+                    }
+                }
+            }
+
+            try
+            {
+                int i = 1;
+                lsv_SearchProducts.BeginUpdate();
+                lsv_SearchProducts.Items.Clear();
+
+                foreach (var item in DatabaseManager.SearchProductByList(searchFactory, searchType, searchMarket, searchBrand))
+                {
+                    ListViewItem row = new ListViewItem(i.ToString());
+                    row.SubItems.Add(item.PartNumber.ToString());
+                    row.SubItems.Add(item.Description);
+                    row.SubItems.Add(item.Brand.ToString());
+                    row.SubItems.Add(item.Market.ToString());
+                    row.SubItems.Add(item.Factory.ToString());
+                    row.SubItems.Add(item.Type.ToString());
+                    row.SubItems.Add(item.BarCode.ToString());
+                    row.SubItems.Add(item.Width.ToString());
+                    row.SubItems.Add(item.Height.ToString());
+                    row.SubItems.Add(item.Length.ToString());
+                    row.SubItems.Add(item.Pieces.ToString());
+                    row.SubItems.Add(item.Temperature.ToString());
+                    lsv_SearchProducts.Items.Add(row);
+                    i++;
+                }
+                lsv_SearchProducts.EndUpdate();
+                lsv_SearchProducts.Refresh();
+            }
+            catch (Exception ex)
+            {
+                toolStripStatusLabel2.Text = ex.Message;
+            }
+        }
+        #endregion
+
+        #region ####MANAGE USERS TAB####
+
+        #region USER CHECKEDLISTBOXES
+
+        private void btn_PermissionAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < chb_UserPermission.Items.Count; i++)
+            {
+                chb_UserPermission.SetItemChecked(i, true);
+            }
+        }
+
+        private void btn_PermissionNone_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < chb_UserPermission.Items.Count; i++)
+            {
+                chb_UserPermission.SetItemChecked(i, false);
+            }
+        }
+        #endregion
+
+        public void LsvUsersRefresh()
+        {
+            try
+            {
+                int i = 1;
+                lsv_ManageUsers.BeginUpdate();
+                lsv_ManageUsers.Items.Clear();
+
+                foreach (var item in DatabaseManager.SelectAllUser())
+                {
+                    ListViewItem row = new ListViewItem(i.ToString());
+                    row.SubItems.Add(item.Username);
+                    row.SubItems.Add(item.Password);
+                    row.SubItems.Add(item.Name);
+                    row.SubItems.Add(item.Permission.ToString());
+                    row.SubItems.Add(item.Email);
+                    lsv_ManageUsers.Items.Add(row);
+                    i++;
+                }
+                lsv_ManageUsers.EndUpdate();
+                lsv_ManageUsers.Refresh();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void btn_ClearUser_Click(object sender, EventArgs e)
+        {
+            tbx_SearchUserName.Clear();
+            for (int i = 0; i < chb_UserPermission.Items.Count; i++)
+            {
+                chb_UserPermission.SetItemChecked(i, true);
+            }
+            LsvUsersRefresh();
+        }
+
+        private void btn_SearchUser_Click(object sender, EventArgs e)
+        {
+            string searchUserName = tbx_SearchUserName.Text.Trim();
+            List<int> searchPermission = new List<int>();
+
+            if (chb_UserPermission.CheckedItems.Count != 0)
+            {
+                for (int i = 0; i < chb_UserPermission.Items.Count; i++)
+                {
+                    if (chb_UserPermission.GetItemChecked(i))
+                    {
+                        searchPermission.Add((int)chb_UserPermission.Items[i]);
+                    }
+                }
+            }
+            else
+            {
+                toolStripStatusLabel2.Text = "You need to select at least one permission to search!";
+            }
+
+            try
+            {
+                int i = 1;
+                lsv_ManageUsers.BeginUpdate();
+                lsv_ManageUsers.Items.Clear();
+
+                foreach (var item in DatabaseManager.SearchUser(searchUserName, searchPermission))
+                {
+                    ListViewItem row = new ListViewItem(i.ToString());
+                    row.SubItems.Add(item.Username);
+                    row.SubItems.Add(item.Password);
+                    row.SubItems.Add(item.Name);
+                    row.SubItems.Add(item.Permission.ToString());
+                    row.SubItems.Add(item.Email);
+                    lsv_ManageUsers.Items.Add(row);
+                    i++;
+                }
+                lsv_ManageUsers.EndUpdate();
+                lsv_ManageUsers.Refresh();
+            }
+            catch (Exception ex)
+            {
+                toolStripStatusLabel2.Text = ex.Message;
+            }
+        }
+
+        private void btn_NewUser_Click(object sender, EventArgs e)
+        {
+            UserNew userwindow = new UserNew();
+            userwindow.ShowDialog();
+            LsvUsersRefresh();
+        }
+
+        private void btn_ModifyUser_Click(object sender, EventArgs e)
+        {
+            //if (lsv_ManageUsers.FocusedItem.Index != -1)
+            //{
+            //    UserNew userwindow = new UserNew((Users)lsv_ManageUsers.FocusedItem);
+            //    if (userwindow.ShowDialog() == DialogResult.OK)
+            //    {
+
+            //    }
+            //}
+        }
+
+        private void btn_DeleteUser_Click(object sender, EventArgs e)
+        {
+            //    if (lsv_Users.FocusedItem.Index != -1 && MessageBox.Show("Do you really want to delete the selected user?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //    {
+            //        try
+            //        {
+            //            DatabaseManager.UserDelete((Users)lsv_Users.FocusedItem.Index);
+            //            toolStripStatusLabel1.Text = "User successfully deleted!";
+            //        }
+            //        catch (DatabaseException ex)
+            //        {
+            //            toolStripStatusLabel1.Text = "Error: " + ex.OriginalMessage;
+            //        }
+            //    }
+        }
+
+        private void btn_ManageUsersExport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public static void ListViewToCSV(ListView listView, string filePath, bool includeHidden)
+        {
+            //make header string
+            StringBuilder result = new StringBuilder();
+            WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listView.Columns[i].Text);
+
+            //export data rows
+            foreach (ListViewItem listItem in listView.Items)
+                WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listItem.SubItems[i].Text);
+
+            File.WriteAllText(filePath, result.ToString());
+        }
+
+        private static void WriteCSVRow(StringBuilder result, int itemsCount, Func<int, bool> isColumnNeeded, Func<int, string> columnValue)
+        {
+            bool isFirstTime = true;
+            for (int i = 0; i < itemsCount; i++)
+            {
+                if (!isColumnNeeded(i))
+                    continue;
+
+                if (!isFirstTime)
+                    result.Append(",");
+                isFirstTime = false;
+
+                result.Append(String.Format("\"{0}\"", columnValue(i)));
+            }
+            result.AppendLine();
+        }
+
+        #endregion       
+
+        #region ####MANAGE PRODUCTS TAB####
+        public void LsvProductManageRefresh()
+        {
+            try
+            {
+                int i = 1;
+                lsv_ManageProducts.BeginUpdate();
+                lsv_ManageProducts.Items.Clear();
+
+                foreach (var item in DatabaseManager.SelectAllProduct())
+                {
+                    ListViewItem row = new ListViewItem(i.ToString());
+                    row.SubItems.Add(item.PartNumber.ToString());
+                    row.SubItems.Add(item.Description);
+                    row.SubItems.Add(item.Brand.ToString());
+                    row.SubItems.Add(item.Market.ToString());
+                    row.SubItems.Add(item.Factory.ToString());
+                    row.SubItems.Add(item.Type.ToString());
+                    row.SubItems.Add(item.BarCode.ToString());
+                    row.SubItems.Add(item.Width.ToString());
+                    row.SubItems.Add(item.Height.ToString());
+                    row.SubItems.Add(item.Length.ToString());
+                    row.SubItems.Add(item.Pieces.ToString());
+                    row.SubItems.Add(item.Temperature.ToString());
+                    lsv_ManageProducts.Items.Add(row);
+                    i++;
+                }
+                lsv_ManageProducts.EndUpdate();
+                lsv_ManageProducts.Refresh();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void btn_SearchProduct_Click(object sender, EventArgs e)
+        {
+            string searchDescription = tbx_ManageDescription.Text.Trim();
+            int searchPartNumber = (int)nud_ManagePartNumber.Value;
+            int searchBarCode = (int)nud_ManageBarCode.Value;
+
+            try
+            {
+                int i = 1;
+                lsv_ManageProducts.BeginUpdate();
+                lsv_ManageProducts.Items.Clear();
+
+                foreach (var item in DatabaseManager.SearchProductByDetails(searchDescription, searchPartNumber, searchBarCode))
+                {
+                    ListViewItem row = new ListViewItem(i.ToString());
+                    row.SubItems.Add(item.PartNumber.ToString());
+                    row.SubItems.Add(item.Description);
+                    row.SubItems.Add(item.Brand.ToString());
+                    row.SubItems.Add(item.Market.ToString());
+                    row.SubItems.Add(item.Factory.ToString());
+                    row.SubItems.Add(item.Type.ToString());
+                    row.SubItems.Add(item.BarCode.ToString());
+                    row.SubItems.Add(item.Width.ToString());
+                    row.SubItems.Add(item.Height.ToString());
+                    row.SubItems.Add(item.Length.ToString());
+                    row.SubItems.Add(item.Pieces.ToString());
+                    row.SubItems.Add(item.Temperature.ToString());
+                    lsv_ManageProducts.Items.Add(row);
+                    i++;
+                }
+                lsv_ManageProducts.EndUpdate();
+                lsv_ManageProducts.Refresh();
+            }
+            catch (Exception ex)
+            {
+                toolStripStatusLabel2.Text = ex.Message;
+            }
+        }
+
+        private void btn_ClearProduct_Click(object sender, EventArgs e)
+        {
+            tbx_ManageDescription.Clear();
+            nud_ManagePartNumber.Value = 0;
+            nud_ManageBarCode.Value = 0;
+            LsvProductManageRefresh();
+        }
+
+        #endregion
+
+        
     }
 }
+
+
 

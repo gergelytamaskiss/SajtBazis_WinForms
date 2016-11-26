@@ -1,4 +1,6 @@
-﻿namespace SajtBazis_WinForms
+﻿using SajtBazis_WinForms.Classes;
+
+namespace SajtBazis_WinForms
 {
     partial class MainSearch
     {
@@ -39,10 +41,9 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewhelptoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grb_Parameters = new System.Windows.Forms.GroupBox();
-            this.btn_ProductExport = new System.Windows.Forms.Button();
-            this.tbx_BarCode = new System.Windows.Forms.TextBox();
-            this.nud_PartNumber = new System.Windows.Forms.NumericUpDown();
+            this.grb_ByList = new System.Windows.Forms.GroupBox();
+            this.btn_ClearByList = new System.Windows.Forms.Button();
+            this.btn_SearchByList = new System.Windows.Forms.Button();
             this.btn_FactoryNone = new System.Windows.Forms.Button();
             this.btn_MarketNone = new System.Windows.Forms.Button();
             this.btn_BrandNone = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.btn_MarketAll = new System.Windows.Forms.Button();
             this.btn_BrandAll = new System.Windows.Forms.Button();
             this.btn_TypeAll = new System.Windows.Forms.Button();
-            this.btn_ProductClear = new System.Windows.Forms.Button();
             this.chb_Factory = new System.Windows.Forms.CheckedListBox();
             this.chb_Type = new System.Windows.Forms.CheckedListBox();
             this.chb_Brand = new System.Windows.Forms.CheckedListBox();
@@ -59,65 +59,77 @@
             this.lbl_Type = new System.Windows.Forms.Label();
             this.lbl_Market = new System.Windows.Forms.Label();
             this.lbl_Brand = new System.Windows.Forms.Label();
-            this.tbx_Description = new System.Windows.Forms.TextBox();
-            this.btn_ProductSearch = new System.Windows.Forms.Button();
-            this.lbl_BarCode = new System.Windows.Forms.Label();
             this.lbl_Factory = new System.Windows.Forms.Label();
-            this.lbl_Description = new System.Windows.Forms.Label();
-            this.lbl_PartNumber = new System.Windows.Forms.Label();
-            this.grb_Results = new System.Windows.Forms.GroupBox();
-            this.lsv_ProductsSearch = new System.Windows.Forms.ListView();
+            this.nud_ByDetailsBarCode = new System.Windows.Forms.NumericUpDown();
+            this.btn_ClearByDetails = new System.Windows.Forms.Button();
+            this.tbx_ByDetailsDescription = new System.Windows.Forms.TextBox();
+            this.btn_SearchByDetails = new System.Windows.Forms.Button();
+            this.lbl_ByDetailsBarCode = new System.Windows.Forms.Label();
+            this.lbl_ByDetailsDescription = new System.Windows.Forms.Label();
+            this.lbl_ByDetailsPartNumber = new System.Windows.Forms.Label();
+            this.grb_SearchProductsResults = new System.Windows.Forms.GroupBox();
+            this.btn_SearchProductsExport = new System.Windows.Forms.Button();
+            this.lsv_SearchProducts = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tbp_Search = new System.Windows.Forms.TabPage();
-            this.tbp_UserMaintenance = new System.Windows.Forms.TabPage();
-            this.grb_Manage = new System.Windows.Forms.GroupBox();
-            this.btn_UserExport = new System.Windows.Forms.Button();
-            this.btn_UserModify = new System.Windows.Forms.Button();
-            this.btn_UserNew = new System.Windows.Forms.Button();
-            this.btn_UserDelete = new System.Windows.Forms.Button();
-            this.grb_UserResult = new System.Windows.Forms.GroupBox();
-            this.lsv_Users = new System.Windows.Forms.ListView();
-            this.grb_UserSearch = new System.Windows.Forms.GroupBox();
+            this.tbp_SearchProducts = new System.Windows.Forms.TabPage();
+            this.grb_ByDetails = new System.Windows.Forms.GroupBox();
+            this.nud_ByDetailsPartNumber = new System.Windows.Forms.NumericUpDown();
+            this.tbp_ManageUsers = new System.Windows.Forms.TabPage();
+            this.grb_ManageUsers = new System.Windows.Forms.GroupBox();
+            this.btn_ModifyUser = new System.Windows.Forms.Button();
+            this.btn_NewUser = new System.Windows.Forms.Button();
+            this.btn_DeleteUser = new System.Windows.Forms.Button();
+            this.grb_ManageUsersResult = new System.Windows.Forms.GroupBox();
+            this.btn_ManageUsersExport = new System.Windows.Forms.Button();
+            this.lsv_ManageUsers = new System.Windows.Forms.ListView();
+            this.grb_SearchUsers = new System.Windows.Forms.GroupBox();
             this.btn_PermissionNone = new System.Windows.Forms.Button();
             this.btn_PermissionAll = new System.Windows.Forms.Button();
-            this.btn_UserClear = new System.Windows.Forms.Button();
+            this.btn_ClearUser = new System.Windows.Forms.Button();
             this.chb_UserPermission = new System.Windows.Forms.CheckedListBox();
             this.lbl_PermissionSearch = new System.Windows.Forms.Label();
-            this.btn_UserSearch = new System.Windows.Forms.Button();
+            this.btn_SearchUser = new System.Windows.Forms.Button();
             this.lbl_UsernameSearch = new System.Windows.Forms.Label();
-            this.tbx_UserNameSearch = new System.Windows.Forms.TextBox();
-            this.tbp_ProductMaintenance = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lsv_ProductsMaintenance = new System.Windows.Forms.ListView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_ProductModify = new System.Windows.Forms.Button();
-            this.btn_ProductNew = new System.Windows.Forms.Button();
-            this.btn_ProductDelete = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_ProductMaintenanceClear = new System.Windows.Forms.Button();
-            this.btn_ProductMaintenanceSearch = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbx_SearchUserName = new System.Windows.Forms.TextBox();
+            this.tbp_ManageProduct = new System.Windows.Forms.TabPage();
+            this.grb_ManageProducts = new System.Windows.Forms.GroupBox();
+            this.btn_ModifyProduct = new System.Windows.Forms.Button();
+            this.btn_NewProduct = new System.Windows.Forms.Button();
+            this.btn_DeleteProduct = new System.Windows.Forms.Button();
+            this.grb_SearchProducts = new System.Windows.Forms.GroupBox();
+            this.nud_ManagePartNumber = new System.Windows.Forms.NumericUpDown();
+            this.lbl_ManageDescription = new System.Windows.Forms.Label();
+            this.lbl_ManagePartNumber = new System.Windows.Forms.Label();
+            this.nud_ManageBarCode = new System.Windows.Forms.NumericUpDown();
+            this.lbl_ManageBarCode = new System.Windows.Forms.Label();
+            this.btn_SearchProduct = new System.Windows.Forms.Button();
+            this.tbx_ManageDescription = new System.Windows.Forms.TextBox();
+            this.btn_ClearProduct = new System.Windows.Forms.Button();
+            this.grb_ManageProductsResult = new System.Windows.Forms.GroupBox();
+            this.btn_ManageProductsExport = new System.Windows.Forms.Button();
+            this.lsv_ManageProducts = new System.Windows.Forms.ListView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
-            this.grb_Parameters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_PartNumber)).BeginInit();
-            this.grb_Results.SuspendLayout();
+            this.grb_ByList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ByDetailsBarCode)).BeginInit();
+            this.grb_SearchProductsResults.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tbp_Search.SuspendLayout();
-            this.tbp_UserMaintenance.SuspendLayout();
-            this.grb_Manage.SuspendLayout();
-            this.grb_UserResult.SuspendLayout();
-            this.grb_UserSearch.SuspendLayout();
-            this.tbp_ProductMaintenance.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tbp_SearchProducts.SuspendLayout();
+            this.grb_ByDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ByDetailsPartNumber)).BeginInit();
+            this.tbp_ManageUsers.SuspendLayout();
+            this.grb_ManageUsers.SuspendLayout();
+            this.grb_ManageUsersResult.SuspendLayout();
+            this.grb_SearchUsers.SuspendLayout();
+            this.tbp_ManageProduct.SuspendLayout();
+            this.grb_ManageProducts.SuspendLayout();
+            this.grb_SearchProducts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ManagePartNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ManageBarCode)).BeginInit();
+            this.grb_ManageProductsResult.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -201,67 +213,52 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // grb_Parameters
+            // grb_ByList
             // 
-            this.grb_Parameters.Controls.Add(this.btn_ProductExport);
-            this.grb_Parameters.Controls.Add(this.tbx_BarCode);
-            this.grb_Parameters.Controls.Add(this.nud_PartNumber);
-            this.grb_Parameters.Controls.Add(this.btn_FactoryNone);
-            this.grb_Parameters.Controls.Add(this.btn_MarketNone);
-            this.grb_Parameters.Controls.Add(this.btn_BrandNone);
-            this.grb_Parameters.Controls.Add(this.btn_TypeNone);
-            this.grb_Parameters.Controls.Add(this.btn_FactoryAll);
-            this.grb_Parameters.Controls.Add(this.btn_MarketAll);
-            this.grb_Parameters.Controls.Add(this.btn_BrandAll);
-            this.grb_Parameters.Controls.Add(this.btn_TypeAll);
-            this.grb_Parameters.Controls.Add(this.btn_ProductClear);
-            this.grb_Parameters.Controls.Add(this.chb_Factory);
-            this.grb_Parameters.Controls.Add(this.chb_Type);
-            this.grb_Parameters.Controls.Add(this.chb_Brand);
-            this.grb_Parameters.Controls.Add(this.chb_Market);
-            this.grb_Parameters.Controls.Add(this.lbl_Type);
-            this.grb_Parameters.Controls.Add(this.lbl_Market);
-            this.grb_Parameters.Controls.Add(this.lbl_Brand);
-            this.grb_Parameters.Controls.Add(this.tbx_Description);
-            this.grb_Parameters.Controls.Add(this.btn_ProductSearch);
-            this.grb_Parameters.Controls.Add(this.lbl_BarCode);
-            this.grb_Parameters.Controls.Add(this.lbl_Factory);
-            this.grb_Parameters.Controls.Add(this.lbl_Description);
-            this.grb_Parameters.Controls.Add(this.lbl_PartNumber);
-            this.grb_Parameters.Location = new System.Drawing.Point(8, 6);
-            this.grb_Parameters.Name = "grb_Parameters";
-            this.grb_Parameters.Size = new System.Drawing.Size(938, 193);
-            this.grb_Parameters.TabIndex = 1;
-            this.grb_Parameters.TabStop = false;
-            this.grb_Parameters.Text = "Parameters";
+            this.grb_ByList.Controls.Add(this.btn_ClearByList);
+            this.grb_ByList.Controls.Add(this.btn_SearchByList);
+            this.grb_ByList.Controls.Add(this.btn_FactoryNone);
+            this.grb_ByList.Controls.Add(this.btn_MarketNone);
+            this.grb_ByList.Controls.Add(this.btn_BrandNone);
+            this.grb_ByList.Controls.Add(this.btn_TypeNone);
+            this.grb_ByList.Controls.Add(this.btn_FactoryAll);
+            this.grb_ByList.Controls.Add(this.btn_MarketAll);
+            this.grb_ByList.Controls.Add(this.btn_BrandAll);
+            this.grb_ByList.Controls.Add(this.btn_TypeAll);
+            this.grb_ByList.Controls.Add(this.chb_Factory);
+            this.grb_ByList.Controls.Add(this.chb_Type);
+            this.grb_ByList.Controls.Add(this.chb_Brand);
+            this.grb_ByList.Controls.Add(this.chb_Market);
+            this.grb_ByList.Controls.Add(this.lbl_Type);
+            this.grb_ByList.Controls.Add(this.lbl_Market);
+            this.grb_ByList.Controls.Add(this.lbl_Brand);
+            this.grb_ByList.Controls.Add(this.lbl_Factory);
+            this.grb_ByList.Location = new System.Drawing.Point(345, 6);
+            this.grb_ByList.Name = "grb_ByList";
+            this.grb_ByList.Size = new System.Drawing.Size(601, 193);
+            this.grb_ByList.TabIndex = 1;
+            this.grb_ByList.TabStop = false;
+            this.grb_ByList.Text = "By list";
             // 
-            // btn_ProductExport
+            // btn_ClearByList
             // 
-            this.btn_ProductExport.Location = new System.Drawing.Point(527, 151);
-            this.btn_ProductExport.Name = "btn_ProductExport";
-            this.btn_ProductExport.Size = new System.Drawing.Size(75, 23);
-            this.btn_ProductExport.TabIndex = 57;
-            this.btn_ProductExport.Text = "Export";
-            this.btn_ProductExport.UseVisualStyleBackColor = true;
+            this.btn_ClearByList.Location = new System.Drawing.Point(513, 111);
+            this.btn_ClearByList.Name = "btn_ClearByList";
+            this.btn_ClearByList.Size = new System.Drawing.Size(75, 23);
+            this.btn_ClearByList.TabIndex = 52;
+            this.btn_ClearByList.Text = "Clear";
+            this.btn_ClearByList.UseVisualStyleBackColor = true;
+            this.btn_ClearByList.Click += new System.EventHandler(this.btn_ClearByList_Click);
             // 
-            // tbx_BarCode
+            // btn_SearchByList
             // 
-            this.tbx_BarCode.Location = new System.Drawing.Point(721, 63);
-            this.tbx_BarCode.Name = "tbx_BarCode";
-            this.tbx_BarCode.Size = new System.Drawing.Size(72, 20);
-            this.tbx_BarCode.TabIndex = 56;
-            // 
-            // nud_PartNumber
-            // 
-            this.nud_PartNumber.Location = new System.Drawing.Point(593, 63);
-            this.nud_PartNumber.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nud_PartNumber.Name = "nud_PartNumber";
-            this.nud_PartNumber.Size = new System.Drawing.Size(62, 20);
-            this.nud_PartNumber.TabIndex = 55;
+            this.btn_SearchByList.Location = new System.Drawing.Point(513, 151);
+            this.btn_SearchByList.Name = "btn_SearchByList";
+            this.btn_SearchByList.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchByList.TabIndex = 51;
+            this.btn_SearchByList.Text = "Search";
+            this.btn_SearchByList.UseVisualStyleBackColor = true;
+            this.btn_SearchByList.Click += new System.EventHandler(this.btn_SearchByList_Click);
             // 
             // btn_FactoryNone
             // 
@@ -343,16 +340,6 @@
             this.btn_TypeAll.UseVisualStyleBackColor = true;
             this.btn_TypeAll.Click += new System.EventHandler(this.btn_TypeAll_Click);
             // 
-            // btn_ProductClear
-            // 
-            this.btn_ProductClear.Location = new System.Drawing.Point(608, 151);
-            this.btn_ProductClear.Name = "btn_ProductClear";
-            this.btn_ProductClear.Size = new System.Drawing.Size(75, 23);
-            this.btn_ProductClear.TabIndex = 41;
-            this.btn_ProductClear.Text = "Clear";
-            this.btn_ProductClear.UseVisualStyleBackColor = true;
-            this.btn_ProductClear.Click += new System.EventHandler(this.btn_ProductClear_Click);
-            // 
             // chb_Factory
             // 
             this.chb_Factory.FormattingEnabled = true;
@@ -361,7 +348,6 @@
             this.chb_Factory.Size = new System.Drawing.Size(120, 79);
             this.chb_Factory.TabIndex = 35;
             this.chb_Factory.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chb_Factory_ItemCheck);
-            this.chb_Factory.SelectedIndexChanged += new System.EventHandler(this.chb_Factory_SelectedIndexChanged);
             // 
             // chb_Type
             // 
@@ -417,33 +403,6 @@
             this.lbl_Brand.TabIndex = 28;
             this.lbl_Brand.Text = "Brand:";
             // 
-            // tbx_Description
-            // 
-            this.tbx_Description.Location = new System.Drawing.Point(593, 37);
-            this.tbx_Description.Name = "tbx_Description";
-            this.tbx_Description.Size = new System.Drawing.Size(200, 20);
-            this.tbx_Description.TabIndex = 22;
-            // 
-            // btn_ProductSearch
-            // 
-            this.btn_ProductSearch.Location = new System.Drawing.Point(718, 151);
-            this.btn_ProductSearch.Name = "btn_ProductSearch";
-            this.btn_ProductSearch.Size = new System.Drawing.Size(75, 23);
-            this.btn_ProductSearch.TabIndex = 16;
-            this.btn_ProductSearch.Text = "Search";
-            this.btn_ProductSearch.UseVisualStyleBackColor = true;
-            this.btn_ProductSearch.Click += new System.EventHandler(this.btn_ProductSearch_Click);
-            // 
-            // lbl_BarCode
-            // 
-            this.lbl_BarCode.AutoSize = true;
-            this.lbl_BarCode.Location = new System.Drawing.Point(661, 66);
-            this.lbl_BarCode.Name = "lbl_BarCode";
-            this.lbl_BarCode.Size = new System.Drawing.Size(54, 13);
-            this.lbl_BarCode.TabIndex = 6;
-            this.lbl_BarCode.Text = "Bar Code:";
-            this.lbl_BarCode.Click += new System.EventHandler(this.lbl_BarCode_Click);
-            // 
             // lbl_Factory
             // 
             this.lbl_Factory.AutoSize = true;
@@ -453,168 +412,257 @@
             this.lbl_Factory.TabIndex = 5;
             this.lbl_Factory.Text = "Factory:";
             // 
-            // lbl_Description
+            // nud_ByDetailsBarCode
             // 
-            this.lbl_Description.AutoSize = true;
-            this.lbl_Description.Location = new System.Drawing.Point(524, 42);
-            this.lbl_Description.Name = "lbl_Description";
-            this.lbl_Description.Size = new System.Drawing.Size(63, 13);
-            this.lbl_Description.TabIndex = 1;
-            this.lbl_Description.Text = "Description:";
+            this.nud_ByDetailsBarCode.Location = new System.Drawing.Point(81, 91);
+            this.nud_ByDetailsBarCode.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nud_ByDetailsBarCode.Name = "nud_ByDetailsBarCode";
+            this.nud_ByDetailsBarCode.Size = new System.Drawing.Size(62, 20);
+            this.nud_ByDetailsBarCode.TabIndex = 55;
             // 
-            // lbl_PartNumber
+            // btn_ClearByDetails
             // 
-            this.lbl_PartNumber.AutoSize = true;
-            this.lbl_PartNumber.Location = new System.Drawing.Point(524, 66);
-            this.lbl_PartNumber.Name = "lbl_PartNumber";
-            this.lbl_PartNumber.Size = new System.Drawing.Size(69, 13);
-            this.lbl_PartNumber.TabIndex = 0;
-            this.lbl_PartNumber.Text = "Part Number:";
+            this.btn_ClearByDetails.Location = new System.Drawing.Point(244, 111);
+            this.btn_ClearByDetails.Name = "btn_ClearByDetails";
+            this.btn_ClearByDetails.Size = new System.Drawing.Size(75, 23);
+            this.btn_ClearByDetails.TabIndex = 41;
+            this.btn_ClearByDetails.Text = "Clear";
+            this.btn_ClearByDetails.UseVisualStyleBackColor = true;
+            this.btn_ClearByDetails.Click += new System.EventHandler(this.btn_ClearByDetails_Click);
             // 
-            // grb_Results
+            // tbx_ByDetailsDescription
             // 
-            this.grb_Results.Controls.Add(this.lsv_ProductsSearch);
-            this.grb_Results.Location = new System.Drawing.Point(8, 226);
-            this.grb_Results.Name = "grb_Results";
-            this.grb_Results.Size = new System.Drawing.Size(938, 440);
-            this.grb_Results.TabIndex = 5;
-            this.grb_Results.TabStop = false;
-            this.grb_Results.Text = "Results";
+            this.tbx_ByDetailsDescription.Location = new System.Drawing.Point(81, 39);
+            this.tbx_ByDetailsDescription.Name = "tbx_ByDetailsDescription";
+            this.tbx_ByDetailsDescription.Size = new System.Drawing.Size(238, 20);
+            this.tbx_ByDetailsDescription.TabIndex = 22;
             // 
-            // lsv_ProductsSearch
+            // btn_SearchByDetails
             // 
-            this.lsv_ProductsSearch.Location = new System.Drawing.Point(9, 19);
-            this.lsv_ProductsSearch.Name = "lsv_ProductsSearch";
-            this.lsv_ProductsSearch.Size = new System.Drawing.Size(923, 415);
-            this.lsv_ProductsSearch.TabIndex = 0;
-            this.lsv_ProductsSearch.UseCompatibleStateImageBehavior = false;
+            this.btn_SearchByDetails.Location = new System.Drawing.Point(244, 151);
+            this.btn_SearchByDetails.Name = "btn_SearchByDetails";
+            this.btn_SearchByDetails.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchByDetails.TabIndex = 16;
+            this.btn_SearchByDetails.Text = "Search";
+            this.btn_SearchByDetails.UseVisualStyleBackColor = true;
+            this.btn_SearchByDetails.Click += new System.EventHandler(this.btn_SearchByDetails_Click);
+            // 
+            // lbl_ByDetailsBarCode
+            // 
+            this.lbl_ByDetailsBarCode.AutoSize = true;
+            this.lbl_ByDetailsBarCode.Location = new System.Drawing.Point(6, 93);
+            this.lbl_ByDetailsBarCode.Name = "lbl_ByDetailsBarCode";
+            this.lbl_ByDetailsBarCode.Size = new System.Drawing.Size(54, 13);
+            this.lbl_ByDetailsBarCode.TabIndex = 6;
+            this.lbl_ByDetailsBarCode.Text = "Bar Code:";
+            // 
+            // lbl_ByDetailsDescription
+            // 
+            this.lbl_ByDetailsDescription.AutoSize = true;
+            this.lbl_ByDetailsDescription.Location = new System.Drawing.Point(6, 42);
+            this.lbl_ByDetailsDescription.Name = "lbl_ByDetailsDescription";
+            this.lbl_ByDetailsDescription.Size = new System.Drawing.Size(63, 13);
+            this.lbl_ByDetailsDescription.TabIndex = 1;
+            this.lbl_ByDetailsDescription.Text = "Description:";
+            // 
+            // lbl_ByDetailsPartNumber
+            // 
+            this.lbl_ByDetailsPartNumber.AutoSize = true;
+            this.lbl_ByDetailsPartNumber.Location = new System.Drawing.Point(6, 67);
+            this.lbl_ByDetailsPartNumber.Name = "lbl_ByDetailsPartNumber";
+            this.lbl_ByDetailsPartNumber.Size = new System.Drawing.Size(69, 13);
+            this.lbl_ByDetailsPartNumber.TabIndex = 0;
+            this.lbl_ByDetailsPartNumber.Text = "Part Number:";
+            // 
+            // grb_SearchProductsResults
+            // 
+            this.grb_SearchProductsResults.Controls.Add(this.btn_SearchProductsExport);
+            this.grb_SearchProductsResults.Controls.Add(this.lsv_SearchProducts);
+            this.grb_SearchProductsResults.Location = new System.Drawing.Point(8, 205);
+            this.grb_SearchProductsResults.Name = "grb_SearchProductsResults";
+            this.grb_SearchProductsResults.Size = new System.Drawing.Size(938, 461);
+            this.grb_SearchProductsResults.TabIndex = 5;
+            this.grb_SearchProductsResults.TabStop = false;
+            this.grb_SearchProductsResults.Text = "Results";
+            // 
+            // btn_SearchProductsExport
+            // 
+            this.btn_SearchProductsExport.Location = new System.Drawing.Point(857, 432);
+            this.btn_SearchProductsExport.Name = "btn_SearchProductsExport";
+            this.btn_SearchProductsExport.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchProductsExport.TabIndex = 1;
+            this.btn_SearchProductsExport.Text = "Export";
+            this.btn_SearchProductsExport.UseVisualStyleBackColor = true;
+            // 
+            // lsv_SearchProducts
+            // 
+            this.lsv_SearchProducts.Location = new System.Drawing.Point(9, 19);
+            this.lsv_SearchProducts.Name = "lsv_SearchProducts";
+            this.lsv_SearchProducts.Size = new System.Drawing.Size(923, 407);
+            this.lsv_SearchProducts.TabIndex = 0;
+            this.lsv_SearchProducts.UseCompatibleStateImageBehavior = false;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tbp_Search);
-            this.tabControl1.Controls.Add(this.tbp_UserMaintenance);
-            this.tabControl1.Controls.Add(this.tbp_ProductMaintenance);
+            this.tabControl1.Controls.Add(this.tbp_SearchProducts);
+            this.tabControl1.Controls.Add(this.tbp_ManageUsers);
+            this.tabControl1.Controls.Add(this.tbp_ManageProduct);
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(960, 698);
             this.tabControl1.TabIndex = 6;
             // 
-            // tbp_Search
+            // tbp_SearchProducts
             // 
-            this.tbp_Search.Controls.Add(this.grb_Parameters);
-            this.tbp_Search.Controls.Add(this.grb_Results);
-            this.tbp_Search.Location = new System.Drawing.Point(4, 22);
-            this.tbp_Search.Name = "tbp_Search";
-            this.tbp_Search.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_Search.Size = new System.Drawing.Size(952, 672);
-            this.tbp_Search.TabIndex = 0;
-            this.tbp_Search.Text = "Search Products";
-            this.tbp_Search.UseVisualStyleBackColor = true;
+            this.tbp_SearchProducts.Controls.Add(this.grb_ByDetails);
+            this.tbp_SearchProducts.Controls.Add(this.grb_ByList);
+            this.tbp_SearchProducts.Controls.Add(this.grb_SearchProductsResults);
+            this.tbp_SearchProducts.Location = new System.Drawing.Point(4, 22);
+            this.tbp_SearchProducts.Name = "tbp_SearchProducts";
+            this.tbp_SearchProducts.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_SearchProducts.Size = new System.Drawing.Size(952, 672);
+            this.tbp_SearchProducts.TabIndex = 0;
+            this.tbp_SearchProducts.Text = "Search products";
+            this.tbp_SearchProducts.UseVisualStyleBackColor = true;
             // 
-            // tbp_UserMaintenance
+            // grb_ByDetails
             // 
-            this.tbp_UserMaintenance.Controls.Add(this.grb_Manage);
-            this.tbp_UserMaintenance.Controls.Add(this.grb_UserResult);
-            this.tbp_UserMaintenance.Controls.Add(this.grb_UserSearch);
-            this.tbp_UserMaintenance.Location = new System.Drawing.Point(4, 22);
-            this.tbp_UserMaintenance.Name = "tbp_UserMaintenance";
-            this.tbp_UserMaintenance.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_UserMaintenance.Size = new System.Drawing.Size(952, 672);
-            this.tbp_UserMaintenance.TabIndex = 1;
-            this.tbp_UserMaintenance.Text = "User Maintenance";
-            this.tbp_UserMaintenance.UseVisualStyleBackColor = true;
+            this.grb_ByDetails.Controls.Add(this.nud_ByDetailsPartNumber);
+            this.grb_ByDetails.Controls.Add(this.lbl_ByDetailsDescription);
+            this.grb_ByDetails.Controls.Add(this.lbl_ByDetailsPartNumber);
+            this.grb_ByDetails.Controls.Add(this.nud_ByDetailsBarCode);
+            this.grb_ByDetails.Controls.Add(this.lbl_ByDetailsBarCode);
+            this.grb_ByDetails.Controls.Add(this.btn_SearchByDetails);
+            this.grb_ByDetails.Controls.Add(this.tbx_ByDetailsDescription);
+            this.grb_ByDetails.Controls.Add(this.btn_ClearByDetails);
+            this.grb_ByDetails.Location = new System.Drawing.Point(8, 6);
+            this.grb_ByDetails.Name = "grb_ByDetails";
+            this.grb_ByDetails.Size = new System.Drawing.Size(331, 193);
+            this.grb_ByDetails.TabIndex = 6;
+            this.grb_ByDetails.TabStop = false;
+            this.grb_ByDetails.Text = "By details";
             // 
-            // grb_Manage
+            // nud_ByDetailsPartNumber
             // 
-            this.grb_Manage.Controls.Add(this.btn_UserExport);
-            this.grb_Manage.Controls.Add(this.btn_UserModify);
-            this.grb_Manage.Controls.Add(this.btn_UserNew);
-            this.grb_Manage.Controls.Add(this.btn_UserDelete);
-            this.grb_Manage.Location = new System.Drawing.Point(318, 6);
-            this.grb_Manage.Name = "grb_Manage";
-            this.grb_Manage.Size = new System.Drawing.Size(124, 171);
-            this.grb_Manage.TabIndex = 24;
-            this.grb_Manage.TabStop = false;
-            this.grb_Manage.Text = "Manage";
+            this.nud_ByDetailsPartNumber.Location = new System.Drawing.Point(81, 65);
+            this.nud_ByDetailsPartNumber.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nud_ByDetailsPartNumber.Name = "nud_ByDetailsPartNumber";
+            this.nud_ByDetailsPartNumber.Size = new System.Drawing.Size(62, 20);
+            this.nud_ByDetailsPartNumber.TabIndex = 58;
             // 
-            // btn_UserExport
+            // tbp_ManageUsers
             // 
-            this.btn_UserExport.Location = new System.Drawing.Point(15, 130);
-            this.btn_UserExport.Name = "btn_UserExport";
-            this.btn_UserExport.Size = new System.Drawing.Size(91, 23);
-            this.btn_UserExport.TabIndex = 18;
-            this.btn_UserExport.Text = "Export";
-            this.btn_UserExport.UseVisualStyleBackColor = true;
+            this.tbp_ManageUsers.Controls.Add(this.grb_ManageUsers);
+            this.tbp_ManageUsers.Controls.Add(this.grb_ManageUsersResult);
+            this.tbp_ManageUsers.Controls.Add(this.grb_SearchUsers);
+            this.tbp_ManageUsers.Location = new System.Drawing.Point(4, 22);
+            this.tbp_ManageUsers.Name = "tbp_ManageUsers";
+            this.tbp_ManageUsers.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_ManageUsers.Size = new System.Drawing.Size(952, 672);
+            this.tbp_ManageUsers.TabIndex = 1;
+            this.tbp_ManageUsers.Text = "Manage users";
+            this.tbp_ManageUsers.UseVisualStyleBackColor = true;
             // 
-            // btn_UserModify
+            // grb_ManageUsers
             // 
-            this.btn_UserModify.Location = new System.Drawing.Point(15, 60);
-            this.btn_UserModify.Name = "btn_UserModify";
-            this.btn_UserModify.Size = new System.Drawing.Size(91, 23);
-            this.btn_UserModify.TabIndex = 1;
-            this.btn_UserModify.Text = "Modify selected";
-            this.btn_UserModify.UseVisualStyleBackColor = true;
-            this.btn_UserModify.Click += new System.EventHandler(this.btn_UserModify_Click);
+            this.grb_ManageUsers.Controls.Add(this.btn_ModifyUser);
+            this.grb_ManageUsers.Controls.Add(this.btn_NewUser);
+            this.grb_ManageUsers.Controls.Add(this.btn_DeleteUser);
+            this.grb_ManageUsers.Location = new System.Drawing.Point(318, 6);
+            this.grb_ManageUsers.Name = "grb_ManageUsers";
+            this.grb_ManageUsers.Size = new System.Drawing.Size(124, 193);
+            this.grb_ManageUsers.TabIndex = 24;
+            this.grb_ManageUsers.TabStop = false;
+            this.grb_ManageUsers.Text = "Manage";
             // 
-            // btn_UserNew
+            // btn_ModifyUser
             // 
-            this.btn_UserNew.Location = new System.Drawing.Point(15, 31);
-            this.btn_UserNew.Name = "btn_UserNew";
-            this.btn_UserNew.Size = new System.Drawing.Size(91, 23);
-            this.btn_UserNew.TabIndex = 17;
-            this.btn_UserNew.Text = "New user";
-            this.btn_UserNew.UseVisualStyleBackColor = true;
-            this.btn_UserNew.Click += new System.EventHandler(this.btn_UserNew_Click);
+            this.btn_ModifyUser.Location = new System.Drawing.Point(15, 60);
+            this.btn_ModifyUser.Name = "btn_ModifyUser";
+            this.btn_ModifyUser.Size = new System.Drawing.Size(91, 23);
+            this.btn_ModifyUser.TabIndex = 1;
+            this.btn_ModifyUser.Text = "Modify selected";
+            this.btn_ModifyUser.UseVisualStyleBackColor = true;
+            this.btn_ModifyUser.Click += new System.EventHandler(this.btn_ModifyUser_Click);
             // 
-            // btn_UserDelete
+            // btn_NewUser
             // 
-            this.btn_UserDelete.Location = new System.Drawing.Point(15, 89);
-            this.btn_UserDelete.Name = "btn_UserDelete";
-            this.btn_UserDelete.Size = new System.Drawing.Size(91, 23);
-            this.btn_UserDelete.TabIndex = 16;
-            this.btn_UserDelete.Text = "Delete selected";
-            this.btn_UserDelete.UseVisualStyleBackColor = true;
-            this.btn_UserDelete.Click += new System.EventHandler(this.btn_UserDelete_Click);
+            this.btn_NewUser.Location = new System.Drawing.Point(15, 31);
+            this.btn_NewUser.Name = "btn_NewUser";
+            this.btn_NewUser.Size = new System.Drawing.Size(91, 23);
+            this.btn_NewUser.TabIndex = 17;
+            this.btn_NewUser.Text = "New user";
+            this.btn_NewUser.UseVisualStyleBackColor = true;
+            this.btn_NewUser.Click += new System.EventHandler(this.btn_NewUser_Click);
             // 
-            // grb_UserResult
+            // btn_DeleteUser
             // 
-            this.grb_UserResult.Controls.Add(this.lsv_Users);
-            this.grb_UserResult.Location = new System.Drawing.Point(8, 201);
-            this.grb_UserResult.Name = "grb_UserResult";
-            this.grb_UserResult.Size = new System.Drawing.Size(740, 465);
-            this.grb_UserResult.TabIndex = 23;
-            this.grb_UserResult.TabStop = false;
-            this.grb_UserResult.Text = "Results";
+            this.btn_DeleteUser.Location = new System.Drawing.Point(15, 89);
+            this.btn_DeleteUser.Name = "btn_DeleteUser";
+            this.btn_DeleteUser.Size = new System.Drawing.Size(91, 23);
+            this.btn_DeleteUser.TabIndex = 16;
+            this.btn_DeleteUser.Text = "Delete selected";
+            this.btn_DeleteUser.UseVisualStyleBackColor = true;
+            this.btn_DeleteUser.Click += new System.EventHandler(this.btn_DeleteUser_Click);
             // 
-            // lsv_Users
+            // grb_ManageUsersResult
             // 
-            this.lsv_Users.Location = new System.Drawing.Point(6, 19);
-            this.lsv_Users.Name = "lsv_Users";
-            this.lsv_Users.Size = new System.Drawing.Size(728, 440);
-            this.lsv_Users.TabIndex = 1;
-            this.lsv_Users.UseCompatibleStateImageBehavior = false;
+            this.grb_ManageUsersResult.Controls.Add(this.btn_ManageUsersExport);
+            this.grb_ManageUsersResult.Controls.Add(this.lsv_ManageUsers);
+            this.grb_ManageUsersResult.Location = new System.Drawing.Point(8, 205);
+            this.grb_ManageUsersResult.Name = "grb_ManageUsersResult";
+            this.grb_ManageUsersResult.Size = new System.Drawing.Size(938, 461);
+            this.grb_ManageUsersResult.TabIndex = 23;
+            this.grb_ManageUsersResult.TabStop = false;
+            this.grb_ManageUsersResult.Text = "Results";
             // 
-            // grb_UserSearch
+            // btn_ManageUsersExport
             // 
-            this.grb_UserSearch.Controls.Add(this.btn_PermissionNone);
-            this.grb_UserSearch.Controls.Add(this.btn_PermissionAll);
-            this.grb_UserSearch.Controls.Add(this.btn_UserClear);
-            this.grb_UserSearch.Controls.Add(this.chb_UserPermission);
-            this.grb_UserSearch.Controls.Add(this.lbl_PermissionSearch);
-            this.grb_UserSearch.Controls.Add(this.btn_UserSearch);
-            this.grb_UserSearch.Controls.Add(this.lbl_UsernameSearch);
-            this.grb_UserSearch.Controls.Add(this.tbx_UserNameSearch);
-            this.grb_UserSearch.Location = new System.Drawing.Point(6, 6);
-            this.grb_UserSearch.Name = "grb_UserSearch";
-            this.grb_UserSearch.Size = new System.Drawing.Size(306, 171);
-            this.grb_UserSearch.TabIndex = 21;
-            this.grb_UserSearch.TabStop = false;
-            this.grb_UserSearch.Text = "Search";
+            this.btn_ManageUsersExport.Location = new System.Drawing.Point(857, 432);
+            this.btn_ManageUsersExport.Name = "btn_ManageUsersExport";
+            this.btn_ManageUsersExport.Size = new System.Drawing.Size(75, 23);
+            this.btn_ManageUsersExport.TabIndex = 2;
+            this.btn_ManageUsersExport.Text = "Export";
+            this.btn_ManageUsersExport.UseVisualStyleBackColor = true;
+            this.btn_ManageUsersExport.Click += new System.EventHandler(this.btn_ManageUsersExport_Click);
+            // 
+            // lsv_ManageUsers
+            // 
+            this.lsv_ManageUsers.Location = new System.Drawing.Point(6, 19);
+            this.lsv_ManageUsers.Name = "lsv_ManageUsers";
+            this.lsv_ManageUsers.Size = new System.Drawing.Size(926, 407);
+            this.lsv_ManageUsers.TabIndex = 1;
+            this.lsv_ManageUsers.UseCompatibleStateImageBehavior = false;
+            // 
+            // grb_SearchUsers
+            // 
+            this.grb_SearchUsers.Controls.Add(this.btn_PermissionNone);
+            this.grb_SearchUsers.Controls.Add(this.btn_PermissionAll);
+            this.grb_SearchUsers.Controls.Add(this.btn_ClearUser);
+            this.grb_SearchUsers.Controls.Add(this.chb_UserPermission);
+            this.grb_SearchUsers.Controls.Add(this.lbl_PermissionSearch);
+            this.grb_SearchUsers.Controls.Add(this.btn_SearchUser);
+            this.grb_SearchUsers.Controls.Add(this.lbl_UsernameSearch);
+            this.grb_SearchUsers.Controls.Add(this.tbx_SearchUserName);
+            this.grb_SearchUsers.Location = new System.Drawing.Point(6, 6);
+            this.grb_SearchUsers.Name = "grb_SearchUsers";
+            this.grb_SearchUsers.Size = new System.Drawing.Size(306, 193);
+            this.grb_SearchUsers.TabIndex = 21;
+            this.grb_SearchUsers.TabStop = false;
+            this.grb_SearchUsers.Text = "Search";
             // 
             // btn_PermissionNone
             // 
-            this.btn_PermissionNone.Location = new System.Drawing.Point(9, 130);
+            this.btn_PermissionNone.Location = new System.Drawing.Point(9, 145);
             this.btn_PermissionNone.Name = "btn_PermissionNone";
             this.btn_PermissionNone.Size = new System.Drawing.Size(96, 23);
             this.btn_PermissionNone.TabIndex = 28;
@@ -624,7 +672,7 @@
             // 
             // btn_PermissionAll
             // 
-            this.btn_PermissionAll.Location = new System.Drawing.Point(9, 31);
+            this.btn_PermissionAll.Location = new System.Drawing.Point(9, 46);
             this.btn_PermissionAll.Name = "btn_PermissionAll";
             this.btn_PermissionAll.Size = new System.Drawing.Size(96, 23);
             this.btn_PermissionAll.TabIndex = 27;
@@ -632,20 +680,20 @@
             this.btn_PermissionAll.UseVisualStyleBackColor = true;
             this.btn_PermissionAll.Click += new System.EventHandler(this.btn_PermissionAll_Click);
             // 
-            // btn_UserClear
+            // btn_ClearUser
             // 
-            this.btn_UserClear.Location = new System.Drawing.Point(133, 130);
-            this.btn_UserClear.Name = "btn_UserClear";
-            this.btn_UserClear.Size = new System.Drawing.Size(75, 23);
-            this.btn_UserClear.TabIndex = 22;
-            this.btn_UserClear.Text = "Clear";
-            this.btn_UserClear.UseVisualStyleBackColor = true;
-            this.btn_UserClear.Click += new System.EventHandler(this.btn_UserClear_Click);
+            this.btn_ClearUser.Location = new System.Drawing.Point(214, 110);
+            this.btn_ClearUser.Name = "btn_ClearUser";
+            this.btn_ClearUser.Size = new System.Drawing.Size(75, 23);
+            this.btn_ClearUser.TabIndex = 22;
+            this.btn_ClearUser.Text = "Clear";
+            this.btn_ClearUser.UseVisualStyleBackColor = true;
+            this.btn_ClearUser.Click += new System.EventHandler(this.btn_ClearUser_Click);
             // 
             // chb_UserPermission
             // 
             this.chb_UserPermission.FormattingEnabled = true;
-            this.chb_UserPermission.Location = new System.Drawing.Point(9, 60);
+            this.chb_UserPermission.Location = new System.Drawing.Point(9, 75);
             this.chb_UserPermission.Name = "chb_UserPermission";
             this.chb_UserPermission.Size = new System.Drawing.Size(96, 64);
             this.chb_UserPermission.TabIndex = 26;
@@ -653,172 +701,212 @@
             // lbl_PermissionSearch
             // 
             this.lbl_PermissionSearch.AutoSize = true;
-            this.lbl_PermissionSearch.Location = new System.Drawing.Point(6, 16);
+            this.lbl_PermissionSearch.Location = new System.Drawing.Point(6, 31);
             this.lbl_PermissionSearch.Name = "lbl_PermissionSearch";
             this.lbl_PermissionSearch.Size = new System.Drawing.Size(60, 13);
             this.lbl_PermissionSearch.TabIndex = 21;
             this.lbl_PermissionSearch.Text = "Permission:";
             // 
-            // btn_UserSearch
+            // btn_SearchUser
             // 
-            this.btn_UserSearch.Location = new System.Drawing.Point(214, 130);
-            this.btn_UserSearch.Name = "btn_UserSearch";
-            this.btn_UserSearch.Size = new System.Drawing.Size(75, 23);
-            this.btn_UserSearch.TabIndex = 19;
-            this.btn_UserSearch.Text = "Search";
-            this.btn_UserSearch.UseVisualStyleBackColor = true;
-            this.btn_UserSearch.Click += new System.EventHandler(this.btn_UserSearch_Click);
+            this.btn_SearchUser.Location = new System.Drawing.Point(214, 151);
+            this.btn_SearchUser.Name = "btn_SearchUser";
+            this.btn_SearchUser.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchUser.TabIndex = 19;
+            this.btn_SearchUser.Text = "Search";
+            this.btn_SearchUser.UseVisualStyleBackColor = true;
+            this.btn_SearchUser.Click += new System.EventHandler(this.btn_SearchUser_Click);
             // 
             // lbl_UsernameSearch
             // 
             this.lbl_UsernameSearch.AutoSize = true;
-            this.lbl_UsernameSearch.Location = new System.Drawing.Point(123, 36);
+            this.lbl_UsernameSearch.Location = new System.Drawing.Point(123, 51);
             this.lbl_UsernameSearch.Name = "lbl_UsernameSearch";
             this.lbl_UsernameSearch.Size = new System.Drawing.Size(58, 13);
             this.lbl_UsernameSearch.TabIndex = 3;
             this.lbl_UsernameSearch.Text = "Username:";
             // 
-            // tbx_UserNameSearch
+            // tbx_SearchUserName
             // 
-            this.tbx_UserNameSearch.Location = new System.Drawing.Point(189, 33);
-            this.tbx_UserNameSearch.Name = "tbx_UserNameSearch";
-            this.tbx_UserNameSearch.Size = new System.Drawing.Size(100, 20);
-            this.tbx_UserNameSearch.TabIndex = 7;
+            this.tbx_SearchUserName.Location = new System.Drawing.Point(189, 48);
+            this.tbx_SearchUserName.Name = "tbx_SearchUserName";
+            this.tbx_SearchUserName.Size = new System.Drawing.Size(100, 20);
+            this.tbx_SearchUserName.TabIndex = 7;
             // 
-            // tbp_ProductMaintenance
+            // tbp_ManageProduct
             // 
-            this.tbp_ProductMaintenance.Controls.Add(this.groupBox3);
-            this.tbp_ProductMaintenance.Controls.Add(this.groupBox2);
-            this.tbp_ProductMaintenance.Controls.Add(this.groupBox1);
-            this.tbp_ProductMaintenance.Location = new System.Drawing.Point(4, 22);
-            this.tbp_ProductMaintenance.Name = "tbp_ProductMaintenance";
-            this.tbp_ProductMaintenance.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_ProductMaintenance.Size = new System.Drawing.Size(952, 672);
-            this.tbp_ProductMaintenance.TabIndex = 2;
-            this.tbp_ProductMaintenance.Text = "Product Maintenance";
-            this.tbp_ProductMaintenance.UseVisualStyleBackColor = true;
+            this.tbp_ManageProduct.Controls.Add(this.grb_ManageProducts);
+            this.tbp_ManageProduct.Controls.Add(this.grb_SearchProducts);
+            this.tbp_ManageProduct.Controls.Add(this.grb_ManageProductsResult);
+            this.tbp_ManageProduct.Location = new System.Drawing.Point(4, 22);
+            this.tbp_ManageProduct.Name = "tbp_ManageProduct";
+            this.tbp_ManageProduct.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_ManageProduct.Size = new System.Drawing.Size(952, 672);
+            this.tbp_ManageProduct.TabIndex = 2;
+            this.tbp_ManageProduct.Text = "Manage products";
+            this.tbp_ManageProduct.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // grb_ManageProducts
             // 
-            this.groupBox3.Controls.Add(this.lsv_ProductsMaintenance);
-            this.groupBox3.Location = new System.Drawing.Point(8, 157);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(938, 509);
-            this.groupBox3.TabIndex = 54;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Results";
+            this.grb_ManageProducts.Controls.Add(this.btn_ModifyProduct);
+            this.grb_ManageProducts.Controls.Add(this.btn_NewProduct);
+            this.grb_ManageProducts.Controls.Add(this.btn_DeleteProduct);
+            this.grb_ManageProducts.Location = new System.Drawing.Point(350, 6);
+            this.grb_ManageProducts.Name = "grb_ManageProducts";
+            this.grb_ManageProducts.Size = new System.Drawing.Size(124, 193);
+            this.grb_ManageProducts.TabIndex = 56;
+            this.grb_ManageProducts.TabStop = false;
+            this.grb_ManageProducts.Text = "Manage";
             // 
-            // lsv_ProductsMaintenance
+            // btn_ModifyProduct
             // 
-            this.lsv_ProductsMaintenance.Location = new System.Drawing.Point(6, 19);
-            this.lsv_ProductsMaintenance.Name = "lsv_ProductsMaintenance";
-            this.lsv_ProductsMaintenance.Size = new System.Drawing.Size(926, 484);
-            this.lsv_ProductsMaintenance.TabIndex = 0;
-            this.lsv_ProductsMaintenance.UseCompatibleStateImageBehavior = false;
+            this.btn_ModifyProduct.Location = new System.Drawing.Point(15, 60);
+            this.btn_ModifyProduct.Name = "btn_ModifyProduct";
+            this.btn_ModifyProduct.Size = new System.Drawing.Size(91, 23);
+            this.btn_ModifyProduct.TabIndex = 1;
+            this.btn_ModifyProduct.Text = "Modify selected";
+            this.btn_ModifyProduct.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // btn_NewProduct
             // 
-            this.groupBox2.Controls.Add(this.btn_ProductModify);
-            this.groupBox2.Controls.Add(this.btn_ProductNew);
-            this.groupBox2.Controls.Add(this.btn_ProductDelete);
-            this.groupBox2.Location = new System.Drawing.Point(276, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(119, 123);
-            this.groupBox2.TabIndex = 53;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Manage";
+            this.btn_NewProduct.Location = new System.Drawing.Point(15, 31);
+            this.btn_NewProduct.Name = "btn_NewProduct";
+            this.btn_NewProduct.Size = new System.Drawing.Size(91, 23);
+            this.btn_NewProduct.TabIndex = 17;
+            this.btn_NewProduct.Text = "New product";
+            this.btn_NewProduct.UseVisualStyleBackColor = true;
             // 
-            // btn_ProductModify
+            // btn_DeleteProduct
             // 
-            this.btn_ProductModify.Location = new System.Drawing.Point(15, 55);
-            this.btn_ProductModify.Name = "btn_ProductModify";
-            this.btn_ProductModify.Size = new System.Drawing.Size(91, 23);
-            this.btn_ProductModify.TabIndex = 1;
-            this.btn_ProductModify.Text = "Modify selected";
-            this.btn_ProductModify.UseVisualStyleBackColor = true;
+            this.btn_DeleteProduct.Location = new System.Drawing.Point(15, 89);
+            this.btn_DeleteProduct.Name = "btn_DeleteProduct";
+            this.btn_DeleteProduct.Size = new System.Drawing.Size(91, 23);
+            this.btn_DeleteProduct.TabIndex = 16;
+            this.btn_DeleteProduct.Text = "Delete selected";
+            this.btn_DeleteProduct.UseVisualStyleBackColor = true;
             // 
-            // btn_ProductNew
+            // grb_SearchProducts
             // 
-            this.btn_ProductNew.Location = new System.Drawing.Point(15, 26);
-            this.btn_ProductNew.Name = "btn_ProductNew";
-            this.btn_ProductNew.Size = new System.Drawing.Size(91, 23);
-            this.btn_ProductNew.TabIndex = 17;
-            this.btn_ProductNew.Text = "New product";
-            this.btn_ProductNew.UseVisualStyleBackColor = true;
+            this.grb_SearchProducts.Controls.Add(this.nud_ManagePartNumber);
+            this.grb_SearchProducts.Controls.Add(this.lbl_ManageDescription);
+            this.grb_SearchProducts.Controls.Add(this.lbl_ManagePartNumber);
+            this.grb_SearchProducts.Controls.Add(this.nud_ManageBarCode);
+            this.grb_SearchProducts.Controls.Add(this.lbl_ManageBarCode);
+            this.grb_SearchProducts.Controls.Add(this.btn_SearchProduct);
+            this.grb_SearchProducts.Controls.Add(this.tbx_ManageDescription);
+            this.grb_SearchProducts.Controls.Add(this.btn_ClearProduct);
+            this.grb_SearchProducts.Location = new System.Drawing.Point(8, 6);
+            this.grb_SearchProducts.Name = "grb_SearchProducts";
+            this.grb_SearchProducts.Size = new System.Drawing.Size(336, 193);
+            this.grb_SearchProducts.TabIndex = 55;
+            this.grb_SearchProducts.TabStop = false;
+            this.grb_SearchProducts.Text = "Search";
             // 
-            // btn_ProductDelete
+            // nud_ManagePartNumber
             // 
-            this.btn_ProductDelete.Location = new System.Drawing.Point(15, 84);
-            this.btn_ProductDelete.Name = "btn_ProductDelete";
-            this.btn_ProductDelete.Size = new System.Drawing.Size(91, 23);
-            this.btn_ProductDelete.TabIndex = 16;
-            this.btn_ProductDelete.Text = "Delete selected";
-            this.btn_ProductDelete.UseVisualStyleBackColor = true;
+            this.nud_ManagePartNumber.Location = new System.Drawing.Point(81, 65);
+            this.nud_ManagePartNumber.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nud_ManagePartNumber.Name = "nud_ManagePartNumber";
+            this.nud_ManagePartNumber.Size = new System.Drawing.Size(62, 20);
+            this.nud_ManagePartNumber.TabIndex = 58;
             // 
-            // groupBox1
+            // lbl_ManageDescription
             // 
-            this.groupBox1.Controls.Add(this.btn_ProductMaintenanceClear);
-            this.groupBox1.Controls.Add(this.btn_ProductMaintenanceSearch);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(264, 123);
-            this.groupBox1.TabIndex = 52;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
+            this.lbl_ManageDescription.AutoSize = true;
+            this.lbl_ManageDescription.Location = new System.Drawing.Point(6, 42);
+            this.lbl_ManageDescription.Name = "lbl_ManageDescription";
+            this.lbl_ManageDescription.Size = new System.Drawing.Size(63, 13);
+            this.lbl_ManageDescription.TabIndex = 1;
+            this.lbl_ManageDescription.Text = "Description:";
             // 
-            // btn_ProductMaintenanceClear
+            // lbl_ManagePartNumber
             // 
-            this.btn_ProductMaintenanceClear.Location = new System.Drawing.Point(102, 83);
-            this.btn_ProductMaintenanceClear.Name = "btn_ProductMaintenanceClear";
-            this.btn_ProductMaintenanceClear.Size = new System.Drawing.Size(75, 23);
-            this.btn_ProductMaintenanceClear.TabIndex = 52;
-            this.btn_ProductMaintenanceClear.Text = "Clear";
-            this.btn_ProductMaintenanceClear.UseVisualStyleBackColor = true;
+            this.lbl_ManagePartNumber.AutoSize = true;
+            this.lbl_ManagePartNumber.Location = new System.Drawing.Point(6, 67);
+            this.lbl_ManagePartNumber.Name = "lbl_ManagePartNumber";
+            this.lbl_ManagePartNumber.Size = new System.Drawing.Size(69, 13);
+            this.lbl_ManagePartNumber.TabIndex = 0;
+            this.lbl_ManagePartNumber.Text = "Part Number:";
             // 
-            // btn_ProductMaintenanceSearch
+            // nud_ManageBarCode
             // 
-            this.btn_ProductMaintenanceSearch.Location = new System.Drawing.Point(183, 84);
-            this.btn_ProductMaintenanceSearch.Name = "btn_ProductMaintenanceSearch";
-            this.btn_ProductMaintenanceSearch.Size = new System.Drawing.Size(75, 23);
-            this.btn_ProductMaintenanceSearch.TabIndex = 19;
-            this.btn_ProductMaintenanceSearch.Text = "Search";
-            this.btn_ProductMaintenanceSearch.UseVisualStyleBackColor = true;
+            this.nud_ManageBarCode.Location = new System.Drawing.Point(81, 91);
+            this.nud_ManageBarCode.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nud_ManageBarCode.Name = "nud_ManageBarCode";
+            this.nud_ManageBarCode.Size = new System.Drawing.Size(62, 20);
+            this.nud_ManageBarCode.TabIndex = 55;
             // 
-            // label7
+            // lbl_ManageBarCode
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 13);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "Description:";
+            this.lbl_ManageBarCode.AutoSize = true;
+            this.lbl_ManageBarCode.Location = new System.Drawing.Point(6, 93);
+            this.lbl_ManageBarCode.Name = "lbl_ManageBarCode";
+            this.lbl_ManageBarCode.Size = new System.Drawing.Size(54, 13);
+            this.lbl_ManageBarCode.TabIndex = 6;
+            this.lbl_ManageBarCode.Text = "Bar Code:";
             // 
-            // textBox5
+            // btn_SearchProduct
             // 
-            this.textBox5.Location = new System.Drawing.Point(84, 25);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(168, 20);
-            this.textBox5.TabIndex = 51;
+            this.btn_SearchProduct.Location = new System.Drawing.Point(244, 151);
+            this.btn_SearchProduct.Name = "btn_SearchProduct";
+            this.btn_SearchProduct.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchProduct.TabIndex = 16;
+            this.btn_SearchProduct.Text = "Search";
+            this.btn_SearchProduct.UseVisualStyleBackColor = true;
+            this.btn_SearchProduct.Click += new System.EventHandler(this.btn_SearchProduct_Click);
             // 
-            // label6
+            // tbx_ManageDescription
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 60);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Part Number:";
+            this.tbx_ManageDescription.Location = new System.Drawing.Point(81, 39);
+            this.tbx_ManageDescription.Name = "tbx_ManageDescription";
+            this.tbx_ManageDescription.Size = new System.Drawing.Size(238, 20);
+            this.tbx_ManageDescription.TabIndex = 22;
             // 
-            // textBox4
+            // btn_ClearProduct
             // 
-            this.textBox4.Location = new System.Drawing.Point(84, 57);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(80, 20);
-            this.textBox4.TabIndex = 50;
+            this.btn_ClearProduct.Location = new System.Drawing.Point(244, 111);
+            this.btn_ClearProduct.Name = "btn_ClearProduct";
+            this.btn_ClearProduct.Size = new System.Drawing.Size(75, 23);
+            this.btn_ClearProduct.TabIndex = 41;
+            this.btn_ClearProduct.Text = "Clear";
+            this.btn_ClearProduct.UseVisualStyleBackColor = true;
+            this.btn_ClearProduct.Click += new System.EventHandler(this.btn_ClearProduct_Click);
+            // 
+            // grb_ManageProductsResult
+            // 
+            this.grb_ManageProductsResult.Controls.Add(this.btn_ManageProductsExport);
+            this.grb_ManageProductsResult.Controls.Add(this.lsv_ManageProducts);
+            this.grb_ManageProductsResult.Location = new System.Drawing.Point(8, 205);
+            this.grb_ManageProductsResult.Name = "grb_ManageProductsResult";
+            this.grb_ManageProductsResult.Size = new System.Drawing.Size(938, 461);
+            this.grb_ManageProductsResult.TabIndex = 54;
+            this.grb_ManageProductsResult.TabStop = false;
+            this.grb_ManageProductsResult.Text = "Results";
+            // 
+            // btn_ManageProductsExport
+            // 
+            this.btn_ManageProductsExport.Location = new System.Drawing.Point(857, 432);
+            this.btn_ManageProductsExport.Name = "btn_ManageProductsExport";
+            this.btn_ManageProductsExport.Size = new System.Drawing.Size(75, 23);
+            this.btn_ManageProductsExport.TabIndex = 1;
+            this.btn_ManageProductsExport.Text = "Export";
+            this.btn_ManageProductsExport.UseVisualStyleBackColor = true;
+            // 
+            // lsv_ManageProducts
+            // 
+            this.lsv_ManageProducts.Location = new System.Drawing.Point(6, 19);
+            this.lsv_ManageProducts.Name = "lsv_ManageProducts";
+            this.lsv_ManageProducts.Size = new System.Drawing.Size(926, 407);
+            this.lsv_ManageProducts.TabIndex = 0;
+            this.lsv_ManageProducts.UseCompatibleStateImageBehavior = false;
             // 
             // statusStrip1
             // 
@@ -860,22 +948,27 @@
             this.Load += new System.EventHandler(this.MainSearch_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.grb_Parameters.ResumeLayout(false);
-            this.grb_Parameters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_PartNumber)).EndInit();
-            this.grb_Results.ResumeLayout(false);
+            this.grb_ByList.ResumeLayout(false);
+            this.grb_ByList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ByDetailsBarCode)).EndInit();
+            this.grb_SearchProductsResults.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tbp_Search.ResumeLayout(false);
-            this.tbp_UserMaintenance.ResumeLayout(false);
-            this.grb_Manage.ResumeLayout(false);
-            this.grb_UserResult.ResumeLayout(false);
-            this.grb_UserSearch.ResumeLayout(false);
-            this.grb_UserSearch.PerformLayout();
-            this.tbp_ProductMaintenance.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tbp_SearchProducts.ResumeLayout(false);
+            this.grb_ByDetails.ResumeLayout(false);
+            this.grb_ByDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ByDetailsPartNumber)).EndInit();
+            this.tbp_ManageUsers.ResumeLayout(false);
+            this.grb_ManageUsers.ResumeLayout(false);
+            this.grb_ManageUsersResult.ResumeLayout(false);
+            this.grb_SearchUsers.ResumeLayout(false);
+            this.grb_SearchUsers.PerformLayout();
+            this.tbp_ManageProduct.ResumeLayout(false);
+            this.grb_ManageProducts.ResumeLayout(false);
+            this.grb_SearchProducts.ResumeLayout(false);
+            this.grb_SearchProducts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ManagePartNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ManageBarCode)).EndInit();
+            this.grb_ManageProductsResult.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -889,54 +982,44 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.GroupBox grb_Parameters;
-        private System.Windows.Forms.Label lbl_BarCode;
+        private System.Windows.Forms.GroupBox grb_ByList;
+        private System.Windows.Forms.Label lbl_ByDetailsBarCode;
         private System.Windows.Forms.Label lbl_Factory;
-        private System.Windows.Forms.Label lbl_Description;
-        private System.Windows.Forms.Label lbl_PartNumber;
-        private System.Windows.Forms.TextBox tbx_Description;
-        private System.Windows.Forms.Button btn_ProductSearch;
+        private System.Windows.Forms.Label lbl_ByDetailsDescription;
+        private System.Windows.Forms.Label lbl_ByDetailsPartNumber;
+        private System.Windows.Forms.TextBox tbx_ByDetailsDescription;
+        private System.Windows.Forms.Button btn_SearchByDetails;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.GroupBox grb_Results;
+        private System.Windows.Forms.GroupBox grb_SearchProductsResults;
         private System.Windows.Forms.Label lbl_Type;
         private System.Windows.Forms.Label lbl_Market;
         private System.Windows.Forms.Label lbl_Brand;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tbp_Search;
-        private System.Windows.Forms.TabPage tbp_UserMaintenance;
-        private System.Windows.Forms.TabPage tbp_ProductMaintenance;
+        private System.Windows.Forms.TabPage tbp_SearchProducts;
+        private System.Windows.Forms.TabPage tbp_ManageUsers;
+        private System.Windows.Forms.TabPage tbp_ManageProduct;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.GroupBox grb_UserResult;
-        private System.Windows.Forms.Button btn_UserModify;
-        private System.Windows.Forms.Button btn_UserNew;
-        private System.Windows.Forms.Button btn_UserDelete;
-        private System.Windows.Forms.GroupBox grb_UserSearch;
+        private System.Windows.Forms.GroupBox grb_ManageUsersResult;
+        private System.Windows.Forms.Button btn_ModifyUser;
+        private System.Windows.Forms.Button btn_NewUser;
+        private System.Windows.Forms.Button btn_DeleteUser;
+        private System.Windows.Forms.GroupBox grb_SearchUsers;
         private System.Windows.Forms.Label lbl_PermissionSearch;
-        private System.Windows.Forms.Button btn_UserSearch;
+        private System.Windows.Forms.Button btn_SearchUser;
         private System.Windows.Forms.Label lbl_UsernameSearch;
-        private System.Windows.Forms.TextBox tbx_UserNameSearch;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.GroupBox grb_Manage;
+        private System.Windows.Forms.TextBox tbx_SearchUserName;
+        private System.Windows.Forms.GroupBox grb_ManageUsers;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.CheckedListBox chb_Factory;
         private System.Windows.Forms.CheckedListBox chb_Type;
         private System.Windows.Forms.CheckedListBox chb_Brand;
         private System.Windows.Forms.CheckedListBox chb_Market;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btn_ProductModify;
-        private System.Windows.Forms.Button btn_ProductNew;
-        private System.Windows.Forms.Button btn_ProductDelete;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btn_ProductMaintenanceSearch;
+        private System.Windows.Forms.GroupBox grb_ManageProductsResult;
         private System.Windows.Forms.ToolStripMenuItem viewhelptoolStripMenuItem;
-        private System.Windows.Forms.ListView lsv_Users;
-        private System.Windows.Forms.ListView lsv_ProductsSearch;
-        private System.Windows.Forms.Button btn_ProductClear;
+        private System.Windows.Forms.ListView lsv_ManageUsers;
+        private System.Windows.Forms.ListView lsv_SearchProducts;
+        private System.Windows.Forms.Button btn_ClearByDetails;
         private System.Windows.Forms.ToolStripMenuItem reloadProductsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reloadUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem realoadAllToolStripMenuItem;
@@ -949,16 +1032,32 @@
         private System.Windows.Forms.Button btn_BrandAll;
         private System.Windows.Forms.Button btn_TypeAll;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Button btn_UserClear;
+        private System.Windows.Forms.Button btn_ClearUser;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.CheckedListBox chb_UserPermission;
-        private System.Windows.Forms.Button btn_ProductMaintenanceClear;
-        private System.Windows.Forms.NumericUpDown nud_PartNumber;
+        private System.Windows.Forms.NumericUpDown nud_ByDetailsBarCode;
         private System.Windows.Forms.Button btn_PermissionNone;
         private System.Windows.Forms.Button btn_PermissionAll;
-        private System.Windows.Forms.ListView lsv_ProductsMaintenance;
-        private System.Windows.Forms.Button btn_UserExport;
-        private System.Windows.Forms.Button btn_ProductExport;
-        private System.Windows.Forms.TextBox tbx_BarCode;
+        private System.Windows.Forms.ListView lsv_ManageProducts;
+        private System.Windows.Forms.Button btn_ClearByList;
+        private System.Windows.Forms.Button btn_SearchByList;
+        private System.Windows.Forms.Button btn_SearchProductsExport;
+        private System.Windows.Forms.GroupBox grb_ByDetails;
+        private System.Windows.Forms.NumericUpDown nud_ByDetailsPartNumber;
+        private System.Windows.Forms.Button btn_ManageUsersExport;
+        private System.Windows.Forms.GroupBox grb_ManageProducts;
+        private System.Windows.Forms.Button btn_ModifyProduct;
+        private System.Windows.Forms.Button btn_NewProduct;
+        private System.Windows.Forms.Button btn_DeleteProduct;
+        private System.Windows.Forms.GroupBox grb_SearchProducts;
+        private System.Windows.Forms.NumericUpDown nud_ManagePartNumber;
+        private System.Windows.Forms.Label lbl_ManageDescription;
+        private System.Windows.Forms.Label lbl_ManagePartNumber;
+        private System.Windows.Forms.NumericUpDown nud_ManageBarCode;
+        private System.Windows.Forms.Label lbl_ManageBarCode;
+        private System.Windows.Forms.Button btn_SearchProduct;
+        private System.Windows.Forms.TextBox tbx_ManageDescription;
+        private System.Windows.Forms.Button btn_ClearProduct;
+        private System.Windows.Forms.Button btn_ManageProductsExport;
     }
 }
