@@ -1,9 +1,0 @@
-Hostname: 219886e7-d1a7-4d53-880e-a6ad00d1c58a.sqlserver.sequelizer.com
-Username: ehydjpnmeavjggvk
-Password: yspoaNVLPGY6xiujZkcrBVpxZFfifhVP3LSwuyiDDtAXUJfbMQDcnH6KcYwBHLEG
-
-ConnectionString: Server=219886e7-d1a7-4d53-880e-a6ad00d1c58a.sqlserver.sequelizer.com;Database=db219886e7d1a74d53880ea6ad00d1c58a;User ID=ehydjpnmeavjggvk;Password=yspoaNVLPGY6xiujZkcrBVpxZFfifhVP3LSwuyiDDtAXUJfbMQDcnH6KcYwBHLEG;
-SQLSERVER_URI: sqlserver://ehydjpnmeavjggvk:yspoaNVLPGY6xiujZkcrBVpxZFfifhVP3LSwuyiDDtAXUJfbMQDcnH6KcYwBHLEG@219886e7-d1a7-4d53-880e-a6ad00d1c58a.sqlserver.sequelizer.com/db219886e7d1a74d53880ea6ad00d1c58a
-
-//SQL server
-//DatabaseManager.ConnectionOpen(ConfigurationManager.ConnectionStrings["Data Source=219886e7-d1a7-4d53-880e-a6ad00d1c58a.sqlserver.sequelizer.com;Persist Security Info=True;User ID=ehydjpnmeavjggvk;Password=yspoaNVLPGY6xiujZkcrBVpxZFfifhVP3LSwuyiDDtAXUJfbMQDcnH6KcYwBHLEG"].ConnectionString);
