@@ -87,6 +87,7 @@
             this.tbx_Username.Name = "tbx_Username";
             this.tbx_Username.Size = new System.Drawing.Size(100, 20);
             this.tbx_Username.TabIndex = 6;
+            this.tbx_Username.Text = "gergo";
             // 
             // tbx_Password
             // 
@@ -95,6 +96,7 @@
             this.tbx_Password.PasswordChar = '*';
             this.tbx_Password.Size = new System.Drawing.Size(100, 20);
             this.tbx_Password.TabIndex = 7;
+            this.tbx_Password.Text = "nasi";
             // 
             // statusStrip1
             // 

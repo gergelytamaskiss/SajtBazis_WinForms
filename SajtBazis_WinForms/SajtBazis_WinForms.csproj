@@ -114,6 +114,9 @@
     <EmbeddedResource Include="Forms\MainSearch.resx">
       <DependentUpon>MainSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductNew.resx">
+      <DependentUpon>ProductNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserNew.resx">
       <DependentUpon>UserNew.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,10 +160,10 @@
     <None Include="Resources\KockaSajtLogo128x128.png" />
     <None Include="Resources\SajtBazis_Logo128x128.jpg" />
     <Content Include="SajtBazis_DataBase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SajtBazis_DataBase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>SajtBazis_DataBase.mdf</DependentUpon>
     </Content>
   </ItemGroup>

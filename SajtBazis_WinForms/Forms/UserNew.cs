@@ -24,7 +24,7 @@ namespace SajtBazis_WinForms.Forms
         {
             InitializeComponent();
             selectedUser = modify;
-            //cmb_Permission.SelectedIndex = Convert.ToInt32(modify.Permission);
+            cmb_Permission.DataSource = Enum.GetValues(typeof(Permissions));
             tbx_Username.Text = modify.Username;
             tbx_Password.Text = modify.Password;
             tbx_Email.Text = modify.Email;
@@ -42,25 +42,26 @@ namespace SajtBazis_WinForms.Forms
                     {
                         selectedUser = new Users(tbx_Username.Text.Trim(), tbx_Password.Text.Trim(), tbx_Name.Text.Trim(), (Permissions)cmb_Permission.SelectedIndex, tbx_Email.Text.Trim());
                         DatabaseManager.UserNew(selectedUser);
+                        DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        selectedUser.Username = tbx_Username.Text.Trim();
-                        selectedUser.Password = tbx_Password.Text.Trim();
-                        //selectedUser.Permission = (Permissions)cmb_Permission.SelectedIndex;
-                        selectedUser.Email = tbx_Email.Text.Trim();
-                        selectedUser.Name = tbx_Name.Text.Trim();
-                        DatabaseManager.UserModify(selectedUser);
+                        tbx_Username.Text = selectedUser.Username;
+                        tbx_Password.Text = selectedUser.Password;
+                        tbx_Email.Text = selectedUser.Email;
+                        tbx_Name.Text = selectedUser.Name;
+                        cmb_Permission.SelectedIndex = (int)selectedUser.Permission;                        
+                        //DatabaseManager.UserModify(selectedUser);
                     }
                 }
                 else
                 {
-                    toolStripStatusLabel1.Text = "Please fill out all the required fields!";
+                    tsl_ManageUser.Text = "Please fill out all the required fields!";
                 }
             }
             catch (DatabaseException ex)
             {
-                toolStripStatusLabel1.Text = "Error: " + ex.Message;
+                tsl_ManageUser.Text = "Error: " + ex.Message;
                 DialogResult = DialogResult.None;
             }
         }

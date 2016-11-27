@@ -110,8 +110,8 @@ namespace SajtBazis_WinForms
             this.lsv_ManageProducts = new System.Windows.Forms.ListView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.grb_ByList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ByDetailsBarCode)).BeginInit();
@@ -131,6 +131,7 @@ namespace SajtBazis_WinForms
             ((System.ComponentModel.ISupportInitialize)(this.nud_ManageBarCode)).BeginInit();
             this.grb_ManageProductsResult.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -497,6 +498,7 @@ namespace SajtBazis_WinForms
             this.btn_SearchProductsExport.TabIndex = 1;
             this.btn_SearchProductsExport.Text = "Export";
             this.btn_SearchProductsExport.UseVisualStyleBackColor = true;
+            this.btn_SearchProductsExport.Click += new System.EventHandler(this.btn_SearchProductsExport_Click);
             // 
             // lsv_SearchProducts
             // 
@@ -616,6 +618,7 @@ namespace SajtBazis_WinForms
             // 
             // grb_ManageUsersResult
             // 
+            this.grb_ManageUsersResult.Controls.Add(this.dataGridView1);
             this.grb_ManageUsersResult.Controls.Add(this.btn_ManageUsersExport);
             this.grb_ManageUsersResult.Controls.Add(this.lsv_ManageUsers);
             this.grb_ManageUsersResult.Location = new System.Drawing.Point(8, 205);
@@ -639,7 +642,7 @@ namespace SajtBazis_WinForms
             // 
             this.lsv_ManageUsers.Location = new System.Drawing.Point(6, 19);
             this.lsv_ManageUsers.Name = "lsv_ManageUsers";
-            this.lsv_ManageUsers.Size = new System.Drawing.Size(926, 407);
+            this.lsv_ManageUsers.Size = new System.Drawing.Size(428, 407);
             this.lsv_ManageUsers.TabIndex = 1;
             this.lsv_ManageUsers.UseCompatibleStateImageBehavior = false;
             // 
@@ -899,6 +902,7 @@ namespace SajtBazis_WinForms
             this.btn_ManageProductsExport.TabIndex = 1;
             this.btn_ManageProductsExport.Text = "Export";
             this.btn_ManageProductsExport.UseVisualStyleBackColor = true;
+            this.btn_ManageProductsExport.Click += new System.EventHandler(this.btn_ManageProductsExport_Click);
             // 
             // lsv_ManageProducts
             // 
@@ -911,8 +915,7 @@ namespace SajtBazis_WinForms
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 740);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(984, 22);
@@ -925,11 +928,13 @@ namespace SajtBazis_WinForms
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // toolStripStatusLabel2
+            // dataGridView1
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(440, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(492, 407);
+            this.dataGridView1.TabIndex = 3;
             // 
             // MainSearch
             // 
@@ -971,6 +976,7 @@ namespace SajtBazis_WinForms
             this.grb_ManageProductsResult.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1031,7 +1037,6 @@ namespace SajtBazis_WinForms
         private System.Windows.Forms.Button btn_MarketAll;
         private System.Windows.Forms.Button btn_BrandAll;
         private System.Windows.Forms.Button btn_TypeAll;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Button btn_ClearUser;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.CheckedListBox chb_UserPermission;
@@ -1059,5 +1064,6 @@ namespace SajtBazis_WinForms
         private System.Windows.Forms.TextBox tbx_ManageDescription;
         private System.Windows.Forms.Button btn_ClearProduct;
         private System.Windows.Forms.Button btn_ManageProductsExport;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

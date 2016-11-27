@@ -37,7 +37,7 @@ BULK INSERT Products
 FROM 'C:\Users\Gergo\Dropbox\CODE\SajtBazis\SajtBazis_WinForms\data_template.csv'
 WITH
 (
-    FIRSTROW = 2,
+    FIRSTROW = 1,
     FIELDTERMINATOR = ';',
     TABLOCK
 )

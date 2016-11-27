@@ -6,7 +6,8 @@ namespace SajtBazis_WinForms.Classes
     {
         Répcelak,
         Zalaegerszeg,
-        Veszprém
+        Veszprém,
+        Import
     }
 
     enum Types
@@ -21,21 +22,19 @@ namespace SajtBazis_WinForms.Classes
         Medve,
         Karaván,
         Pannónia,
-        Milkana,
         Tihany,
-        Bakony,
-        Krajcár,
-        Mackó,
+        Milkana,
         Sajtmester,
-        Francia_sajtok,
-        Olasz_sajtok
+        Bakony,
+        Sissy,
+        Pilos
     }
 
     enum Markets
     {
         Retail,
-        MDD,
-        Gasztro,
+        Private_label,
+        Food_service,
         Export
     }
     class Products
@@ -162,15 +161,7 @@ namespace SajtBazis_WinForms.Classes
                 if (value > 0) { temperature = value; }
                 else { throw new ArgumentException("Temperature can't be empty!"); }
             }
-        }
-
-        //DateTime dateCreated;
-
-        //public DateTime DateCreated
-        //{
-        //    get { return dateCreated; }
-        //    //set { dateCreated = value; }
-        //}
+        }        
 
         public Products(int partNumber, string description, Brands brand, Markets market, Factories factory, Types type, int barCode, int width, int height, int length, int pieces, int temperature)
         {
@@ -185,8 +176,7 @@ namespace SajtBazis_WinForms.Classes
             Height = height;
             Length = length;
             Pieces = pieces;
-            Temperature = temperature;
-            //this.dateCreated = dateCreated;
+            Temperature = temperature;           
         }
 
         public override string ToString()

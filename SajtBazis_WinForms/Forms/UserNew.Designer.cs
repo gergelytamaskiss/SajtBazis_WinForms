@@ -39,7 +39,7 @@
             this.btn_OK = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsl_ManageUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Name = new System.Windows.Forms.Label();
             this.tbx_Name = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
@@ -48,7 +48,7 @@
             // lbl_Username
             // 
             this.lbl_Username.AutoSize = true;
-            this.lbl_Username.Location = new System.Drawing.Point(12, 22);
+            this.lbl_Username.Location = new System.Drawing.Point(38, 38);
             this.lbl_Username.Name = "lbl_Username";
             this.lbl_Username.Size = new System.Drawing.Size(58, 13);
             this.lbl_Username.TabIndex = 15;
@@ -57,7 +57,7 @@
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(215, 51);
+            this.lbl_Password.Location = new System.Drawing.Point(38, 64);
             this.lbl_Password.Name = "lbl_Password";
             this.lbl_Password.Size = new System.Drawing.Size(56, 13);
             this.lbl_Password.TabIndex = 16;
@@ -65,38 +65,38 @@
             // 
             // tbx_Username
             // 
-            this.tbx_Username.Location = new System.Drawing.Point(76, 19);
+            this.tbx_Username.Location = new System.Drawing.Point(104, 35);
             this.tbx_Username.Name = "tbx_Username";
-            this.tbx_Username.Size = new System.Drawing.Size(115, 20);
+            this.tbx_Username.Size = new System.Drawing.Size(135, 20);
             this.tbx_Username.TabIndex = 17;
             // 
             // cmb_Permission
             // 
             this.cmb_Permission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Permission.FormattingEnabled = true;
-            this.cmb_Permission.Location = new System.Drawing.Point(76, 74);
+            this.cmb_Permission.Location = new System.Drawing.Point(104, 113);
             this.cmb_Permission.Name = "cmb_Permission";
-            this.cmb_Permission.Size = new System.Drawing.Size(115, 21);
+            this.cmb_Permission.Size = new System.Drawing.Size(135, 21);
             this.cmb_Permission.TabIndex = 22;
             // 
             // tbx_Password
             // 
-            this.tbx_Password.Location = new System.Drawing.Point(277, 48);
+            this.tbx_Password.Location = new System.Drawing.Point(104, 61);
             this.tbx_Password.Name = "tbx_Password";
-            this.tbx_Password.Size = new System.Drawing.Size(100, 20);
+            this.tbx_Password.Size = new System.Drawing.Size(135, 20);
             this.tbx_Password.TabIndex = 18;
             // 
             // tbx_Email
             // 
-            this.tbx_Email.Location = new System.Drawing.Point(76, 48);
+            this.tbx_Email.Location = new System.Drawing.Point(104, 140);
             this.tbx_Email.Name = "tbx_Email";
-            this.tbx_Email.Size = new System.Drawing.Size(115, 20);
+            this.tbx_Email.Size = new System.Drawing.Size(135, 20);
             this.tbx_Email.TabIndex = 19;
             // 
             // lbl_Email
             // 
             this.lbl_Email.AutoSize = true;
-            this.lbl_Email.Location = new System.Drawing.Point(14, 51);
+            this.lbl_Email.Location = new System.Drawing.Point(38, 143);
             this.lbl_Email.Name = "lbl_Email";
             this.lbl_Email.Size = new System.Drawing.Size(35, 13);
             this.lbl_Email.TabIndex = 21;
@@ -105,7 +105,7 @@
             // lbl_Permission
             // 
             this.lbl_Permission.AutoSize = true;
-            this.lbl_Permission.Location = new System.Drawing.Point(14, 79);
+            this.lbl_Permission.Location = new System.Drawing.Point(38, 116);
             this.lbl_Permission.Name = "lbl_Permission";
             this.lbl_Permission.Size = new System.Drawing.Size(60, 13);
             this.lbl_Permission.TabIndex = 20;
@@ -113,7 +113,7 @@
             // 
             // btn_OK
             // 
-            this.btn_OK.Location = new System.Drawing.Point(218, 81);
+            this.btn_OK.Location = new System.Drawing.Point(59, 191);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(75, 23);
             this.btn_OK.TabIndex = 23;
@@ -124,7 +124,7 @@
             // btn_Cancel
             // 
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Cancel.Location = new System.Drawing.Point(302, 81);
+            this.btn_Cancel.Location = new System.Drawing.Point(143, 191);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 24;
@@ -134,23 +134,23 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 115);
+            this.tsl_ManageUser});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 244);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(396, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(284, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 25;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // tsl_ManageUser
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            this.tsl_ManageUser.Name = "tsl_ManageUser";
+            this.tsl_ManageUser.Size = new System.Drawing.Size(0, 17);
             // 
             // lbl_Name
             // 
             this.lbl_Name.AutoSize = true;
-            this.lbl_Name.Location = new System.Drawing.Point(236, 22);
+            this.lbl_Name.Location = new System.Drawing.Point(38, 90);
             this.lbl_Name.Name = "lbl_Name";
             this.lbl_Name.Size = new System.Drawing.Size(38, 13);
             this.lbl_Name.TabIndex = 26;
@@ -158,9 +158,9 @@
             // 
             // tbx_Name
             // 
-            this.tbx_Name.Location = new System.Drawing.Point(277, 19);
+            this.tbx_Name.Location = new System.Drawing.Point(104, 87);
             this.tbx_Name.Name = "tbx_Name";
-            this.tbx_Name.Size = new System.Drawing.Size(100, 20);
+            this.tbx_Name.Size = new System.Drawing.Size(135, 20);
             this.tbx_Name.TabIndex = 27;
             // 
             // UserNew
@@ -169,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Cancel;
-            this.ClientSize = new System.Drawing.Size(396, 137);
+            this.ClientSize = new System.Drawing.Size(284, 266);
             this.Controls.Add(this.tbx_Name);
             this.Controls.Add(this.lbl_Name);
             this.Controls.Add(this.statusStrip1);
@@ -207,7 +207,7 @@
         private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tsl_ManageUser;
         private System.Windows.Forms.Label lbl_Name;
         private System.Windows.Forms.TextBox tbx_Name;
     }

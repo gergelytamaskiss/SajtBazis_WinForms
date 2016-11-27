@@ -12,8 +12,9 @@ namespace SajtBazis_WinForms.Database
     {
         static SqlConnection connection = new SqlConnection();
         static SqlCommand command = new SqlCommand();
-        static SqlCommand command2 = new SqlCommand();
+        static SqlCommand commandAuth = new SqlCommand();
         static List<Users> user = new List<Users>();
+        static List<Users> modifyuser = new List<Users>();
         static List<Products> product = new List<Products>();
         static List<Products> searchproduct = new List<Products>();
         //static int userid = 0;        
@@ -61,9 +62,9 @@ namespace SajtBazis_WinForms.Database
                 command.CommandText = "LOGINSCRIPT";
                 command.CommandType = CommandType.StoredProcedure;
 
-                command2.Connection = connection;
-                command2.CommandText = "PERMISSIONSCRIPT";
-                command2.CommandType = CommandType.StoredProcedure;
+                commandAuth.Connection = connection;
+                commandAuth.CommandText = "PERMISSIONSCRIPT";
+                commandAuth.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter loginName = new SqlParameter
                 {
@@ -91,10 +92,10 @@ namespace SajtBazis_WinForms.Database
 
                 command.Parameters.Add(loginName);
                 command.Parameters.Add(loginPassword);
-                command2.Parameters.Add(loginName2);
+                commandAuth.Parameters.Add(loginName2);
 
                 int result = (int)command.ExecuteScalar();
-                LoggedUser.loggedUserId = (int)command2.ExecuteScalar();
+                LoggedUser.loggedUserId = (int)commandAuth.ExecuteScalar();
 
                 if (result > 0)
                 {
@@ -1024,7 +1025,7 @@ namespace SajtBazis_WinForms.Database
         {
             try
             {
-                command.CommandText = String.Format("INSERT INTO [Users2] VALUES('{0}', '{1}', '{2}', '{3}', '{4}')", fresh.Username, fresh.Password, fresh.Name, fresh.Permission, fresh.Email);
+                command.CommandText = String.Format("INSERT INTO [Users] VALUES('{0}', '{1}', '{2}', '{3}', '{4}')", fresh.Username, fresh.Password, fresh.Name, (int)(fresh.Permission), fresh.Email);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -1033,11 +1034,38 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        public static void UserModify(Users modify)
+        public static List<Users> GetModifyUserName(string modifyUserName)
         {
             try
             {
-                command.CommandText = String.Format("UPDATE [Users] SET [username] = '{0}', [password] = '{1}', [password] = '{2}', [permission] = '{3}', [email] = '{4}'", modify.Username, modify.Password, modify.Name, modify.Permission, modify.Email);
+                command.Connection = connection;
+                command.CommandText = String.Format("SELECT * FROM [Users] WHERE [username] = '{0}'", modifyUserName);
+                command.CommandType = CommandType.Text;
+
+                for (int i = user.Count - 1; i >= 0; i--)
+                {
+                    modifyuser.RemoveAt(i);
+                }
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    modifyuser.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), reader["name"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
+                }
+                reader.Close();
+                return modifyuser;
+            }
+            catch (Exception ex)
+            {
+                throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
+            }
+        }
+
+        public static void UserModify(List<Users> modifyuser)
+        {
+            try
+            {
+                command.CommandText = String.Format("UPDATE [Users] SET [username] = '{0}', [password] = '{1}', [password] = '{2}', [permission] = '{3}', [email] = '{4}'", modifyuser[0]);//modify.Username, modify.Password, modify.Password, modify.Permission, modify.Email);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -1046,11 +1074,11 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        public static void UserDelete(Users delete)
+        public static void UserDelete(string delete)
         {
             try
             {
-                command.CommandText = String.Format("DELETE FROM [Users] WHERE [ID] = " + delete.Id + "");
+                command.CommandText = String.Format("DELETE FROM [Users] WHERE [username] = '{0}'", delete);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

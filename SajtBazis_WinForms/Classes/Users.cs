@@ -9,9 +9,9 @@ namespace SajtBazis_WinForms.Classes
 {
     enum Permissions
     {
-        Admin, //0
-        Datamanager, //1
-        User //2
+        Admin,
+        Datamanager,
+        User
     }
     class Users
     {
@@ -59,15 +59,7 @@ namespace SajtBazis_WinForms.Classes
         {
             get { return email; }
             set { email = value; }
-        }
-
-        DateTime dateCreated;
-
-        public DateTime DateCreated
-        {
-            get { return dateCreated; }
-            set { dateCreated = value; }
-        }
+        }       
 
         public Users(string username, string password, string name, Permissions permission, string email)
         {
@@ -76,18 +68,12 @@ namespace SajtBazis_WinForms.Classes
             Password = password;
             Name = name;
             this.permission = permission;
-            Email = email;
-            //this.dateCreated = dateCreated;
+            Email = email;            
         }
 
         public override string ToString()
         {
             return "Username: " + username + " | Permission: " + permission + " | Email: " + email;
-        }
-
-        //public override string ToCSV()
-        //{
-        //    return $"{Id};{username};{password};{(int)permission};{email}";
-        //}
+        }        
     }
 }

@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace SajtBazis_WinForms
 {
@@ -17,7 +18,6 @@ namespace SajtBazis_WinForms
         public MainSearch()
         {
             InitializeComponent();
-
         }
 
         private void MainSearch_Load(object sender, EventArgs e)
@@ -110,6 +110,36 @@ namespace SajtBazis_WinForms
             //}
         }
 
+        #region EXPORT
+        public static void ListViewToCSV(ListView listView, string filePath, bool includeHidden)
+        {
+            StringBuilder result = new StringBuilder();
+            WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listView.Columns[i].Text);
+
+            foreach (ListViewItem listItem in listView.Items)
+                WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listItem.SubItems[i].Text);
+
+            File.WriteAllText(filePath, result.ToString());
+        }
+
+        private static void WriteCSVRow(StringBuilder result, int itemsCount, Func<int, bool> isColumnNeeded, Func<int, string> columnValue)
+        {
+            bool isFirstTime = true;
+            for (int i = 0; i < itemsCount; i++)
+            {
+                if (!isColumnNeeded(i))
+                    continue;
+
+                if (!isFirstTime)
+                    result.Append(",");
+                isFirstTime = false;
+
+                result.Append(String.Format("\"{0}\"", columnValue(i)));
+            }
+            result.AppendLine();
+        }
+        #endregion
+
         #region MENUSTRIP       
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -128,11 +158,11 @@ namespace SajtBazis_WinForms
             {
                 LsvProductSearchRefresh();
                 LsvProductManageRefresh();
-                toolStripStatusLabel2.Text = "Products table(s) refreshed!";
+                toolStripStatusLabel1.Text = "Products table(s) refreshed!";
             }
             catch (Exception)
             {
-                toolStripStatusLabel2.Text = "Error:";
+                toolStripStatusLabel1.Text = "Error:";
             }
 
         }
@@ -142,11 +172,11 @@ namespace SajtBazis_WinForms
             try
             {
                 LsvUsersRefresh();
-                toolStripStatusLabel2.Text = "Users table refreshed!";
+                toolStripStatusLabel1.Text = "Users table refreshed!";
             }
             catch (Exception)
             {
-                toolStripStatusLabel2.Text = "Error:";
+                toolStripStatusLabel1.Text = "Error:";
             }
 
         }
@@ -157,11 +187,11 @@ namespace SajtBazis_WinForms
             {
                 LsvProductSearchRefresh();
                 LsvUsersRefresh();
-                toolStripStatusLabel2.Text = "All table refreshed!";
+                toolStripStatusLabel1.Text = "All table refreshed!";
             }
             catch (Exception)
             {
-                toolStripStatusLabel2.Text = "Error:";
+                toolStripStatusLabel1.Text = "Error:";
             }
 
         }
@@ -409,7 +439,7 @@ namespace SajtBazis_WinForms
         }
 
         private void btn_SearchByList_Click(object sender, EventArgs e)
-        {            
+        {
             List<int> searchFactory = new List<int>();
             List<int> searchType = new List<int>();
             List<int> searchMarket = new List<int>();
@@ -488,7 +518,19 @@ namespace SajtBazis_WinForms
             }
             catch (Exception ex)
             {
-                toolStripStatusLabel2.Text = ex.Message;
+                toolStripStatusLabel1.Text = ex.Message;
+            }
+        }
+
+        private void btn_SearchProductsExport_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.InitialDirectory = Environment.CurrentDirectory;
+            saveFileDialog1.DefaultExt = "*.csv";
+            saveFileDialog1.Filter = "CSV files|*.csv";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ListViewToCSV(lsv_SearchProducts, saveFileDialog1.FileName, false);
+                toolStripStatusLabel1.Text = saveFileDialog1.FileName + " succesfully exported!";
             }
         }
         #endregion
@@ -569,7 +611,7 @@ namespace SajtBazis_WinForms
             }
             else
             {
-                toolStripStatusLabel2.Text = "You need to select at least one permission to search!";
+                toolStripStatusLabel1.Text = "You need to select at least one permission to search!";
             }
 
             try
@@ -594,7 +636,7 @@ namespace SajtBazis_WinForms
             }
             catch (Exception ex)
             {
-                toolStripStatusLabel2.Text = ex.Message;
+                toolStripStatusLabel1.Text = ex.Message;
             }
         }
 
@@ -602,73 +644,65 @@ namespace SajtBazis_WinForms
         {
             UserNew userwindow = new UserNew();
             userwindow.ShowDialog();
-            LsvUsersRefresh();
+            //if (userwindow.ShowDialog() == DialogResult.OK)
+            //{
+            //    toolStripStatusLabel1.Text = "User succesfully added!";
+            //    LsvUsersRefresh();
+            //}
         }
 
         private void btn_ModifyUser_Click(object sender, EventArgs e)
         {
-            //if (lsv_ManageUsers.FocusedItem.Index != -1)
-            //{
-            //    UserNew userwindow = new UserNew((Users)lsv_ManageUsers.FocusedItem);
-            //    if (userwindow.ShowDialog() == DialogResult.OK)
-            //    {
+            if (lsv_ManageUsers.FocusedItem.Index != -1)
+            {
+                string modifyUserName = (lsv_ManageUsers.SelectedItems[0].SubItems[1]).Text;
+                DatabaseManager.GetModifyUserName(modifyUserName);
 
-            //    }
-            //}
+                UserNew userwindow = new UserNew();
+                if (userwindow.ShowDialog() == DialogResult.OK)
+                {
+                    LsvUsersRefresh();
+                    toolStripStatusLabel1.Text = "User successfully modified!";
+                }
+
+            }
         }
 
         private void btn_DeleteUser_Click(object sender, EventArgs e)
         {
-            //    if (lsv_Users.FocusedItem.Index != -1 && MessageBox.Show("Do you really want to delete the selected user?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            //    {
-            //        try
-            //        {
-            //            DatabaseManager.UserDelete((Users)lsv_Users.FocusedItem.Index);
-            //            toolStripStatusLabel1.Text = "User successfully deleted!";
-            //        }
-            //        catch (DatabaseException ex)
-            //        {
-            //            toolStripStatusLabel1.Text = "Error: " + ex.OriginalMessage;
-            //        }
-            //    }
+            if (lsv_ManageUsers.FocusedItem.Index != -1 && MessageBox.Show("Do you really want to delete the selected user?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                try
+                {
+                    string selected = (lsv_ManageUsers.SelectedItems[0].SubItems[1]).Text;
+
+                    DatabaseManager.UserDelete(selected);
+                    LsvUsersRefresh();
+
+                    toolStripStatusLabel1.Text = "User successfully deleted!";
+                }
+                catch (DatabaseException ex)
+                {
+                    toolStripStatusLabel1.Text = "Error: " + ex.OriginalMessage;
+                }
+            }
         }
 
         private void btn_ManageUsersExport_Click(object sender, EventArgs e)
         {
-
-        }
-
-        public static void ListViewToCSV(ListView listView, string filePath, bool includeHidden)
-        {
-            //make header string
-            StringBuilder result = new StringBuilder();
-            WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listView.Columns[i].Text);
-
-            //export data rows
-            foreach (ListViewItem listItem in listView.Items)
-                WriteCSVRow(result, listView.Columns.Count, i => includeHidden || listView.Columns[i].Width > 0, i => listItem.SubItems[i].Text);
-
-            File.WriteAllText(filePath, result.ToString());
-        }
-
-        private static void WriteCSVRow(StringBuilder result, int itemsCount, Func<int, bool> isColumnNeeded, Func<int, string> columnValue)
-        {
-            bool isFirstTime = true;
-            for (int i = 0; i < itemsCount; i++)
+            saveFileDialog1.InitialDirectory = Environment.CurrentDirectory;
+            saveFileDialog1.DefaultExt = "*.csv";
+            saveFileDialog1.Filter = "CSV files|*.csv";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (!isColumnNeeded(i))
-                    continue;
-
-                if (!isFirstTime)
-                    result.Append(",");
-                isFirstTime = false;
-
-                result.Append(String.Format("\"{0}\"", columnValue(i)));
+                ListViewToCSV(lsv_ManageUsers, saveFileDialog1.FileName, false);
+                toolStripStatusLabel1.Text = saveFileDialog1.FileName + " succesfully exported!";
             }
-            result.AppendLine();
         }
 
-        #endregion       
+
+
+        #endregion
 
         #region ####MANAGE PRODUCTS TAB####
         public void LsvProductManageRefresh()
@@ -741,7 +775,7 @@ namespace SajtBazis_WinForms
             }
             catch (Exception ex)
             {
-                toolStripStatusLabel2.Text = ex.Message;
+                toolStripStatusLabel1.Text = ex.Message;
             }
         }
 
@@ -753,9 +787,20 @@ namespace SajtBazis_WinForms
             LsvProductManageRefresh();
         }
 
+        private void btn_ManageProductsExport_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.InitialDirectory = Environment.CurrentDirectory;
+            saveFileDialog1.DefaultExt = "*.csv";
+            saveFileDialog1.Filter = "CSV files|*.csv";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ListViewToCSV(lsv_ManageProducts, saveFileDialog1.FileName, false);
+                toolStripStatusLabel1.Text = saveFileDialog1.FileName + " succesfully exported!";
+            }
+        }
         #endregion
 
-        
+
     }
 }
 
