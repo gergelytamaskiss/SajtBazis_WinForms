@@ -48,7 +48,7 @@
             // lbl_Username
             // 
             this.lbl_Username.AutoSize = true;
-            this.lbl_Username.Location = new System.Drawing.Point(38, 38);
+            this.lbl_Username.Location = new System.Drawing.Point(17, 27);
             this.lbl_Username.Name = "lbl_Username";
             this.lbl_Username.Size = new System.Drawing.Size(58, 13);
             this.lbl_Username.TabIndex = 15;
@@ -57,7 +57,7 @@
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(38, 64);
+            this.lbl_Password.Location = new System.Drawing.Point(241, 27);
             this.lbl_Password.Name = "lbl_Password";
             this.lbl_Password.Size = new System.Drawing.Size(56, 13);
             this.lbl_Password.TabIndex = 16;
@@ -65,7 +65,7 @@
             // 
             // tbx_Username
             // 
-            this.tbx_Username.Location = new System.Drawing.Point(104, 35);
+            this.tbx_Username.Location = new System.Drawing.Point(81, 24);
             this.tbx_Username.Name = "tbx_Username";
             this.tbx_Username.Size = new System.Drawing.Size(135, 20);
             this.tbx_Username.TabIndex = 17;
@@ -74,21 +74,21 @@
             // 
             this.cmb_Permission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Permission.FormattingEnabled = true;
-            this.cmb_Permission.Location = new System.Drawing.Point(104, 113);
+            this.cmb_Permission.Location = new System.Drawing.Point(83, 76);
             this.cmb_Permission.Name = "cmb_Permission";
             this.cmb_Permission.Size = new System.Drawing.Size(135, 21);
             this.cmb_Permission.TabIndex = 22;
             // 
             // tbx_Password
             // 
-            this.tbx_Password.Location = new System.Drawing.Point(104, 61);
+            this.tbx_Password.Location = new System.Drawing.Point(303, 24);
             this.tbx_Password.Name = "tbx_Password";
             this.tbx_Password.Size = new System.Drawing.Size(135, 20);
             this.tbx_Password.TabIndex = 18;
             // 
             // tbx_Email
             // 
-            this.tbx_Email.Location = new System.Drawing.Point(104, 140);
+            this.tbx_Email.Location = new System.Drawing.Point(303, 50);
             this.tbx_Email.Name = "tbx_Email";
             this.tbx_Email.Size = new System.Drawing.Size(135, 20);
             this.tbx_Email.TabIndex = 19;
@@ -96,7 +96,7 @@
             // lbl_Email
             // 
             this.lbl_Email.AutoSize = true;
-            this.lbl_Email.Location = new System.Drawing.Point(38, 143);
+            this.lbl_Email.Location = new System.Drawing.Point(241, 56);
             this.lbl_Email.Name = "lbl_Email";
             this.lbl_Email.Size = new System.Drawing.Size(35, 13);
             this.lbl_Email.TabIndex = 21;
@@ -105,7 +105,7 @@
             // lbl_Permission
             // 
             this.lbl_Permission.AutoSize = true;
-            this.lbl_Permission.Location = new System.Drawing.Point(38, 116);
+            this.lbl_Permission.Location = new System.Drawing.Point(17, 79);
             this.lbl_Permission.Name = "lbl_Permission";
             this.lbl_Permission.Size = new System.Drawing.Size(60, 13);
             this.lbl_Permission.TabIndex = 20;
@@ -113,7 +113,7 @@
             // 
             // btn_OK
             // 
-            this.btn_OK.Location = new System.Drawing.Point(59, 191);
+            this.btn_OK.Location = new System.Drawing.Point(279, 104);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(75, 23);
             this.btn_OK.TabIndex = 23;
@@ -124,7 +124,7 @@
             // btn_Cancel
             // 
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Cancel.Location = new System.Drawing.Point(143, 191);
+            this.btn_Cancel.Location = new System.Drawing.Point(363, 104);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 24;
@@ -135,9 +135,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsl_ManageUser});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 244);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 148);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(284, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(463, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 25;
             this.statusStrip1.Text = "statusStrip1";
@@ -150,7 +150,7 @@
             // lbl_Name
             // 
             this.lbl_Name.AutoSize = true;
-            this.lbl_Name.Location = new System.Drawing.Point(38, 90);
+            this.lbl_Name.Location = new System.Drawing.Point(17, 53);
             this.lbl_Name.Name = "lbl_Name";
             this.lbl_Name.Size = new System.Drawing.Size(38, 13);
             this.lbl_Name.TabIndex = 26;
@@ -158,7 +158,7 @@
             // 
             // tbx_Name
             // 
-            this.tbx_Name.Location = new System.Drawing.Point(104, 87);
+            this.tbx_Name.Location = new System.Drawing.Point(81, 50);
             this.tbx_Name.Name = "tbx_Name";
             this.tbx_Name.Size = new System.Drawing.Size(135, 20);
             this.tbx_Name.TabIndex = 27;
@@ -169,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Cancel;
-            this.ClientSize = new System.Drawing.Size(284, 266);
+            this.ClientSize = new System.Drawing.Size(463, 170);
             this.Controls.Add(this.tbx_Name);
             this.Controls.Add(this.lbl_Name);
             this.Controls.Add(this.statusStrip1);
@@ -186,7 +186,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UserNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UserNew";
+            this.Text = "Manage user";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

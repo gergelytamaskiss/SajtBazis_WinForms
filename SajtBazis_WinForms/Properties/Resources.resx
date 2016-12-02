@@ -121,4 +121,7 @@
   <data name="SajtBazis_Logo128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SajtBazis_Logo128x128.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SajtBazis_Logo128x1281" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SajtBazis_Logo128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

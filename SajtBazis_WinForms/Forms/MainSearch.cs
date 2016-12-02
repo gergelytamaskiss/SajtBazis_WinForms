@@ -22,30 +22,57 @@ namespace SajtBazis_WinForms
 
         private void MainSearch_Load(object sender, EventArgs e)
         {
-            /*if (LoggedUser.loggedUserId == 0)
+            if (LoggedUser.loggedUserId == 2)
             {
-                MessageBox.Show("Admin");
+                ((Control)tbp_ManageUsers).Enabled = false;
+                grb_SearchUsers.Visible = false;
+                grb_ManageUsers.Visible = false;
+                grb_ManageUsersResult.Visible = false;
+
+                reloadUsersToolStripMenuItem.Visible = false;
+                realoadAllToolStripMenuItem.Visible = false;
+
+                ((Control)tbp_ManageProduct).Enabled = false;
+                grb_SearchProducts.Visible = false;
+                grb_ManageProducts.Visible = false;
+                grb_ManageProductsResult.Visible = false;
+
+                LsvProductSearchRefresh();
 
             }
             else if (LoggedUser.loggedUserId == 1)
             {
-                MessageBox.Show("DM");
-            }*/
+                ((Control)tbp_ManageUsers).Enabled = false;
+                grb_SearchUsers.Visible = false;
+                grb_ManageUsers.Visible = false;
+                grb_ManageUsersResult.Visible = false;
 
-            //PRODUCTS TAB
+                lbl_Auth2.Visible = false;
+                reloadUsersToolStripMenuItem.Visible = false;
+                realoadAllToolStripMenuItem.Visible = false;
+
+                LsvProductSearchRefresh();
+                LsvProductManageRefresh();
+            }
+            else if (LoggedUser.loggedUserId == 0)
+            {
+                lbl_Auth.Visible = false;
+                lbl_Auth2.Visible = false;
+                LsvProductSearchRefresh();
+                LsvUsersRefresh();
+                LsvProductManageRefresh();
+            }
+
             chb_Type.DataSource = Enum.GetValues(typeof(Types));
             chb_Brand.DataSource = Enum.GetValues(typeof(Brands));
             chb_Market.DataSource = Enum.GetValues(typeof(Markets));
             chb_Factory.DataSource = Enum.GetValues(typeof(Factories));
 
-            //ResetCheckedListBoxes();
-            ButtonsEnabled();
-
             lsv_SearchProducts.GridLines = true;
             lsv_SearchProducts.View = View.Details;
             lsv_SearchProducts.FullRowSelect = true;
             lsv_SearchProducts.Columns.Add("ID", 30);
-            lsv_SearchProducts.Columns.Add("Part number", 40);
+            lsv_SearchProducts.Columns.Add("Part number", 50);
             lsv_SearchProducts.Columns.Add("Description", 220);
             lsv_SearchProducts.Columns.Add("Brand", 80);
             lsv_SearchProducts.Columns.Add("Market", 50);
@@ -56,11 +83,10 @@ namespace SajtBazis_WinForms
             lsv_SearchProducts.Columns.Add("Heigth", 50);
             lsv_SearchProducts.Columns.Add("Length", 50);
             lsv_SearchProducts.Columns.Add("Pieces", 50);
-            lsv_SearchProducts.Columns.Add("Temperature", 80);
+            lsv_SearchProducts.Columns.Add("Temperature", 75);
 
-            LsvProductSearchRefresh();
+            ResetCheckedListBoxes();
 
-            //USERS TAB
             chb_UserPermission.DataSource = Enum.GetValues(typeof(Permissions));
             for (int i = 0; i < chb_UserPermission.Items.Count; i++)
             {
@@ -77,9 +103,6 @@ namespace SajtBazis_WinForms
             lsv_ManageUsers.Columns.Add("Permission", 100);
             lsv_ManageUsers.Columns.Add("Email", 180);
 
-            LsvUsersRefresh();
-
-            //PRODUCT MAINTENANCE TAB
             lsv_ManageProducts.GridLines = true;
             lsv_ManageProducts.View = View.Details;
             lsv_ManageProducts.FullRowSelect = true;
@@ -96,18 +119,16 @@ namespace SajtBazis_WinForms
             lsv_ManageProducts.Columns.Add("Length", 50);
             lsv_ManageProducts.Columns.Add("Pieces", 50);
             lsv_ManageProducts.Columns.Add("Temperature", 80);
-
-            LsvProductSearchRefresh();
-            LsvProductManageRefresh();
         }
 
 
         private void MainSearch_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (MessageBox.Show("Are you sure you want to quit?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
-            //{
-            //    e.Cancel = true;
-            //}
+            if (MessageBox.Show("Are you sure you want to quit?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+
+            }
         }
 
         #region EXPORT
@@ -150,6 +171,7 @@ namespace SajtBazis_WinForms
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+            DatabaseManager.ConnectionClose();
         }
 
         private void reloadProductsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -158,13 +180,12 @@ namespace SajtBazis_WinForms
             {
                 LsvProductSearchRefresh();
                 LsvProductManageRefresh();
-                toolStripStatusLabel1.Text = "Products table(s) refreshed!";
+                tsl_MainSearch.Text = "Products tables refreshed!";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                toolStripStatusLabel1.Text = "Error:";
+                tsl_MainSearch.Text = "Error:" + ex.Message;
             }
-
         }
 
         private void reloadUsersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -172,13 +193,12 @@ namespace SajtBazis_WinForms
             try
             {
                 LsvUsersRefresh();
-                toolStripStatusLabel1.Text = "Users table refreshed!";
+                tsl_MainSearch.Text = "Users table refreshed!";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                toolStripStatusLabel1.Text = "Error:";
+                tsl_MainSearch.Text = "Error:" + ex.Message;
             }
-
         }
 
         private void realoadAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,13 +207,12 @@ namespace SajtBazis_WinForms
             {
                 LsvProductSearchRefresh();
                 LsvUsersRefresh();
-                toolStripStatusLabel1.Text = "All table refreshed!";
+                tsl_MainSearch.Text = "All table refreshed!";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                toolStripStatusLabel1.Text = "Error:";
+                tsl_MainSearch.Text = "Error:" + ex.Message;
             }
-
         }
         #endregion
 
@@ -287,25 +306,6 @@ namespace SajtBazis_WinForms
                 chb_Factory.SetItemChecked(i, true);
             }
         }
-        private void chb_Factory_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            ButtonsEnabled();
-        }
-
-        private void chb_Type_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            ButtonsEnabled();
-        }
-
-        private void chb_Market_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            ButtonsEnabled();
-        }
-
-        private void chb_Brand_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            ButtonsEnabled();
-        }
         #endregion
 
         public void LsvProductSearchRefresh()
@@ -343,54 +343,13 @@ namespace SajtBazis_WinForms
             }
         }
 
-        public void ButtonsEnabled()
-        {
-            //if (chb_Factory.CheckedItems.Count == 0)
-            //{
-            //    chb_Type.Enabled = false;
-            //    btn_TypeAll.Enabled = false;
-            //    btn_TypeNone.Enabled = false;
-            //}
-            //else
-            //{
-            //    chb_Type.Enabled = true;
-            //    btn_TypeAll.Enabled = true;
-            //    btn_TypeNone.Enabled = true;
-            //}
-
-            //if (chb_Type.CheckedItems.Count == 0)
-            //{
-            //    chb_Market.Enabled = false;
-            //    btn_MarketAll.Enabled = false;
-            //    btn_MarketNone.Enabled = false;
-            //}
-            //else
-            //{
-            //    chb_Market.Enabled = true;
-            //    btn_MarketAll.Enabled = true;
-            //    btn_MarketNone.Enabled = true;
-            //}
-
-            //if (chb_Market.CheckedItems.Count == 0)
-            //{
-            //    chb_Brand.Enabled = false;
-            //    btn_BrandAll.Enabled = false;
-            //    btn_BrandNone.Enabled = false;
-            //}
-            //else
-            //{
-            //    chb_Brand.Enabled = true;
-            //    btn_BrandAll.Enabled = true;
-            //    btn_BrandNone.Enabled = true;
-            //}
-        }
-
         private void btn_ClearByDetails_Click(object sender, EventArgs e)
         {
             tbx_ByDetailsDescription.Clear();
             nud_ByDetailsPartNumber.Value = 0;
             nud_ByDetailsBarCode.Value = 0;
             LsvProductSearchRefresh();
+            tsl_MainSearch.Text = "";
         }
 
         private void btn_SearchByDetails_Click(object sender, EventArgs e)
@@ -425,17 +384,26 @@ namespace SajtBazis_WinForms
                 }
                 lsv_SearchProducts.EndUpdate();
                 lsv_SearchProducts.Refresh();
+                if (lsv_SearchProducts.Items.Count == 0)
+                {
+                    tsl_MainSearch.Text = "Your search returned " + lsv_SearchProducts.Items.Count + " result(s). Please check your search parameters and check again!";
+                }
+                else
+                {
+                    tsl_MainSearch.Text = "Your search returned " + lsv_SearchProducts.Items.Count + " result(s)";
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
         private void btn_ClearByList_Click(object sender, EventArgs e)
         {
-
+            ResetCheckedListBoxes();
+            LsvProductSearchRefresh();
+            tsl_MainSearch.Text = "";
         }
 
         private void btn_SearchByList_Click(object sender, EventArgs e)
@@ -491,34 +459,49 @@ namespace SajtBazis_WinForms
 
             try
             {
-                int i = 1;
-                lsv_SearchProducts.BeginUpdate();
-                lsv_SearchProducts.Items.Clear();
-
-                foreach (var item in DatabaseManager.SearchProductByList(searchFactory, searchType, searchMarket, searchBrand))
+                if (searchFactory.Count > 0 && searchType.Count > 0 && searchMarket.Count > 0 && searchBrand.Count > 0)
                 {
-                    ListViewItem row = new ListViewItem(i.ToString());
-                    row.SubItems.Add(item.PartNumber.ToString());
-                    row.SubItems.Add(item.Description);
-                    row.SubItems.Add(item.Brand.ToString());
-                    row.SubItems.Add(item.Market.ToString());
-                    row.SubItems.Add(item.Factory.ToString());
-                    row.SubItems.Add(item.Type.ToString());
-                    row.SubItems.Add(item.BarCode.ToString());
-                    row.SubItems.Add(item.Width.ToString());
-                    row.SubItems.Add(item.Height.ToString());
-                    row.SubItems.Add(item.Length.ToString());
-                    row.SubItems.Add(item.Pieces.ToString());
-                    row.SubItems.Add(item.Temperature.ToString());
-                    lsv_SearchProducts.Items.Add(row);
-                    i++;
+                    int i = 1;
+                    lsv_SearchProducts.BeginUpdate();
+                    lsv_SearchProducts.Items.Clear();
+
+                    foreach (var item in DatabaseManager.SearchProductByList(searchFactory, searchType, searchMarket, searchBrand))
+                    {
+                        ListViewItem row = new ListViewItem(i.ToString());
+                        row.SubItems.Add(item.PartNumber.ToString());
+                        row.SubItems.Add(item.Description);
+                        row.SubItems.Add(item.Brand.ToString());
+                        row.SubItems.Add(item.Market.ToString());
+                        row.SubItems.Add(item.Factory.ToString());
+                        row.SubItems.Add(item.Type.ToString());
+                        row.SubItems.Add(item.BarCode.ToString());
+                        row.SubItems.Add(item.Width.ToString());
+                        row.SubItems.Add(item.Height.ToString());
+                        row.SubItems.Add(item.Length.ToString());
+                        row.SubItems.Add(item.Pieces.ToString());
+                        row.SubItems.Add(item.Temperature.ToString());
+                        lsv_SearchProducts.Items.Add(row);
+                        i++;
+                    }
+                    lsv_SearchProducts.EndUpdate();
+                    lsv_SearchProducts.Refresh();
+                    if (lsv_SearchProducts.Items.Count == 0)
+                    {
+                        tsl_MainSearch.Text = "Your search returned " + lsv_SearchProducts.Items.Count + " result(s). Please check your search parameters and check again!";
+                    }
+                    else
+                    {
+                        tsl_MainSearch.Text = "Your search returned " + lsv_SearchProducts.Items.Count + " result(s)";
+                    }                    
                 }
-                lsv_SearchProducts.EndUpdate();
-                lsv_SearchProducts.Refresh();
+                else
+                {
+                    tsl_MainSearch.Text = "You need to select at least one item from each list!";
+                }
             }
             catch (Exception ex)
             {
-                toolStripStatusLabel1.Text = ex.Message;
+                tsl_MainSearch.Text = ex.Message;
             }
         }
 
@@ -530,14 +513,12 @@ namespace SajtBazis_WinForms
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 ListViewToCSV(lsv_SearchProducts, saveFileDialog1.FileName, false);
-                toolStripStatusLabel1.Text = saveFileDialog1.FileName + " succesfully exported!";
+                tsl_MainSearch.Text = saveFileDialog1.FileName + " succesfully exported!";
             }
         }
         #endregion
 
         #region ####MANAGE USERS TAB####
-
-        #region USER CHECKEDLISTBOXES
 
         private void btn_PermissionAll_Click(object sender, EventArgs e)
         {
@@ -554,7 +535,6 @@ namespace SajtBazis_WinForms
                 chb_UserPermission.SetItemChecked(i, false);
             }
         }
-        #endregion
 
         public void LsvUsersRefresh()
         {
@@ -574,6 +554,10 @@ namespace SajtBazis_WinForms
                     row.SubItems.Add(item.Email);
                     lsv_ManageUsers.Items.Add(row);
                     i++;
+
+                    Users usersListViewObj = new Users(item.Username, item.Password, item.Name.ToString(), item.Permission, item.Email);
+                    row.Tag = usersListViewObj;
+
                 }
                 lsv_ManageUsers.EndUpdate();
                 lsv_ManageUsers.Refresh();
@@ -592,12 +576,14 @@ namespace SajtBazis_WinForms
                 chb_UserPermission.SetItemChecked(i, true);
             }
             LsvUsersRefresh();
+            tsl_MainSearch.Text = "";
         }
 
         private void btn_SearchUser_Click(object sender, EventArgs e)
         {
             string searchUserName = tbx_SearchUserName.Text.Trim();
             List<int> searchPermission = new List<int>();
+            tsl_MainSearch.Text = "";
 
             if (chb_UserPermission.CheckedItems.Count != 0)
             {
@@ -608,99 +594,112 @@ namespace SajtBazis_WinForms
                         searchPermission.Add((int)chb_UserPermission.Items[i]);
                     }
                 }
+                try
+                {
+                    int i = 1;
+                    lsv_ManageUsers.BeginUpdate();
+                    lsv_ManageUsers.Items.Clear();
+
+                    foreach (var item in DatabaseManager.SearchUser(searchUserName, searchPermission))
+                    {
+                        ListViewItem row = new ListViewItem(i.ToString());
+                        row.SubItems.Add(item.Username);
+                        row.SubItems.Add(item.Password);
+                        row.SubItems.Add(item.Name);
+                        row.SubItems.Add(item.Permission.ToString());
+                        row.SubItems.Add(item.Email);
+                        lsv_ManageUsers.Items.Add(row);
+                        i++;
+                    }
+                    lsv_ManageUsers.EndUpdate();
+                    lsv_ManageUsers.Refresh();
+                    tsl_MainSearch.Text = "Your search returned " + lsv_ManageUsers.Items.Count + " result(s)";
+                }
+                catch (Exception ex)
+                {
+                    tsl_MainSearch.Text = ex.Message;
+                }
             }
             else
             {
-                toolStripStatusLabel1.Text = "You need to select at least one permission to search!";
-            }
-
-            try
-            {
-                int i = 1;
-                lsv_ManageUsers.BeginUpdate();
-                lsv_ManageUsers.Items.Clear();
-
-                foreach (var item in DatabaseManager.SearchUser(searchUserName, searchPermission))
-                {
-                    ListViewItem row = new ListViewItem(i.ToString());
-                    row.SubItems.Add(item.Username);
-                    row.SubItems.Add(item.Password);
-                    row.SubItems.Add(item.Name);
-                    row.SubItems.Add(item.Permission.ToString());
-                    row.SubItems.Add(item.Email);
-                    lsv_ManageUsers.Items.Add(row);
-                    i++;
-                }
-                lsv_ManageUsers.EndUpdate();
-                lsv_ManageUsers.Refresh();
-            }
-            catch (Exception ex)
-            {
-                toolStripStatusLabel1.Text = ex.Message;
+                tsl_MainSearch.Text = "You need to select at least one permission to search!";
             }
         }
 
         private void btn_NewUser_Click(object sender, EventArgs e)
         {
-            UserNew userwindow = new UserNew();
-            userwindow.ShowDialog();
+            tsl_MainSearch.Text = "";
+
+            UserNew userWindow = new UserNew();
+            userWindow.ShowDialog();
+            LsvUsersRefresh();
             //if (userwindow.ShowDialog() == DialogResult.OK)
             //{
-            //    toolStripStatusLabel1.Text = "User succesfully added!";
+            //    tsl_MainSearch.Text = "User succesfully added!";
             //    LsvUsersRefresh();
             //}
         }
 
         private void btn_ModifyUser_Click(object sender, EventArgs e)
         {
-            if (lsv_ManageUsers.FocusedItem.Index != -1)
-            {
-                string modifyUserName = (lsv_ManageUsers.SelectedItems[0].SubItems[1]).Text;
-                DatabaseManager.GetModifyUserName(modifyUserName);
+            tsl_MainSearch.Text = "";
 
-                UserNew userwindow = new UserNew();
+            if (lsv_ManageUsers.SelectedItems.Count != 0)
+            {
+                UserNew userwindow = new UserNew((Users)lsv_ManageUsers.SelectedItems[0].Tag);
                 if (userwindow.ShowDialog() == DialogResult.OK)
                 {
                     LsvUsersRefresh();
-                    toolStripStatusLabel1.Text = "User successfully modified!";
+                    tsl_MainSearch.Text = "User successfully modified!";
                 }
-
+            }
+            else
+            {
+                tsl_MainSearch.Text = "Select a user to modify!";
             }
         }
 
         private void btn_DeleteUser_Click(object sender, EventArgs e)
         {
-            if (lsv_ManageUsers.FocusedItem.Index != -1 && MessageBox.Show("Do you really want to delete the selected user?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            tsl_MainSearch.Text = "";
+            if (lsv_ManageUsers.SelectedItems.Count != 0)
             {
-                try
+                if (MessageBox.Show("Do you really want to delete the selected user?", "Delete user", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string selected = (lsv_ManageUsers.SelectedItems[0].SubItems[1]).Text;
+                    try
+                    {
+                        string selected = (lsv_ManageUsers.SelectedItems[0].SubItems[1]).Text;
 
-                    DatabaseManager.UserDelete(selected);
-                    LsvUsersRefresh();
+                        DatabaseManager.UserDelete(selected);
+                        LsvUsersRefresh();
 
-                    toolStripStatusLabel1.Text = "User successfully deleted!";
+                        tsl_MainSearch.Text = "User successfully deleted!";
+                    }
+                    catch (DatabaseException ex)
+                    {
+                        tsl_MainSearch.Text = "Error: " + ex.OriginalMessage;
+                    }
                 }
-                catch (DatabaseException ex)
-                {
-                    toolStripStatusLabel1.Text = "Error: " + ex.OriginalMessage;
-                }
+            }
+            else
+            {
+                tsl_MainSearch.Text = "Select a user to delete!";
             }
         }
 
         private void btn_ManageUsersExport_Click(object sender, EventArgs e)
         {
+            tsl_MainSearch.Text = "";
+
             saveFileDialog1.InitialDirectory = Environment.CurrentDirectory;
             saveFileDialog1.DefaultExt = "*.csv";
             saveFileDialog1.Filter = "CSV files|*.csv";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 ListViewToCSV(lsv_ManageUsers, saveFileDialog1.FileName, false);
-                toolStripStatusLabel1.Text = saveFileDialog1.FileName + " succesfully exported!";
+                tsl_MainSearch.Text = saveFileDialog1.FileName + " succesfully exported!";
             }
         }
-
-
 
         #endregion
 
@@ -730,6 +729,9 @@ namespace SajtBazis_WinForms
                     row.SubItems.Add(item.Temperature.ToString());
                     lsv_ManageProducts.Items.Add(row);
                     i++;
+
+                    Products productsListViewObj = new Products(item.PartNumber, item.Description, item.Brand, item.Market, item.Factory, item.Type, item.BarCode, item.Width, item.Height, item.Length, item.Pieces, item.Temperature);
+                    row.Tag = productsListViewObj;
                 }
                 lsv_ManageProducts.EndUpdate();
                 lsv_ManageProducts.Refresh();
@@ -772,10 +774,11 @@ namespace SajtBazis_WinForms
                 }
                 lsv_ManageProducts.EndUpdate();
                 lsv_ManageProducts.Refresh();
+                tsl_MainSearch.Text = "Your search returned " + lsv_ManageProducts.Items.Count + " result(s)";
             }
             catch (Exception ex)
             {
-                toolStripStatusLabel1.Text = ex.Message;
+                tsl_MainSearch.Text = ex.Message;
             }
         }
 
@@ -785,22 +788,85 @@ namespace SajtBazis_WinForms
             nud_ManagePartNumber.Value = 0;
             nud_ManageBarCode.Value = 0;
             LsvProductManageRefresh();
+            tsl_MainSearch.Text = "";
         }
 
         private void btn_ManageProductsExport_Click(object sender, EventArgs e)
         {
+            tsl_MainSearch.Text = "";
+
             saveFileDialog1.InitialDirectory = Environment.CurrentDirectory;
             saveFileDialog1.DefaultExt = "*.csv";
             saveFileDialog1.Filter = "CSV files|*.csv";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 ListViewToCSV(lsv_ManageProducts, saveFileDialog1.FileName, false);
-                toolStripStatusLabel1.Text = saveFileDialog1.FileName + " succesfully exported!";
+                tsl_MainSearch.Text = saveFileDialog1.FileName + " succesfully exported!";
+            }
+        }
+
+        private void btn_NewProduct_Click(object sender, EventArgs e)
+        {
+            tsl_MainSearch.Text = "";
+
+            ProductNew productWindow = new ProductNew();
+            productWindow.ShowDialog();
+            LsvProductManageRefresh();
+            //if (productwindow.ShowDialog() == DialogResult.OK)
+            //{
+            //    tsl_MainSearch.Text = "Product succesfully added!";
+            //    LsvUsersRefresh();
+            //}
+        }
+
+        private void btn_ModifyProduct_Click(object sender, EventArgs e)
+        {
+            tsl_MainSearch.Text = "";
+
+            if (lsv_ManageProducts.SelectedItems.Count != 0)
+            {
+                ProductNew productWindow = new ProductNew((Products)lsv_ManageProducts.SelectedItems[0].Tag);
+                if (productWindow.ShowDialog() == DialogResult.OK)
+                {
+                    LsvProductManageRefresh();
+                    tsl_MainSearch.Text = "Product successfully modified!";
+                }
+            }
+            else
+            {
+                tsl_MainSearch.Text = "Select a product to modify!";
+            }
+        }
+
+        private void btn_DeleteProduct_Click(object sender, EventArgs e)
+        {
+
+            tsl_MainSearch.Text = "";
+            if (lsv_ManageProducts.SelectedItems.Count != 0)
+            {
+                if (MessageBox.Show("Do you really want to delete the selected product?", "Delete product", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    try
+                    {
+                        string selectedproduct = (lsv_ManageProducts.SelectedItems[0].SubItems[1]).Text;
+
+                        DatabaseManager.ProductDelete(selectedproduct);
+                        LsvProductManageRefresh();
+
+                        tsl_MainSearch.Text = "Product successfully deleted!";
+                    }
+                    catch (DatabaseException ex)
+                    {
+                        tsl_MainSearch.Text = "Error: " + ex.OriginalMessage;
+                    }
+                }
+            }
+            else
+            {
+                tsl_MainSearch.Text = "Select a product to delete!";
             }
         }
         #endregion
-
-
     }
 }
 

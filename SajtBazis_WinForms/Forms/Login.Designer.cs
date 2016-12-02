@@ -36,7 +36,7 @@
             this.tbx_Username = new System.Windows.Forms.TextBox();
             this.tbx_Password = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsl_Login = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -87,7 +87,6 @@
             this.tbx_Username.Name = "tbx_Username";
             this.tbx_Username.Size = new System.Drawing.Size(100, 20);
             this.tbx_Username.TabIndex = 6;
-            this.tbx_Username.Text = "gergo";
             // 
             // tbx_Password
             // 
@@ -96,12 +95,11 @@
             this.tbx_Password.PasswordChar = '*';
             this.tbx_Password.Size = new System.Drawing.Size(100, 20);
             this.tbx_Password.TabIndex = 7;
-            this.tbx_Password.Text = "nasi";
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.tsl_Login});
             this.statusStrip1.Location = new System.Drawing.Point(0, 290);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(334, 22);
@@ -109,14 +107,14 @@
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // tsl_Login
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            this.tsl_Login.Name = "tsl_Login";
+            this.tsl_Login.Size = new System.Drawing.Size(0, 17);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::SajtBazis_WinForms.Properties.Resources.SajtBazis_Logo128x128;
+            this.pictureBox1.Image = global::SajtBazis_WinForms.Properties.Resources.SajtBazis_Logo128x1281;
             this.pictureBox1.Location = new System.Drawing.Point(105, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
@@ -138,12 +136,12 @@
             this.Controls.Add(this.lbl_Username);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Login);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login - SajtBázis";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
-            this.Load += new System.EventHandler(this.Login_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -161,7 +159,7 @@
         private System.Windows.Forms.TextBox tbx_Username;
         private System.Windows.Forms.TextBox tbx_Password;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tsl_Login;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

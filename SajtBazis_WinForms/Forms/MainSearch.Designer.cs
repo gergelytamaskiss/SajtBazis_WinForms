@@ -30,6 +30,7 @@ namespace SajtBazis_WinForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainSearch));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,6 @@ namespace SajtBazis_WinForms
             this.reloadUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.realoadAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewhelptoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grb_ByList = new System.Windows.Forms.GroupBox();
             this.btn_ClearByList = new System.Windows.Forms.Button();
@@ -75,6 +75,7 @@ namespace SajtBazis_WinForms
             this.grb_ByDetails = new System.Windows.Forms.GroupBox();
             this.nud_ByDetailsPartNumber = new System.Windows.Forms.NumericUpDown();
             this.tbp_ManageUsers = new System.Windows.Forms.TabPage();
+            this.lbl_Auth = new System.Windows.Forms.Label();
             this.grb_ManageUsers = new System.Windows.Forms.GroupBox();
             this.btn_ModifyUser = new System.Windows.Forms.Button();
             this.btn_NewUser = new System.Windows.Forms.Button();
@@ -92,6 +93,7 @@ namespace SajtBazis_WinForms
             this.lbl_UsernameSearch = new System.Windows.Forms.Label();
             this.tbx_SearchUserName = new System.Windows.Forms.TextBox();
             this.tbp_ManageProduct = new System.Windows.Forms.TabPage();
+            this.lbl_Auth2 = new System.Windows.Forms.Label();
             this.grb_ManageProducts = new System.Windows.Forms.GroupBox();
             this.btn_ModifyProduct = new System.Windows.Forms.Button();
             this.btn_NewProduct = new System.Windows.Forms.Button();
@@ -108,10 +110,10 @@ namespace SajtBazis_WinForms
             this.grb_ManageProductsResult = new System.Windows.Forms.GroupBox();
             this.btn_ManageProductsExport = new System.Windows.Forms.Button();
             this.lsv_ManageProducts = new System.Windows.Forms.ListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsl_MainSearch = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.grb_ByList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ByDetailsBarCode)).BeginInit();
@@ -131,7 +133,6 @@ namespace SajtBazis_WinForms
             ((System.ComponentModel.ISupportInitialize)(this.nud_ManageBarCode)).BeginInit();
             this.grb_ManageProductsResult.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -195,22 +196,15 @@ namespace SajtBazis_WinForms
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewhelptoolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // viewhelptoolStripMenuItem
-            // 
-            this.viewhelptoolStripMenuItem.Name = "viewhelptoolStripMenuItem";
-            this.viewhelptoolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.viewhelptoolStripMenuItem.Text = "View Help";
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -239,7 +233,7 @@ namespace SajtBazis_WinForms
             this.grb_ByList.Size = new System.Drawing.Size(601, 193);
             this.grb_ByList.TabIndex = 1;
             this.grb_ByList.TabStop = false;
-            this.grb_ByList.Text = "By list";
+            this.grb_ByList.Text = "Search by list";
             // 
             // btn_ClearByList
             // 
@@ -348,7 +342,6 @@ namespace SajtBazis_WinForms
             this.chb_Factory.Name = "chb_Factory";
             this.chb_Factory.Size = new System.Drawing.Size(120, 79);
             this.chb_Factory.TabIndex = 35;
-            this.chb_Factory.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chb_Factory_ItemCheck);
             // 
             // chb_Type
             // 
@@ -357,7 +350,6 @@ namespace SajtBazis_WinForms
             this.chb_Type.Name = "chb_Type";
             this.chb_Type.Size = new System.Drawing.Size(120, 79);
             this.chb_Type.TabIndex = 33;
-            this.chb_Type.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chb_Type_ItemCheck);
             // 
             // chb_Brand
             // 
@@ -366,7 +358,6 @@ namespace SajtBazis_WinForms
             this.chb_Brand.Name = "chb_Brand";
             this.chb_Brand.Size = new System.Drawing.Size(120, 79);
             this.chb_Brand.TabIndex = 32;
-            this.chb_Brand.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chb_Brand_ItemCheck);
             // 
             // chb_Market
             // 
@@ -375,7 +366,6 @@ namespace SajtBazis_WinForms
             this.chb_Market.Name = "chb_Market";
             this.chb_Market.Size = new System.Drawing.Size(120, 79);
             this.chb_Market.TabIndex = 31;
-            this.chb_Market.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chb_Market_ItemCheck);
             // 
             // lbl_Type
             // 
@@ -417,7 +407,7 @@ namespace SajtBazis_WinForms
             // 
             this.nud_ByDetailsBarCode.Location = new System.Drawing.Point(81, 91);
             this.nud_ByDetailsBarCode.Maximum = new decimal(new int[] {
-            100000,
+            10000000,
             0,
             0,
             0});
@@ -513,6 +503,7 @@ namespace SajtBazis_WinForms
             this.tabControl1.Controls.Add(this.tbp_SearchProducts);
             this.tabControl1.Controls.Add(this.tbp_ManageUsers);
             this.tabControl1.Controls.Add(this.tbp_ManageProduct);
+            this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -524,10 +515,11 @@ namespace SajtBazis_WinForms
             this.tbp_SearchProducts.Controls.Add(this.grb_ByDetails);
             this.tbp_SearchProducts.Controls.Add(this.grb_ByList);
             this.tbp_SearchProducts.Controls.Add(this.grb_SearchProductsResults);
-            this.tbp_SearchProducts.Location = new System.Drawing.Point(4, 22);
+            this.tbp_SearchProducts.ImageIndex = 0;
+            this.tbp_SearchProducts.Location = new System.Drawing.Point(4, 23);
             this.tbp_SearchProducts.Name = "tbp_SearchProducts";
             this.tbp_SearchProducts.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_SearchProducts.Size = new System.Drawing.Size(952, 672);
+            this.tbp_SearchProducts.Size = new System.Drawing.Size(952, 671);
             this.tbp_SearchProducts.TabIndex = 0;
             this.tbp_SearchProducts.Text = "Search products";
             this.tbp_SearchProducts.UseVisualStyleBackColor = true;
@@ -547,13 +539,13 @@ namespace SajtBazis_WinForms
             this.grb_ByDetails.Size = new System.Drawing.Size(331, 193);
             this.grb_ByDetails.TabIndex = 6;
             this.grb_ByDetails.TabStop = false;
-            this.grb_ByDetails.Text = "By details";
+            this.grb_ByDetails.Text = "Search by details";
             // 
             // nud_ByDetailsPartNumber
             // 
             this.nud_ByDetailsPartNumber.Location = new System.Drawing.Point(81, 65);
             this.nud_ByDetailsPartNumber.Maximum = new decimal(new int[] {
-            10000,
+            1000000,
             0,
             0,
             0});
@@ -563,16 +555,27 @@ namespace SajtBazis_WinForms
             // 
             // tbp_ManageUsers
             // 
+            this.tbp_ManageUsers.Controls.Add(this.lbl_Auth);
             this.tbp_ManageUsers.Controls.Add(this.grb_ManageUsers);
             this.tbp_ManageUsers.Controls.Add(this.grb_ManageUsersResult);
             this.tbp_ManageUsers.Controls.Add(this.grb_SearchUsers);
-            this.tbp_ManageUsers.Location = new System.Drawing.Point(4, 22);
+            this.tbp_ManageUsers.ImageIndex = 1;
+            this.tbp_ManageUsers.Location = new System.Drawing.Point(4, 23);
             this.tbp_ManageUsers.Name = "tbp_ManageUsers";
             this.tbp_ManageUsers.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_ManageUsers.Size = new System.Drawing.Size(952, 672);
+            this.tbp_ManageUsers.Size = new System.Drawing.Size(952, 671);
             this.tbp_ManageUsers.TabIndex = 1;
             this.tbp_ManageUsers.Text = "Manage users";
             this.tbp_ManageUsers.UseVisualStyleBackColor = true;
+            // 
+            // lbl_Auth
+            // 
+            this.lbl_Auth.AutoSize = true;
+            this.lbl_Auth.Location = new System.Drawing.Point(351, 57);
+            this.lbl_Auth.Name = "lbl_Auth";
+            this.lbl_Auth.Size = new System.Drawing.Size(209, 13);
+            this.lbl_Auth.TabIndex = 25;
+            this.lbl_Auth.Text = "You are not authorised to use this function!";
             // 
             // grb_ManageUsers
             // 
@@ -618,7 +621,6 @@ namespace SajtBazis_WinForms
             // 
             // grb_ManageUsersResult
             // 
-            this.grb_ManageUsersResult.Controls.Add(this.dataGridView1);
             this.grb_ManageUsersResult.Controls.Add(this.btn_ManageUsersExport);
             this.grb_ManageUsersResult.Controls.Add(this.lsv_ManageUsers);
             this.grb_ManageUsersResult.Location = new System.Drawing.Point(8, 205);
@@ -642,7 +644,7 @@ namespace SajtBazis_WinForms
             // 
             this.lsv_ManageUsers.Location = new System.Drawing.Point(6, 19);
             this.lsv_ManageUsers.Name = "lsv_ManageUsers";
-            this.lsv_ManageUsers.Size = new System.Drawing.Size(428, 407);
+            this.lsv_ManageUsers.Size = new System.Drawing.Size(926, 407);
             this.lsv_ManageUsers.TabIndex = 1;
             this.lsv_ManageUsers.UseCompatibleStateImageBehavior = false;
             // 
@@ -738,16 +740,27 @@ namespace SajtBazis_WinForms
             // 
             // tbp_ManageProduct
             // 
+            this.tbp_ManageProduct.Controls.Add(this.lbl_Auth2);
             this.tbp_ManageProduct.Controls.Add(this.grb_ManageProducts);
             this.tbp_ManageProduct.Controls.Add(this.grb_SearchProducts);
             this.tbp_ManageProduct.Controls.Add(this.grb_ManageProductsResult);
-            this.tbp_ManageProduct.Location = new System.Drawing.Point(4, 22);
+            this.tbp_ManageProduct.ImageIndex = 2;
+            this.tbp_ManageProduct.Location = new System.Drawing.Point(4, 23);
             this.tbp_ManageProduct.Name = "tbp_ManageProduct";
             this.tbp_ManageProduct.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_ManageProduct.Size = new System.Drawing.Size(952, 672);
+            this.tbp_ManageProduct.Size = new System.Drawing.Size(952, 671);
             this.tbp_ManageProduct.TabIndex = 2;
             this.tbp_ManageProduct.Text = "Manage products";
             this.tbp_ManageProduct.UseVisualStyleBackColor = true;
+            // 
+            // lbl_Auth2
+            // 
+            this.lbl_Auth2.AutoSize = true;
+            this.lbl_Auth2.Location = new System.Drawing.Point(351, 57);
+            this.lbl_Auth2.Name = "lbl_Auth2";
+            this.lbl_Auth2.Size = new System.Drawing.Size(209, 13);
+            this.lbl_Auth2.TabIndex = 57;
+            this.lbl_Auth2.Text = "You are not authorised to use this function!";
             // 
             // grb_ManageProducts
             // 
@@ -769,6 +782,7 @@ namespace SajtBazis_WinForms
             this.btn_ModifyProduct.TabIndex = 1;
             this.btn_ModifyProduct.Text = "Modify selected";
             this.btn_ModifyProduct.UseVisualStyleBackColor = true;
+            this.btn_ModifyProduct.Click += new System.EventHandler(this.btn_ModifyProduct_Click);
             // 
             // btn_NewProduct
             // 
@@ -778,6 +792,7 @@ namespace SajtBazis_WinForms
             this.btn_NewProduct.TabIndex = 17;
             this.btn_NewProduct.Text = "New product";
             this.btn_NewProduct.UseVisualStyleBackColor = true;
+            this.btn_NewProduct.Click += new System.EventHandler(this.btn_NewProduct_Click);
             // 
             // btn_DeleteProduct
             // 
@@ -787,6 +802,7 @@ namespace SajtBazis_WinForms
             this.btn_DeleteProduct.TabIndex = 16;
             this.btn_DeleteProduct.Text = "Delete selected";
             this.btn_DeleteProduct.UseVisualStyleBackColor = true;
+            this.btn_DeleteProduct.Click += new System.EventHandler(this.btn_DeleteProduct_Click);
             // 
             // grb_SearchProducts
             // 
@@ -912,10 +928,18 @@ namespace SajtBazis_WinForms
             this.lsv_ManageProducts.TabIndex = 0;
             this.lsv_ManageProducts.UseCompatibleStateImageBehavior = false;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "magnifying-glass.png");
+            this.imageList1.Images.SetKeyName(1, "avatar.png");
+            this.imageList1.Images.SetKeyName(2, "package.png");
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.tsl_MainSearch});
             this.statusStrip1.Location = new System.Drawing.Point(0, 740);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(984, 22);
@@ -923,18 +947,10 @@ namespace SajtBazis_WinForms
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // tsl_MainSearch
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(440, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(492, 407);
-            this.dataGridView1.TabIndex = 3;
+            this.tsl_MainSearch.Name = "tsl_MainSearch";
+            this.tsl_MainSearch.Size = new System.Drawing.Size(0, 17);
             // 
             // MainSearch
             // 
@@ -948,7 +964,7 @@ namespace SajtBazis_WinForms
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Search - SajtBázis";
+            this.Text = "SajtBázis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainSearch_FormClosing);
             this.Load += new System.EventHandler(this.MainSearch_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -963,11 +979,13 @@ namespace SajtBazis_WinForms
             this.grb_ByDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ByDetailsPartNumber)).EndInit();
             this.tbp_ManageUsers.ResumeLayout(false);
+            this.tbp_ManageUsers.PerformLayout();
             this.grb_ManageUsers.ResumeLayout(false);
             this.grb_ManageUsersResult.ResumeLayout(false);
             this.grb_SearchUsers.ResumeLayout(false);
             this.grb_SearchUsers.PerformLayout();
             this.tbp_ManageProduct.ResumeLayout(false);
+            this.tbp_ManageProduct.PerformLayout();
             this.grb_ManageProducts.ResumeLayout(false);
             this.grb_SearchProducts.ResumeLayout(false);
             this.grb_SearchProducts.PerformLayout();
@@ -976,7 +994,6 @@ namespace SajtBazis_WinForms
             this.grb_ManageProductsResult.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1016,13 +1033,12 @@ namespace SajtBazis_WinForms
         private System.Windows.Forms.Label lbl_UsernameSearch;
         private System.Windows.Forms.TextBox tbx_SearchUserName;
         private System.Windows.Forms.GroupBox grb_ManageUsers;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tsl_MainSearch;
         private System.Windows.Forms.CheckedListBox chb_Factory;
         private System.Windows.Forms.CheckedListBox chb_Type;
         private System.Windows.Forms.CheckedListBox chb_Brand;
         private System.Windows.Forms.CheckedListBox chb_Market;
         private System.Windows.Forms.GroupBox grb_ManageProductsResult;
-        private System.Windows.Forms.ToolStripMenuItem viewhelptoolStripMenuItem;
         private System.Windows.Forms.ListView lsv_ManageUsers;
         private System.Windows.Forms.ListView lsv_SearchProducts;
         private System.Windows.Forms.Button btn_ClearByDetails;
@@ -1064,6 +1080,8 @@ namespace SajtBazis_WinForms
         private System.Windows.Forms.TextBox tbx_ManageDescription;
         private System.Windows.Forms.Button btn_ClearProduct;
         private System.Windows.Forms.Button btn_ManageProductsExport;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label lbl_Auth;
+        private System.Windows.Forms.Label lbl_Auth2;
     }
 }

@@ -25,8 +25,10 @@ namespace SajtBazis_WinForms.Forms
             InitializeComponent();
             selectedUser = modify;
             cmb_Permission.DataSource = Enum.GetValues(typeof(Permissions));
+            cmb_Permission.SelectedIndex = (int)modify.Permission;
             tbx_Username.Text = modify.Username;
             tbx_Password.Text = modify.Password;
+            tbx_Name.Text = modify.Name;
             tbx_Email.Text = modify.Email;
             tbx_Username.Enabled = false;
 
@@ -46,12 +48,13 @@ namespace SajtBazis_WinForms.Forms
                     }
                     else
                     {
-                        tbx_Username.Text = selectedUser.Username;
-                        tbx_Password.Text = selectedUser.Password;
-                        tbx_Email.Text = selectedUser.Email;
-                        tbx_Name.Text = selectedUser.Name;
-                        cmb_Permission.SelectedIndex = (int)selectedUser.Permission;                        
-                        //DatabaseManager.UserModify(selectedUser);
+                        //tbx_Username.Text = selectedUser.Username;
+                        selectedUser.Password = tbx_Password.Text;
+                        selectedUser.Email = tbx_Email.Text;
+                        selectedUser.Name = tbx_Name.Text;
+                        //selectedUser.Permission = cmb_Permission.SelectedIndex;
+                        DatabaseManager.UserModify(selectedUser);
+                        DialogResult = DialogResult.OK;
                     }
                 }
                 else

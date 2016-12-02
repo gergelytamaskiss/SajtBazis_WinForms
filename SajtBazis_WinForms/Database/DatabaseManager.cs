@@ -14,14 +14,9 @@ namespace SajtBazis_WinForms.Database
         static SqlCommand command = new SqlCommand();
         static SqlCommand commandAuth = new SqlCommand();
         static List<Users> user = new List<Users>();
-        static List<Users> modifyuser = new List<Users>();
+
         static List<Products> product = new List<Products>();
         static List<Products> searchproduct = new List<Products>();
-        //static int userid = 0;        
-
-        //még kell
-        static string usersql = "SELECT * FROM [Users] WHERE";
-        static string productsql = "SELECT * FROM [Products] WHERE";
 
         #region CONNECTION
         public static void ConnectionOpen(string connStr)
@@ -30,7 +25,6 @@ namespace SajtBazis_WinForms.Database
             {
                 connection.ConnectionString = connStr;
                 connection.Open();
-                //command.Connection = connection;
             }
             catch (Exception ex)
             {
@@ -127,13 +121,11 @@ namespace SajtBazis_WinForms.Database
                 command.CommandText = "SELECT * FROM [Products]";
                 command.CommandType = CommandType.Text;
 
-                //Empty list
                 for (int i = product.Count - 1; i >= 0; i--)
                 {
                     product.RemoveAt(i);
                 }
 
-                //Reading data
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -150,7 +142,7 @@ namespace SajtBazis_WinForms.Database
 
         public static List<Products> SearchProductByDetails(string searchDescription, int searchPartNumber, int searchBarCode)
         {
-            if (searchDescription != string.Empty && searchPartNumber > 0 && searchBarCode > 0) //all three
+            if (searchDescription != string.Empty && searchPartNumber > 0 && searchBarCode > 0)
             {
                 try
                 {
@@ -186,13 +178,11 @@ namespace SajtBazis_WinForms.Database
                     command.Parameters.Add(queryPartNumber);
                     command.Parameters.Add(queryBarCode);
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -207,7 +197,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
                 }
             }
-            else if (searchDescription != string.Empty && searchPartNumber > 0) //description and partnumber only
+            else if (searchDescription != string.Empty && searchPartNumber > 0)
             {
                 try
                 {
@@ -234,13 +224,11 @@ namespace SajtBazis_WinForms.Database
                     command.Parameters.Add(queryDescription);
                     command.Parameters.Add(queryPartNumber);
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -255,7 +243,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
                 }
             }
-            else if (searchDescription != string.Empty && searchBarCode > 0) //description and barcode only
+            else if (searchDescription != string.Empty && searchBarCode > 0)
             {
                 try
                 {
@@ -282,13 +270,11 @@ namespace SajtBazis_WinForms.Database
                     command.Parameters.Add(queryDescription);
                     command.Parameters.Add(queryBarCode);
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -303,7 +289,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
                 }
             }
-            else if (searchPartNumber > 0 && searchBarCode > 0) //partnumber and barcode only
+            else if (searchPartNumber > 0 && searchBarCode > 0)
             {
                 try
                 {
@@ -330,13 +316,11 @@ namespace SajtBazis_WinForms.Database
                     command.Parameters.Add(queryPartNumber);
                     command.Parameters.Add(queryBarCode);
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -351,7 +335,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
                 }
             }
-            else if (searchDescription != string.Empty) //description only
+            else if (searchDescription != string.Empty)
             {
                 try
                 {
@@ -369,13 +353,11 @@ namespace SajtBazis_WinForms.Database
 
                     command.Parameters.Add(queryDescription);
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -390,7 +372,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
                 }
             }
-            else if (searchPartNumber > 0) //partnumber only
+            else if (searchPartNumber > 0)
             {
                 try
                 {
@@ -408,13 +390,11 @@ namespace SajtBazis_WinForms.Database
 
                     command.Parameters.Add(queryPartNumber);
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -429,7 +409,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
                 }
             }
-            else if (searchBarCode > 0) //barcode only
+            else if (searchBarCode > 0)
             {
                 try
                 {
@@ -447,13 +427,11 @@ namespace SajtBazis_WinForms.Database
 
                     command.Parameters.Add(queryBarCode);
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -468,7 +446,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
                 }
             }
-            else //all product
+            else
             {
                 try
                 {
@@ -476,13 +454,11 @@ namespace SajtBazis_WinForms.Database
                     command.CommandText = "SELECT * FROM [Products]";
                     command.CommandType = CommandType.Text;
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -554,18 +530,16 @@ namespace SajtBazis_WinForms.Database
                     }
                     string sqlParameterBrand = String.Format(sqlBrand, string.Join(",", idParameterListBrand));
 
-                    string sqlParameterAll = sqlParameterFactory + sqlParameterType + sqlParameterMarket + sqlParameterType;
+                    string sqlParameterAll = sqlParameterFactory + sqlParameterType + sqlParameterMarket + sqlParameterBrand;
 
                     command.CommandText = sqlParameterAll;
                     command.CommandType = CommandType.Text;
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -584,7 +558,7 @@ namespace SajtBazis_WinForms.Database
                     throw new DatabaseException("Unable to perform search!", ex.Message);
                 }
             }
-            else //all products
+            else
             {
                 try
                 {
@@ -592,13 +566,11 @@ namespace SajtBazis_WinForms.Database
                     command.CommandText = "SELECT * FROM [Products]";
                     command.CommandType = CommandType.Text;
 
-                    //Empty list
                     for (int i = product.Count - 1; i >= 0; i--)
                     {
                         product.RemoveAt(i);
                     }
 
-                    //Reading data
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -614,171 +586,6 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        //delete
-
-        //public static List<Products> SearchProducts(int searchpieces)
-        //{
-        //    for (int i = searchproduct.Count - 1; i >= 0; i--)
-        //    {
-        //        searchproduct.RemoveAt(i);
-        //    }
-
-        //    var query = from prod in product
-        //                where prod.Pieces == 24
-        //                select product;
-
-        //    foreach (var item in query)
-        //    {
-        //        searchproduct.Add(item);
-        //    }
-        //    return searchproduct;
-        //}
-
-        //public static List<Products> SearchProducts(int searchpieces)
-        //{
-        //    //Empty list
-        //    for (int i = searchproduct.Count - 1; i >= 0; i--)
-        //    {
-        //        searchproduct.RemoveAt(i);
-        //    }
-
-        //    var query = product.Where(x => x.Pieces == searchpieces);
-        //    foreach (var item in query)
-        //    {
-        //        searchproduct.Add(item);
-        //    }
-        //    return searchproduct;
-        //}
-
-        public static string CreateUserSearchSql(string searchuser, int searchpermission)
-        {
-            if (searchuser != string.Empty && searchpermission > 0)
-            {
-                //usersql += " username = @USER AND permission = @PERMISSION";
-            }
-            else if (searchuser != string.Empty)
-            {
-                //usersql += " username = @USER";
-            }
-            else if (searchpermission > 0)
-            {
-                //usersql += " permission = @PERMISSION";
-            }
-            else
-            {
-                //usersql = null;
-            }
-            return usersql;
-        }
-
-
-        public static List<Products> SearchProduct(int searchpartnumber, string searchdescription)//, int searchbrand, int searchcategory, int searchmarket, int searchfactory, int searchtype, int searchbarcode)
-        {
-            try
-            {
-                command.Connection = connection;
-                command.CommandText = productsql;
-                //command.CommandText = "SELECT * FROM [Users] WHERE part_number = @PARTNUMBER OR description = @DESCRIPTION OR brand = @BRAND OR category = @CATEGORY OR market = @MARKET OR factory = @FACTORY OR type = @TYPE OR bar_code = @BARCODE";
-                command.CommandType = CommandType.Text;
-
-
-                SqlParameter querypartnumber = new SqlParameter
-                {
-                    ParameterName = "@PARTNUMBER",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input,
-                    Value = searchpartnumber
-                };
-
-                SqlParameter querydescription = new SqlParameter
-                {
-                    ParameterName = "@DESCRIPTION",
-                    SqlDbType = SqlDbType.VarChar,
-                    Direction = ParameterDirection.Input,
-                    Value = searchdescription
-                };
-
-                //SqlParameter querybrand = new SqlParameter
-                //{
-                //    ParameterName = "@BRAND",
-                //    SqlDbType = SqlDbType.Int,
-                //    Direction = ParameterDirection.Input,
-                //    Value = searchbrand
-                //};
-
-                //SqlParameter querycategory = new SqlParameter
-                //{
-                //    ParameterName = "@CATEGORY",
-                //    SqlDbType = SqlDbType.Int,
-                //    Direction = ParameterDirection.Input,
-                //    Value = searchcategory
-                //};
-
-                //SqlParameter querymarket = new SqlParameter
-                //{
-                //    ParameterName = "@MARKET",
-                //    SqlDbType = SqlDbType.Int,
-                //    Direction = ParameterDirection.Input,
-                //    Value = searchmarket
-                //};
-
-                //SqlParameter queryfactory = new SqlParameter
-                //{
-                //    ParameterName = "@FACTORY",
-                //    SqlDbType = SqlDbType.Int,
-                //    Direction = ParameterDirection.Input,
-                //    Value = searchfactory
-                //};
-
-                //SqlParameter querytype = new SqlParameter
-                //{
-                //    ParameterName = "@TYPE",
-                //    SqlDbType = SqlDbType.Int,
-                //    Direction = ParameterDirection.Input,
-                //    Value = searchtype
-                //};
-
-                //SqlParameter querybarcode = new SqlParameter
-                //{
-                //    ParameterName = "@BARCODE",
-                //    SqlDbType = SqlDbType.Int,
-                //    Direction = ParameterDirection.Input,
-                //    Value = searchbarcode
-                //};
-
-                command.Parameters.Add(querypartnumber);
-                command.Parameters.Add(querydescription);
-                //command.Parameters.Add(querybrand);
-                //command.Parameters.Add(querycategory);
-                //command.Parameters.Add(querymarket);
-                //command.Parameters.Add(queryfactory);
-                //command.Parameters.Add(querytype);
-                //command.Parameters.Add(querybarcode);
-
-                //Empty list
-                for (int i = product.Count - 1; i >= 0; i--)
-                {
-                    product.RemoveAt(i);
-                }
-                //Reading data
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    product.Add(new Products((int)reader["part_number"], reader["description"].ToString(), (Brands)(int)reader["brand"], (Markets)(int)reader["market"], (Factories)(int)reader["factory"], (Types)(int)reader["type"], (int)reader["bar_code"], (int)reader["width"], (int)reader["heigth"], (int)reader["length"], (int)reader["pieces"], (int)reader["temperature"]));
-                }
-                reader.Close();
-                command.Parameters.Clear();
-                productsql = "SELECT * FROM [Products] WHERE";
-                return product;
-            }
-            catch (Exception ex)
-            {
-                throw new DatabaseException("Unable to perform search!", ex.Message);
-            }
-
-        }
-
-
         #endregion
 
         #region Modify
@@ -786,12 +593,11 @@ namespace SajtBazis_WinForms.Database
         {
             try
             {
-                command.CommandText = String.Format("INSERT INTO [Products] VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')", fresh.PartNumber, fresh.Description, fresh.Brand, fresh.Market, fresh.Factory, fresh.Type, fresh.BarCode, fresh.Width, fresh.Height, fresh.Length, fresh.Pieces, fresh.Temperature);
+                command.CommandText = String.Format("INSERT INTO [Products] VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}')", fresh.PartNumber, fresh.Description, (int)(fresh.Brand), (int)(fresh.Market), (int)(fresh.Factory), (int)(fresh.Type), fresh.BarCode, fresh.Width, fresh.Height, fresh.Length, fresh.Pieces, fresh.Temperature);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
                 throw new DatabaseException("Insert new product failed!", ex.Message);
             }
         }
@@ -800,7 +606,7 @@ namespace SajtBazis_WinForms.Database
         {
             try
             {
-                command.CommandText = String.Format("UPDATE [Products] SET [part_number] = '{0}', [description] = '{1}', [brand] = '{2}', [market] = '{3}', [factory] = '{4}', [type] = '{5}', [bar_code] = '{6}', [width] = '{7}', [heigth] = '{8}', [length] = '{9}', [pieces] = '{10}', [temperature] = '{11}'", modify.PartNumber, modify.Description, modify.Brand, modify.Market, modify.Factory, modify.Type, modify.BarCode, modify.Width, modify.Height, modify.Length, modify.Pieces, modify.Temperature);
+                command.CommandText = String.Format("UPDATE [Products] SET [part_number] = '{0}', [description] = '{1}', [brand] = '{2}', [market] = '{3}', [factory] = '{4}', [type] = '{5}', [bar_code] = '{6}', [width] = '{7}', [heigth] = '{8}', [length] = '{9}', [pieces] = '{10}', [temperature] = '{11}' WHERE [part_number]  = '{0}'", modify.PartNumber, modify.Description, (int)modify.Brand, (int)modify.Market, (int)modify.Factory, (int)modify.Type, modify.BarCode, modify.Width, modify.Height, modify.Length, modify.Pieces, modify.Temperature);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -809,11 +615,11 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        public static void ProductDelete(Products delete)
+        public static void ProductDelete(string deleteProduct)
         {
             try
             {
-                command.CommandText = String.Format("DELETE FROM [Products] WHERE [part_number] = '{0}'", delete.PartNumber);
+                command.CommandText = String.Format("DELETE FROM [Products] WHERE [part_number] = '{0}'", deleteProduct);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -1034,38 +840,11 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        public static List<Users> GetModifyUserName(string modifyUserName)
+        public static void UserModify(Users modify)
         {
             try
             {
-                command.Connection = connection;
-                command.CommandText = String.Format("SELECT * FROM [Users] WHERE [username] = '{0}'", modifyUserName);
-                command.CommandType = CommandType.Text;
-
-                for (int i = user.Count - 1; i >= 0; i--)
-                {
-                    modifyuser.RemoveAt(i);
-                }
-
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    modifyuser.Add(new Users(reader["username"].ToString(), reader["password"].ToString(), reader["name"].ToString(), (Permissions)(int)reader["permission"], reader["email"].ToString()));
-                }
-                reader.Close();
-                return modifyuser;
-            }
-            catch (Exception ex)
-            {
-                throw new DatabaseException("Unable to retrieve all database information!", ex.Message);
-            }
-        }
-
-        public static void UserModify(List<Users> modifyuser)
-        {
-            try
-            {
-                command.CommandText = String.Format("UPDATE [Users] SET [username] = '{0}', [password] = '{1}', [password] = '{2}', [permission] = '{3}', [email] = '{4}'", modifyuser[0]);//modify.Username, modify.Password, modify.Password, modify.Permission, modify.Email);
+                command.CommandText = String.Format("UPDATE [Users] SET [password] = '{0}', [name] = '{1}', [permission] = '{2}', [email] = '{3}' WHERE [username] = '{4}'", modify.Password, modify.Name, (int)modify.Permission, modify.Email, modify.Username);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -1074,11 +853,11 @@ namespace SajtBazis_WinForms.Database
             }
         }
 
-        public static void UserDelete(string delete)
+        public static void UserDelete(string deleteuser)
         {
             try
             {
-                command.CommandText = String.Format("DELETE FROM [Users] WHERE [username] = '{0}'", delete);
+                command.CommandText = String.Format("DELETE FROM [Users] WHERE [username] = '{0}'", deleteuser);
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

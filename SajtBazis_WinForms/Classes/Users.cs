@@ -15,13 +15,6 @@ namespace SajtBazis_WinForms.Classes
     }
     class Users
     {
-        int id;
-        public int Id
-        {
-            get { return id; }
-            set { if (id == 0) { id = value; } }
-        }
-
         string username;
 
         public string Username
@@ -63,7 +56,6 @@ namespace SajtBazis_WinForms.Classes
 
         public Users(string username, string password, string name, Permissions permission, string email)
         {
-            //Id = id;
             Username = username;
             Password = password;
             Name = name;

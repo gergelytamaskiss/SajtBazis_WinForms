@@ -69,16 +69,18 @@
             // 
             // btn_Ok
             // 
-            this.btn_Ok.Location = new System.Drawing.Point(57, 393);
+            this.btn_Ok.Location = new System.Drawing.Point(555, 154);
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(75, 23);
             this.btn_Ok.TabIndex = 0;
             this.btn_Ok.Text = "OK";
             this.btn_Ok.UseVisualStyleBackColor = true;
+            this.btn_Ok.Click += new System.EventHandler(this.btn_Ok_Click);
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(153, 393);
+            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Cancel.Location = new System.Drawing.Point(651, 154);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 1;
@@ -88,7 +90,7 @@
             // lbl_Brand
             // 
             this.lbl_Brand.AutoSize = true;
-            this.lbl_Brand.Location = new System.Drawing.Point(41, 100);
+            this.lbl_Brand.Location = new System.Drawing.Point(547, 25);
             this.lbl_Brand.Name = "lbl_Brand";
             this.lbl_Brand.Size = new System.Drawing.Size(38, 13);
             this.lbl_Brand.TabIndex = 36;
@@ -97,7 +99,7 @@
             // lbl_PartNumber
             // 
             this.lbl_PartNumber.AutoSize = true;
-            this.lbl_PartNumber.Location = new System.Drawing.Point(41, 48);
+            this.lbl_PartNumber.Location = new System.Drawing.Point(16, 51);
             this.lbl_PartNumber.Name = "lbl_PartNumber";
             this.lbl_PartNumber.Size = new System.Drawing.Size(67, 13);
             this.lbl_PartNumber.TabIndex = 28;
@@ -106,7 +108,7 @@
             // lbl_Description
             // 
             this.lbl_Description.AutoSize = true;
-            this.lbl_Description.Location = new System.Drawing.Point(41, 74);
+            this.lbl_Description.Location = new System.Drawing.Point(16, 25);
             this.lbl_Description.Name = "lbl_Description";
             this.lbl_Description.Size = new System.Drawing.Size(63, 13);
             this.lbl_Description.TabIndex = 29;
@@ -116,22 +118,22 @@
             // 
             this.cmb_Brand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Brand.FormattingEnabled = true;
-            this.cmb_Brand.Location = new System.Drawing.Point(107, 97);
+            this.cmb_Brand.Location = new System.Drawing.Point(591, 21);
             this.cmb_Brand.Name = "cmb_Brand";
             this.cmb_Brand.Size = new System.Drawing.Size(135, 21);
             this.cmb_Brand.TabIndex = 35;
             // 
             // tbx_Description
             // 
-            this.tbx_Description.Location = new System.Drawing.Point(107, 71);
+            this.tbx_Description.Location = new System.Drawing.Point(89, 22);
             this.tbx_Description.Name = "tbx_Description";
-            this.tbx_Description.Size = new System.Drawing.Size(135, 20);
+            this.tbx_Description.Size = new System.Drawing.Size(260, 20);
             this.tbx_Description.TabIndex = 31;
             // 
             // lbl_Factory
             // 
             this.lbl_Factory.AutoSize = true;
-            this.lbl_Factory.Location = new System.Drawing.Point(41, 153);
+            this.lbl_Factory.Location = new System.Drawing.Point(540, 78);
             this.lbl_Factory.Name = "lbl_Factory";
             this.lbl_Factory.Size = new System.Drawing.Size(45, 13);
             this.lbl_Factory.TabIndex = 34;
@@ -140,7 +142,7 @@
             // lbl_Market
             // 
             this.lbl_Market.AutoSize = true;
-            this.lbl_Market.Location = new System.Drawing.Point(41, 126);
+            this.lbl_Market.Location = new System.Drawing.Point(542, 51);
             this.lbl_Market.Name = "lbl_Market";
             this.lbl_Market.Size = new System.Drawing.Size(43, 13);
             this.lbl_Market.TabIndex = 33;
@@ -150,9 +152,10 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsl_ManageProduct});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 479);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 196);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(284, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(748, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 38;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -165,7 +168,7 @@
             // 
             this.cmb_Market.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Market.FormattingEnabled = true;
-            this.cmb_Market.Location = new System.Drawing.Point(107, 124);
+            this.cmb_Market.Location = new System.Drawing.Point(591, 48);
             this.cmb_Market.Name = "cmb_Market";
             this.cmb_Market.Size = new System.Drawing.Size(135, 21);
             this.cmb_Market.TabIndex = 39;
@@ -174,7 +177,7 @@
             // 
             this.cmb_Factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Factory.FormattingEnabled = true;
-            this.cmb_Factory.Location = new System.Drawing.Point(107, 150);
+            this.cmb_Factory.Location = new System.Drawing.Point(591, 75);
             this.cmb_Factory.Name = "cmb_Factory";
             this.cmb_Factory.Size = new System.Drawing.Size(135, 21);
             this.cmb_Factory.TabIndex = 40;
@@ -183,7 +186,7 @@
             // 
             this.cmb_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Type.FormattingEnabled = true;
-            this.cmb_Type.Location = new System.Drawing.Point(107, 177);
+            this.cmb_Type.Location = new System.Drawing.Point(591, 102);
             this.cmb_Type.Name = "cmb_Type";
             this.cmb_Type.Size = new System.Drawing.Size(135, 21);
             this.cmb_Type.TabIndex = 42;
@@ -191,7 +194,7 @@
             // lbl_Type
             // 
             this.lbl_Type.AutoSize = true;
-            this.lbl_Type.Location = new System.Drawing.Point(41, 180);
+            this.lbl_Type.Location = new System.Drawing.Point(551, 105);
             this.lbl_Type.Name = "lbl_Type";
             this.lbl_Type.Size = new System.Drawing.Size(34, 13);
             this.lbl_Type.TabIndex = 41;
@@ -199,36 +202,56 @@
             // 
             // nud_PartNumber
             // 
-            this.nud_PartNumber.Location = new System.Drawing.Point(107, 46);
+            this.nud_PartNumber.Location = new System.Drawing.Point(89, 49);
+            this.nud_PartNumber.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nud_PartNumber.Name = "nud_PartNumber";
-            this.nud_PartNumber.Size = new System.Drawing.Size(135, 20);
+            this.nud_PartNumber.Size = new System.Drawing.Size(84, 20);
             this.nud_PartNumber.TabIndex = 43;
             // 
             // nud_BarCode
             // 
-            this.nud_BarCode.Location = new System.Drawing.Point(107, 204);
+            this.nud_BarCode.Location = new System.Drawing.Point(89, 75);
+            this.nud_BarCode.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nud_BarCode.Name = "nud_BarCode";
-            this.nud_BarCode.Size = new System.Drawing.Size(135, 20);
+            this.nud_BarCode.Size = new System.Drawing.Size(84, 20);
             this.nud_BarCode.TabIndex = 44;
             // 
             // nud_Width
             // 
-            this.nud_Width.Location = new System.Drawing.Point(107, 230);
+            this.nud_Width.Location = new System.Drawing.Point(427, 75);
+            this.nud_Width.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nud_Width.Name = "nud_Width";
-            this.nud_Width.Size = new System.Drawing.Size(135, 20);
+            this.nud_Width.Size = new System.Drawing.Size(84, 20);
             this.nud_Width.TabIndex = 45;
             // 
             // nud_Heigth
             // 
-            this.nud_Heigth.Location = new System.Drawing.Point(107, 256);
+            this.nud_Heigth.Location = new System.Drawing.Point(427, 23);
+            this.nud_Heigth.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nud_Heigth.Name = "nud_Heigth";
-            this.nud_Heigth.Size = new System.Drawing.Size(135, 20);
+            this.nud_Heigth.Size = new System.Drawing.Size(84, 20);
             this.nud_Heigth.TabIndex = 46;
             // 
             // lbl_BarCode
             // 
             this.lbl_BarCode.AutoSize = true;
-            this.lbl_BarCode.Location = new System.Drawing.Point(41, 206);
+            this.lbl_BarCode.Location = new System.Drawing.Point(16, 78);
             this.lbl_BarCode.Name = "lbl_BarCode";
             this.lbl_BarCode.Size = new System.Drawing.Size(53, 13);
             this.lbl_BarCode.TabIndex = 47;
@@ -236,15 +259,20 @@
             // 
             // nud_Length
             // 
-            this.nud_Length.Location = new System.Drawing.Point(107, 282);
+            this.nud_Length.Location = new System.Drawing.Point(427, 49);
+            this.nud_Length.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nud_Length.Name = "nud_Length";
-            this.nud_Length.Size = new System.Drawing.Size(135, 20);
+            this.nud_Length.Size = new System.Drawing.Size(84, 20);
             this.nud_Length.TabIndex = 48;
             // 
             // lbl_Width
             // 
             this.lbl_Width.AutoSize = true;
-            this.lbl_Width.Location = new System.Drawing.Point(41, 232);
+            this.lbl_Width.Location = new System.Drawing.Point(378, 77);
             this.lbl_Width.Name = "lbl_Width";
             this.lbl_Width.Size = new System.Drawing.Size(38, 13);
             this.lbl_Width.TabIndex = 49;
@@ -253,7 +281,7 @@
             // lbl_Heigth
             // 
             this.lbl_Heigth.AutoSize = true;
-            this.lbl_Heigth.Location = new System.Drawing.Point(41, 258);
+            this.lbl_Heigth.Location = new System.Drawing.Point(378, 25);
             this.lbl_Heigth.Name = "lbl_Heigth";
             this.lbl_Heigth.Size = new System.Drawing.Size(41, 13);
             this.lbl_Heigth.TabIndex = 50;
@@ -262,7 +290,7 @@
             // lbl_Length
             // 
             this.lbl_Length.AutoSize = true;
-            this.lbl_Length.Location = new System.Drawing.Point(41, 284);
+            this.lbl_Length.Location = new System.Drawing.Point(378, 51);
             this.lbl_Length.Name = "lbl_Length";
             this.lbl_Length.Size = new System.Drawing.Size(43, 13);
             this.lbl_Length.TabIndex = 51;
@@ -271,7 +299,7 @@
             // lbl_Pieces
             // 
             this.lbl_Pieces.AutoSize = true;
-            this.lbl_Pieces.Location = new System.Drawing.Point(41, 310);
+            this.lbl_Pieces.Location = new System.Drawing.Point(189, 77);
             this.lbl_Pieces.Name = "lbl_Pieces";
             this.lbl_Pieces.Size = new System.Drawing.Size(42, 13);
             this.lbl_Pieces.TabIndex = 52;
@@ -279,22 +307,27 @@
             // 
             // nud_Pieces
             // 
-            this.nud_Pieces.Location = new System.Drawing.Point(107, 308);
+            this.nud_Pieces.Location = new System.Drawing.Point(265, 75);
+            this.nud_Pieces.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nud_Pieces.Name = "nud_Pieces";
-            this.nud_Pieces.Size = new System.Drawing.Size(135, 20);
+            this.nud_Pieces.Size = new System.Drawing.Size(84, 20);
             this.nud_Pieces.TabIndex = 53;
             // 
             // nud_Temperature
             // 
-            this.nud_Temperature.Location = new System.Drawing.Point(107, 334);
+            this.nud_Temperature.Location = new System.Drawing.Point(265, 48);
             this.nud_Temperature.Name = "nud_Temperature";
-            this.nud_Temperature.Size = new System.Drawing.Size(135, 20);
+            this.nud_Temperature.Size = new System.Drawing.Size(84, 20);
             this.nud_Temperature.TabIndex = 54;
             // 
             // lbl_Temperature
             // 
             this.lbl_Temperature.AutoSize = true;
-            this.lbl_Temperature.Location = new System.Drawing.Point(24, 336);
+            this.lbl_Temperature.Location = new System.Drawing.Point(189, 51);
             this.lbl_Temperature.Name = "lbl_Temperature";
             this.lbl_Temperature.Size = new System.Drawing.Size(70, 13);
             this.lbl_Temperature.TabIndex = 55;
@@ -302,9 +335,11 @@
             // 
             // ProductNew
             // 
+            this.AcceptButton = this.btn_Ok;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 501);
+            this.CancelButton = this.btn_Cancel;
+            this.ClientSize = new System.Drawing.Size(748, 218);
             this.Controls.Add(this.lbl_Temperature);
             this.Controls.Add(this.nud_Temperature);
             this.Controls.Add(this.nud_Pieces);
@@ -334,7 +369,8 @@
             this.Controls.Add(this.btn_Ok);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProductNew";
-            this.Text = "ProductNew";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Manage product";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_PartNumber)).EndInit();
