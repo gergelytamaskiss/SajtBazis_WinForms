@@ -51,7 +51,7 @@ namespace SajtBazis_WinForms.Forms
         {
             try
             {
-                if (nud_PartNumber.Value != 0 && tbx_Description.Text.Trim() != string.Empty && nud_BarCode.Value != 0 && nud_Heigth.Value != 0 && nud_Length.Value != 0 && nud_Width.Value != 0 && nud_Pieces.Value != 0 && nud_Temperature.Value != 0)
+                if (nud_PartNumber.Value != 0 && tbx_Description.Text.Trim() != string.Empty && nud_BarCode.Value != 0 && nud_Heigth.Value != 0 && nud_Length.Value != 0 && nud_Width.Value != 0  && nud_Temperature.Value != 0)
                 {
                     if (selectedProduct == null)
                     {
@@ -69,6 +69,10 @@ namespace SajtBazis_WinForms.Forms
                         selectedProduct.Length = (int)nud_Length.Value;
                         selectedProduct.Pieces = (int)nud_Pieces.Value;
                         selectedProduct.Temperature = (int)nud_Temperature.Value;
+                        selectedProduct.Brand = (Brands)cmb_Brand.SelectedIndex;
+                        selectedProduct.Type = (Types)cmb_Type.SelectedIndex;
+                        selectedProduct.Factory = (Factories)cmb_Factory.SelectedIndex;
+                        selectedProduct.Market = (Markets)cmb_Market.SelectedIndex;
                         DatabaseManager.ProductModify(selectedProduct);
                         DialogResult = DialogResult.OK;
                     }

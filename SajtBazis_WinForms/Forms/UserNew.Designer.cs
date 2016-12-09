@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_Username = new System.Windows.Forms.Label();
             this.lbl_Password = new System.Windows.Forms.Label();
             this.tbx_Username = new System.Windows.Forms.TextBox();
@@ -42,6 +43,7 @@
             this.tsl_ManageUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Name = new System.Windows.Forms.Label();
             this.tbx_Name = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,9 +84,11 @@
             // tbx_Password
             // 
             this.tbx_Password.Location = new System.Drawing.Point(303, 24);
+            this.tbx_Password.MaxLength = 6;
             this.tbx_Password.Name = "tbx_Password";
             this.tbx_Password.Size = new System.Drawing.Size(135, 20);
             this.tbx_Password.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.tbx_Password, "Password must not exceed 6 characters.");
             // 
             // tbx_Email
             // 
@@ -210,5 +214,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tsl_ManageUser;
         private System.Windows.Forms.Label lbl_Name;
         private System.Windows.Forms.TextBox tbx_Name;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

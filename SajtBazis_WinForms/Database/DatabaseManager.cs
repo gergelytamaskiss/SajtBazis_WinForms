@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
 
 namespace SajtBazis_WinForms.Database
 {
@@ -48,7 +46,7 @@ namespace SajtBazis_WinForms.Database
         #endregion
 
         #region LOGIN
-        public static void Login(string usern, string passw)
+        public static int Login(string usern, string passw)
         {
             try
             {
@@ -91,16 +89,18 @@ namespace SajtBazis_WinForms.Database
                 int result = (int)command.ExecuteScalar();
                 LoggedUser.loggedUserId = (int)commandAuth.ExecuteScalar();
 
-                if (result > 0)
-                {
-                    MainSearch mainwindow = new MainSearch();
-                    mainwindow.Show();
-                }
-                else
-                {
-                    command.Parameters.Clear();
-                    throw new Exception("Please check your username and password!");
-                }
+                return result;
+
+                //if (result > 0)
+                //{
+                //    MainSearch mainwindow = new MainSearch();
+                //    mainwindow.ShowDialog();
+                //}
+                //else
+                //{
+                //    command.Parameters.Clear();
+                //    throw new Exception("Please check your username and password!");
+                //}
             }
             catch (Exception ex)
             {

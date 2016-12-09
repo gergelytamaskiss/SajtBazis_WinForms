@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SajtBazis_WinForms
@@ -16,8 +13,8 @@ namespace SajtBazis_WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainSearch());
-            Application.Run(new Login());
+            Application.Run(new MainSearch());
+            //Application.Run(new Login());
         }
     }
 }

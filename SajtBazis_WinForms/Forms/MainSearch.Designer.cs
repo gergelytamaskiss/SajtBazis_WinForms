@@ -337,6 +337,7 @@ namespace SajtBazis_WinForms
             // 
             // chb_Factory
             // 
+            this.chb_Factory.CheckOnClick = true;
             this.chb_Factory.FormattingEnabled = true;
             this.chb_Factory.Location = new System.Drawing.Point(9, 66);
             this.chb_Factory.Name = "chb_Factory";
@@ -345,6 +346,7 @@ namespace SajtBazis_WinForms
             // 
             // chb_Type
             // 
+            this.chb_Type.CheckOnClick = true;
             this.chb_Type.FormattingEnabled = true;
             this.chb_Type.Location = new System.Drawing.Point(135, 66);
             this.chb_Type.Name = "chb_Type";
@@ -353,6 +355,7 @@ namespace SajtBazis_WinForms
             // 
             // chb_Brand
             // 
+            this.chb_Brand.CheckOnClick = true;
             this.chb_Brand.FormattingEnabled = true;
             this.chb_Brand.Location = new System.Drawing.Point(387, 66);
             this.chb_Brand.Name = "chb_Brand";
@@ -361,6 +364,7 @@ namespace SajtBazis_WinForms
             // 
             // chb_Market
             // 
+            this.chb_Market.CheckOnClick = true;
             this.chb_Market.FormattingEnabled = true;
             this.chb_Market.Location = new System.Drawing.Point(261, 66);
             this.chb_Market.Name = "chb_Market";
@@ -697,6 +701,7 @@ namespace SajtBazis_WinForms
             // 
             // chb_UserPermission
             // 
+            this.chb_UserPermission.CheckOnClick = true;
             this.chb_UserPermission.FormattingEnabled = true;
             this.chb_UserPermission.Location = new System.Drawing.Point(9, 75);
             this.chb_UserPermission.Name = "chb_UserPermission";

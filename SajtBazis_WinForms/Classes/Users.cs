@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace SajtBazis_WinForms.Classes
+﻿namespace SajtBazis_WinForms.Classes
 {
     enum Permissions
     {
@@ -43,7 +36,7 @@ namespace SajtBazis_WinForms.Classes
         internal Permissions Permission
         {
             get { return permission; }
-            //set { permission = value; }
+            set { permission = value; }
         }
 
         string email;

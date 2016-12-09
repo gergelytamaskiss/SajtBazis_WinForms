@@ -48,11 +48,10 @@ namespace SajtBazis_WinForms.Forms
                     }
                     else
                     {
-                        //tbx_Username.Text = selectedUser.Username;
                         selectedUser.Password = tbx_Password.Text;
                         selectedUser.Email = tbx_Email.Text;
                         selectedUser.Name = tbx_Name.Text;
-                        //selectedUser.Permission = cmb_Permission.SelectedIndex;
+                        selectedUser.Permission = (Permissions)cmb_Permission.SelectedIndex;
                         DatabaseManager.UserModify(selectedUser);
                         DialogResult = DialogResult.OK;
                     }

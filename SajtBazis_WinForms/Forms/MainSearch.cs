@@ -4,12 +4,9 @@ using System;
 using System.Windows.Forms;
 using SajtBazis_WinForms.Database;
 using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel;
 
 namespace SajtBazis_WinForms
 {
@@ -18,107 +15,125 @@ namespace SajtBazis_WinForms
         public MainSearch()
         {
             InitializeComponent();
+
+            try
+            {
+                DatabaseManager.ConnectionOpen(ConfigurationManager.ConnectionStrings["SajtBazis_WinForms.Properties.Settings.SajtBazis_DataBaseConnectionString"].ConnectionString);                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not connect to database: " + ex.Message + "\n" + "Please contact your administrator!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void MainSearch_Load(object sender, EventArgs e)
         {
-            if (LoggedUser.loggedUserId == 2)
+            Login dialogus = new Login();
+            if (dialogus.ShowDialog() == DialogResult.OK)
             {
-                ((Control)tbp_ManageUsers).Enabled = false;
-                grb_SearchUsers.Visible = false;
-                grb_ManageUsers.Visible = false;
-                grb_ManageUsersResult.Visible = false;
+                if (LoggedUser.loggedUserId == 2)
+                {
+                    ((Control)tbp_ManageUsers).Enabled = false;
+                    grb_SearchUsers.Visible = false;
+                    grb_ManageUsers.Visible = false;
+                    grb_ManageUsersResult.Visible = false;
 
-                reloadUsersToolStripMenuItem.Visible = false;
-                realoadAllToolStripMenuItem.Visible = false;
+                    reloadUsersToolStripMenuItem.Visible = false;
+                    realoadAllToolStripMenuItem.Visible = false;
 
-                ((Control)tbp_ManageProduct).Enabled = false;
-                grb_SearchProducts.Visible = false;
-                grb_ManageProducts.Visible = false;
-                grb_ManageProductsResult.Visible = false;
+                    ((Control)tbp_ManageProduct).Enabled = false;
+                    grb_SearchProducts.Visible = false;
+                    grb_ManageProducts.Visible = false;
+                    grb_ManageProductsResult.Visible = false;
 
-                LsvProductSearchRefresh();
+                    LsvProductSearchRefresh();
 
+                }
+                else if (LoggedUser.loggedUserId == 1)
+                {
+                    ((Control)tbp_ManageUsers).Enabled = false;
+                    grb_SearchUsers.Visible = false;
+                    grb_ManageUsers.Visible = false;
+                    grb_ManageUsersResult.Visible = false;
+
+                    lbl_Auth2.Visible = false;
+                    reloadUsersToolStripMenuItem.Visible = false;
+                    realoadAllToolStripMenuItem.Visible = false;
+
+                    LsvProductSearchRefresh();
+                    LsvProductManageRefresh();
+                }
+                else if (LoggedUser.loggedUserId == 0)
+                {
+                    lbl_Auth.Visible = false;
+                    lbl_Auth2.Visible = false;
+                    LsvProductSearchRefresh();
+                    LsvUsersRefresh();
+                    LsvProductManageRefresh();
+                }
+
+                chb_Type.DataSource = Enum.GetValues(typeof(Types));
+                chb_Brand.DataSource = Enum.GetValues(typeof(Brands));
+                chb_Market.DataSource = Enum.GetValues(typeof(Markets));
+                chb_Factory.DataSource = Enum.GetValues(typeof(Factories));
+
+                lsv_SearchProducts.GridLines = true;
+                lsv_SearchProducts.View = View.Details;
+                lsv_SearchProducts.FullRowSelect = true;
+                lsv_SearchProducts.Columns.Add("ID", 30);
+                lsv_SearchProducts.Columns.Add("Part number", 50);
+                lsv_SearchProducts.Columns.Add("Description", 220);
+                lsv_SearchProducts.Columns.Add("Brand", 80);
+                lsv_SearchProducts.Columns.Add("Market", 50);
+                lsv_SearchProducts.Columns.Add("Factory", 80);
+                lsv_SearchProducts.Columns.Add("Type", 50);
+                lsv_SearchProducts.Columns.Add("Barcode", 60);
+                lsv_SearchProducts.Columns.Add("Width", 50);
+                lsv_SearchProducts.Columns.Add("Heigth", 50);
+                lsv_SearchProducts.Columns.Add("Length", 50);
+                lsv_SearchProducts.Columns.Add("Pieces", 50);
+                lsv_SearchProducts.Columns.Add("Temperature", 75);
+
+                ResetCheckedListBoxes();
+
+                chb_UserPermission.DataSource = Enum.GetValues(typeof(Permissions));
+                for (int i = 0; i < chb_UserPermission.Items.Count; i++)
+                {
+                    chb_UserPermission.SetItemChecked(i, true);
+                }
+
+                lsv_ManageUsers.GridLines = true;
+                lsv_ManageUsers.View = View.Details;
+                lsv_ManageUsers.FullRowSelect = true;
+                lsv_ManageUsers.Columns.Add("ID", 30);
+                lsv_ManageUsers.Columns.Add("Username", 100);
+                lsv_ManageUsers.Columns.Add("Password", 100);
+                lsv_ManageUsers.Columns.Add("Name", 130);
+                lsv_ManageUsers.Columns.Add("Permission", 100);
+                lsv_ManageUsers.Columns.Add("Email", 180);
+
+                lsv_ManageProducts.GridLines = true;
+                lsv_ManageProducts.View = View.Details;
+                lsv_ManageProducts.FullRowSelect = true;
+                lsv_ManageProducts.Columns.Add("ID", 30);
+                lsv_ManageProducts.Columns.Add("Part number", 40);
+                lsv_ManageProducts.Columns.Add("Description", 220);
+                lsv_ManageProducts.Columns.Add("Brand", 80);
+                lsv_ManageProducts.Columns.Add("Market", 50);
+                lsv_ManageProducts.Columns.Add("Factory", 80);
+                lsv_ManageProducts.Columns.Add("Type", 50);
+                lsv_ManageProducts.Columns.Add("Barcode", 60);
+                lsv_ManageProducts.Columns.Add("Width", 50);
+                lsv_ManageProducts.Columns.Add("Heigth", 50);
+                lsv_ManageProducts.Columns.Add("Length", 50);
+                lsv_ManageProducts.Columns.Add("Pieces", 50);
+                lsv_ManageProducts.Columns.Add("Temperature", 80);
             }
-            else if (LoggedUser.loggedUserId == 1)
+            else
             {
-                ((Control)tbp_ManageUsers).Enabled = false;
-                grb_SearchUsers.Visible = false;
-                grb_ManageUsers.Visible = false;
-                grb_ManageUsersResult.Visible = false;
-
-                lbl_Auth2.Visible = false;
-                reloadUsersToolStripMenuItem.Visible = false;
-                realoadAllToolStripMenuItem.Visible = false;
-
-                LsvProductSearchRefresh();
-                LsvProductManageRefresh();
+                this.FormClosing -= MainSearch_FormClosing;
+                Close();
             }
-            else if (LoggedUser.loggedUserId == 0)
-            {
-                lbl_Auth.Visible = false;
-                lbl_Auth2.Visible = false;
-                LsvProductSearchRefresh();
-                LsvUsersRefresh();
-                LsvProductManageRefresh();
-            }
-
-            chb_Type.DataSource = Enum.GetValues(typeof(Types));
-            chb_Brand.DataSource = Enum.GetValues(typeof(Brands));
-            chb_Market.DataSource = Enum.GetValues(typeof(Markets));
-            chb_Factory.DataSource = Enum.GetValues(typeof(Factories));
-
-            lsv_SearchProducts.GridLines = true;
-            lsv_SearchProducts.View = View.Details;
-            lsv_SearchProducts.FullRowSelect = true;
-            lsv_SearchProducts.Columns.Add("ID", 30);
-            lsv_SearchProducts.Columns.Add("Part number", 50);
-            lsv_SearchProducts.Columns.Add("Description", 220);
-            lsv_SearchProducts.Columns.Add("Brand", 80);
-            lsv_SearchProducts.Columns.Add("Market", 50);
-            lsv_SearchProducts.Columns.Add("Factory", 80);
-            lsv_SearchProducts.Columns.Add("Type", 50);
-            lsv_SearchProducts.Columns.Add("Barcode", 60);
-            lsv_SearchProducts.Columns.Add("Width", 50);
-            lsv_SearchProducts.Columns.Add("Heigth", 50);
-            lsv_SearchProducts.Columns.Add("Length", 50);
-            lsv_SearchProducts.Columns.Add("Pieces", 50);
-            lsv_SearchProducts.Columns.Add("Temperature", 75);
-
-            ResetCheckedListBoxes();
-
-            chb_UserPermission.DataSource = Enum.GetValues(typeof(Permissions));
-            for (int i = 0; i < chb_UserPermission.Items.Count; i++)
-            {
-                chb_UserPermission.SetItemChecked(i, true);
-            }
-
-            lsv_ManageUsers.GridLines = true;
-            lsv_ManageUsers.View = View.Details;
-            lsv_ManageUsers.FullRowSelect = true;
-            lsv_ManageUsers.Columns.Add("ID", 30);
-            lsv_ManageUsers.Columns.Add("Username", 100);
-            lsv_ManageUsers.Columns.Add("Password", 100);
-            lsv_ManageUsers.Columns.Add("Name", 130);
-            lsv_ManageUsers.Columns.Add("Permission", 100);
-            lsv_ManageUsers.Columns.Add("Email", 180);
-
-            lsv_ManageProducts.GridLines = true;
-            lsv_ManageProducts.View = View.Details;
-            lsv_ManageProducts.FullRowSelect = true;
-            lsv_ManageProducts.Columns.Add("ID", 30);
-            lsv_ManageProducts.Columns.Add("Part number", 40);
-            lsv_ManageProducts.Columns.Add("Description", 220);
-            lsv_ManageProducts.Columns.Add("Brand", 80);
-            lsv_ManageProducts.Columns.Add("Market", 50);
-            lsv_ManageProducts.Columns.Add("Factory", 80);
-            lsv_ManageProducts.Columns.Add("Type", 50);
-            lsv_ManageProducts.Columns.Add("Barcode", 60);
-            lsv_ManageProducts.Columns.Add("Width", 50);
-            lsv_ManageProducts.Columns.Add("Heigth", 50);
-            lsv_ManageProducts.Columns.Add("Length", 50);
-            lsv_ManageProducts.Columns.Add("Pieces", 50);
-            lsv_ManageProducts.Columns.Add("Temperature", 80);
         }
 
 
@@ -492,7 +507,7 @@ namespace SajtBazis_WinForms
                     else
                     {
                         tsl_MainSearch.Text = "Your search returned " + lsv_SearchProducts.Items.Count + " result(s)";
-                    }                    
+                    }
                 }
                 else
                 {

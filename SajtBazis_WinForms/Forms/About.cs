@@ -14,18 +14,18 @@ namespace SajtBazis_WinForms.Forms
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int minutes = time / 60;
-            int seconds = time - minutes * 60;
-            toolStripStatusLabel1.Text = "This window will close in " + seconds + " seconds.";
+            //int minutes = time / 60;
+            //int seconds = time - minutes * 60;
+            //toolStripStatusLabel1.Text = "This window will close in " + seconds + " seconds.";
 
-            if (time > 0)
-            {
-                time--;
-            }
-            else
-            {
-                Close();
-            }
+            //if (time > 0)
+            //{
+            //    time--;
+            //}
+            //else
+            //{
+            //    Close();
+            //}
         }
     }
 }

@@ -44,7 +44,7 @@ namespace SajtBazis_WinForms.Classes
         internal Factories Factory
         {
             get { return factory; }
-            //set { factory = value; }
+            set { factory = value; }
         }
 
         Types type;
@@ -52,7 +52,7 @@ namespace SajtBazis_WinForms.Classes
         internal Types Type
         {
             get { return type; }
-            //set { type = value; }
+            set { type = value; }
         }
 
         Brands brand;
@@ -60,7 +60,7 @@ namespace SajtBazis_WinForms.Classes
         internal Brands Brand
         {
             get { return brand; }
-            //set { brand = value; }
+            set { brand = value; }
         }
 
         Markets market;
@@ -68,7 +68,7 @@ namespace SajtBazis_WinForms.Classes
         internal Markets Market
         {
             get { return market; }
-            //set { market = value; }
+            set { market = value; }
         }
 
         string description;

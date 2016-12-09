@@ -1,0 +1,13 @@
+Username;Password;Name;Permission;Email
+adika;user;Kiss Adam;2;kiss.adam@sajtbazis.com
+admin;admin;admin;0;admin@sajtbazis.com
+boditibi;user;Bodocs Tibor;2;bodocs.tibor@sajtbazis.com
+dombi;user;Dombovari Istvan;2;dombovari.istvan@sajtbazis.com
+gergo;nasi;Gergo;1;gergo@sajtbazis.com
+hadi;user;Hadhazy Laszlo;2;hadhazy.laszlo@sajtbazis.com
+kap;user;Kovacs Andras Peter;2;kovacs.andras@sajtbazis.com
+petike;user;Aranyosi Peter;2;aranyosi.peter@sajtbazis.com
+trabarna;user;Lorant Barnabas;2;lorant.barnabas@sajtbazis.com
+mester;admin;Fabry Sandor;0;lorant.barnabas@sajtbazis.com
+mogi;datamanager;Mogacs Daniel;1;mogacs.daniel@sajtbazis.com
+badi;datamanager;Badar Sandor;1;badar.sandor@sajtbazis.com
